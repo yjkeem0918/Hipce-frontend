@@ -1,0 +1,70 @@
+.Product{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 15px;
+    color:#a36d6a;
+
+
+    .productImage{
+        width: 100%;
+        height: auto;
+        img{
+            height: auto;
+            width: 100%;
+            max-width: 280px;
+            max-height: 360px;
+            transition-duration: 0.5s;
+            transition: opacity .15s ease-out;
+            &:hover{
+                opacity: 0;
+                content: url("https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg");
+            }
+        }
+    }
+    .productBottom{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        font-size: 14px;
+
+        img{
+            width: 34px;
+            height: 18px;
+        }
+
+        .productBottomValue{
+            display: flex;
+            flex-direction: column;
+            div:nth-child(2){
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 15px;
+                text-decoration: none;
+                img{
+                    width: 44px;
+                    height: 44px;
+                }
+                span{
+                    padding-right: 30px;
+                }
+                a{
+                    text-overflow: clip;
+                    width: 140px;
+                    text-decoration: none;
+                    color:#a36d6a;
+                }
+                p{
+                    font-weight: bold;
+                    margin: 5px 0px;
+                }
+            }
+
+        }
+
+
+    }
+}

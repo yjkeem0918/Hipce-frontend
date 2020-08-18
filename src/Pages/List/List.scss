@@ -1,0 +1,12 @@
+.List{
+    body{
+        margin:0;
+    }
+    ul{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin:0 13%;
+        padding: 0;
+    }
+}
