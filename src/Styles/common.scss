@@ -1,0 +1,23 @@
+&mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+&mixin list {
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+&mixin button {
+  outline: none;
+  text-shadow: none;
+  border: none;
+}
+
+$assistance: "Assistant", "Noto Sans KR", sans-serif;
+$pt: "PT Serif", serif;
+$brick: #a36d6a;
+$white: #fff;
