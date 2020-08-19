@@ -6,9 +6,13 @@ export default class ProductFilter extends Component {
         super(props)
 
         this.state = {
+            buttonId: [],
             palleteDisplay: 'ProductFilterPallete',
             classification: "",
             color:[...collorRange],
+            
+            clickColor: "white",
+            alpha:"testa"
         }
     }
 
@@ -19,7 +23,17 @@ export default class ProductFilter extends Component {
         else{
             this.setState({palleteDisplay : "ProductFilterPallete"})
         }
-
+    }
+    palleteButtonKeep = (e) => {
+        e.preventDefault();
+        let target = e.target;
+        if(target.tagName === 'BUTTON') target = target.parentNode;      
+        if(target.style.backgroundColor ==="grey"){
+            target.style.backgroundColor = "white"
+        }
+        else{
+            target.style.backgroundColor = "grey"
+        }
     }
 
     render() {
@@ -29,15 +43,14 @@ export default class ProductFilter extends Component {
                         <h2>Lip</h2>
                         <span onClick ={this.palleteDisplayChange}></span>
                     </div>
-{/* ProductFilterPallete */}
                     <form className ={this.state.palleteDisplay}>
                             <section>
                                 <span>컬러</span>
                                 <div>
                                     <ul>
-                                        {this.state.color.map(({color})=> 
-                                        <li>
-                                            <button style  = {{backgroundColor: color}}> </button>
+                                        {this.state.color.map(({color}, index)=> 
+                                        <li  key ={index} id='' style = {{backgroundColor: this.state.clickColor}} onClick ={this.palleteButtonKeep} >
+                                            <button key ={index}  style={{backgroundColor: color}} > </button>
                                         </li>)}
                                     </ul>
                                 </div>
@@ -57,7 +70,8 @@ export default class ProductFilter extends Component {
     }
 }
 
-const collorRange = [{color: '#b12a23'},
+const collorRange = [{color: '#b12a23',
+                        name:"Red"},
                     {color: '#dc6b2f'},
                     {color: '#d6ae9a'},
                     {color: '#dd7d88'},

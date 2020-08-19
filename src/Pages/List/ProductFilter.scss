@@ -30,6 +30,7 @@
         height: 162px;
         width: 100%;
         background-color: #F1E9E9;
+        margin-bottom: 20px;
         section:nth-child(1){
             margin: auto 0 auto 10%;
             div{
@@ -93,5 +94,12 @@
     }
     .hidden{
         display: none;
+    }
+
+    .testa{
+        background-color: white;
+    }
+    .testb{
+        background-color: red;
     }
 }

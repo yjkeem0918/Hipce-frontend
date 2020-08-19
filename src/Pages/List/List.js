@@ -13,7 +13,7 @@ class List extends Component {
     super()
 
     this.state = {
-      src:[{imgsrc : "http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg"},{imgsrc : "http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg"},{imgsrc : "http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg"},{imgsrc : "http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg"},{imgsrc : "http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg"},{imgsrc : "http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg"}],
+      src:[...srcSample]
     }
   }
   
@@ -27,7 +27,7 @@ class List extends Component {
         <ProductFilter />
         <div className="ProductListContainer">
           <ul className ="ProductList">
-            {this.state.src.map(({imgsrc})=><Product imgsrc ={imgsrc} />)}
+            {this.state.src.map(({imgsrc}, index)=><Product key ={index} imgsrc ={imgsrc} />)}
           </ul>
         </div>
         <ProductListBottom />
@@ -37,4 +37,14 @@ class List extends Component {
   }
 }
 
+const srcSample = [{imgsrc : "http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg"}
+                    ,{imgsrc : "http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg"}
+                    ,{imgsrc : "http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg"}
+                    ,{imgsrc : "http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg"}
+                    ,{imgsrc : "http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg"}
+                    ,{imgsrc : "http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg"}]
+
+
 export default List;
+
+
