@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Product from'./Product';
 import Nav from '../../Components/Nav'
 import ProductNav from '../List/ProductNav'
+import ProductListBottom from '../List/ProductListBottom'
 import Footer from '../../Components/Footer'
+
 import './List.scss'
 import ProductFilter from './ProductFilter'
 
@@ -23,11 +25,12 @@ class List extends Component {
         <Nav />
         <ProductNav />
         <ProductFilter />
-        <div>
-          <ul>
+        <div className="ProductListContainer">
+          <ul className ="ProductList">
             {this.state.src.map(({imgsrc})=><Product imgsrc ={imgsrc} />)}
           </ul>
         </div>
+        <ProductListBottom />
         <Footer />
       </div>
     );

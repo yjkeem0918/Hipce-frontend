@@ -1,20 +1,94 @@
 .ProductFilter{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding:0px 13%;
-    font-size: 40px;
-    color:#8f5b59;
-    margin: 40px 0px 40px 0px;
+    .ProductFilterName{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding:0px 13%;
+        color:#8f5b59;
+        margin: 30px 0px 0px 0px;
+        display: flex;
+        font-size: 40px;
+        span{
+            width: 32px;
+            height: 32px;
+            background-image: url("https://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
+            background-size: 490px 70px;
+            background-position-x: -385px;    
+        }
+    }
+    .ProductFilterPallete{
+        color: #a36d6a;
+        font-size: 14px;
+        display: flex;
+        height: 162px;
+        width: 100%;
+        background-color: #F1E9E9;
+        section:nth-child(1){
+            margin: auto 0 auto 10%;
+
+            div{
+                margin-top: 15px;
+                ul{
+                    display: flex;
+                    flex-wrap: nowrap;
+                    margin: 0;
+                    padding: 0;
+                    li{
+                        background-color: white;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border: 1px solid #a36d6a;
+                        width: 40px;
+                        height: 40px;
+                        margin-right: 6px;
+                        button{
+                            width: 18px;
+                            height: 18px;
+                            border-radius: 100%;
+                            padding:1px;
+                            border: none;
+                        }
+                    }
+                }
+            }
+
+        }
+        section:nth-child(2){
+            margin: auto 50px;
+        }
+
+        .PalleteSearchBox{
+            display: flex;
+            flex-direction: column;
+            div{
+                margin-top: 15px;
+                input{
+                    width: 140px;
+                    height: 38px;
+                    margin-right: 10px;
+                    padding: 0;
+                    border: 1px solid #a36d6a;
+                }
+                button{
+                    
+                    border: 1px solid #a36d6a;
+                    height: 40px;
+                    width: 67px;
+                    padding: 0;
+                    background-color: #a36d6a;
+                    color: white;
+                }
+            }
+        }
+    }
     a{
         margin: 20px;
     }
     span{
-        width: 32px;
-        height: 32px;
-        background-image: url("https://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
-        background-size: 490px 70px;
-        background-position-x: -385px;
+    .hidden{
+        display: none;
+    }
 
     }
 }
