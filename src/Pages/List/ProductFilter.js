@@ -6,14 +6,20 @@ export default class ProductFilter extends Component {
         super(props)
 
         this.state = {
-            palleteDisplay: '',
+            palleteDisplay: 'ProductFilterPallete',
             classification: "",
             color:[...collorRange],
         }
     }
 
     palleteDisplayChange = ()=> {
-        this.setState({palleteDisplay : "none"})
+        if(this.state.palleteDisplay === "ProductFilterPallete"){
+            this.setState({palleteDisplay : "hidden"})
+        }
+        else{
+            this.setState({palleteDisplay : "ProductFilterPallete"})
+        }
+
     }
 
     render() {
@@ -23,8 +29,8 @@ export default class ProductFilter extends Component {
                         <h2>Lip</h2>
                         <span onClick ={this.palleteDisplayChange}></span>
                     </div>
-
-                    <form className ="ProductFilterPallete" >
+{/* ProductFilterPallete */}
+                    <form className ={this.state.palleteDisplay}>
                             <section>
                                 <span>컬러</span>
                                 <div>
@@ -33,31 +39,6 @@ export default class ProductFilter extends Component {
                                         <li>
                                             <button style  = {{backgroundColor: color}}> </button>
                                         </li>)}
-{/* 
-                                        <li>
-                                            <button></button>
-                                        </li>
-                                        <li>
-                                            <button></button>
-                                        </li>
-                                        <li>
-                                            <button></button>
-                                        </li>
-                                        <li>
-                                            <button></button>
-                                        </li>
-                                        <li>
-                                            <button></button>
-                                        </li>
-                                        <li>
-                                            <button></button>
-                                        </li>
-                                        <li>
-                                            <button></button>
-                                        </li>
-                                        <li>
-                                            <button></button>
-                                        </li> */}
                                     </ul>
                                 </div>
                             </section>
@@ -76,4 +57,12 @@ export default class ProductFilter extends Component {
     }
 }
 
-const collorRange = [{color: '#b12a23'},{color: '#dc6b2f'},{color: '#d6ae9a'},{color: '#dd7d88'},{color: '#835248'},{color: '#ef5a41'},{color: '#b0718d'},{color: '#b70316'},{color: '#915f6d'}]
+const collorRange = [{color: '#b12a23'},
+                    {color: '#dc6b2f'},
+                    {color: '#d6ae9a'},
+                    {color: '#dd7d88'},
+                    {color: '#835248'},
+                    {color: '#ef5a41'},
+                    {color: '#b0718d'},
+                    {color: '#b70316'},
+                    {color: '#915f6d'}]

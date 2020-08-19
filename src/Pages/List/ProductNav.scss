@@ -1,4 +1,8 @@
+@import '../../Styles/common.scss';
+
+
 .ProductNav{
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,6 +10,7 @@
     margin: 120px 0 20px 0px;
     height: 140px;
     font-size: 14px;
+    font-family: $pt;
 
     a{
         text-decoration: none;

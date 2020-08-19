@@ -1,3 +1,5 @@
+@import '../../Styles/common.scss';
+
 .ProductFilter{
     .ProductFilterName{
         display: flex;
@@ -7,13 +9,18 @@
         color:#8f5b59;
         margin: 30px 0px 0px 0px;
         display: flex;
-        font-size: 40px;
+        font-family: $pt;
+        font-size: 48px;
+        font-weight: bolder;
+        height: 170px;
+
         span{
             width: 32px;
             height: 32px;
             background-image: url("https://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
             background-size: 490px 70px;
             background-position-x: -385px;    
+            cursor: pointer;
         }
     }
     .ProductFilterPallete{
@@ -25,7 +32,6 @@
         background-color: #F1E9E9;
         section:nth-child(1){
             margin: auto 0 auto 10%;
-
             div{
                 margin-top: 15px;
                 ul{
@@ -38,9 +44,9 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        border: 1px solid #a36d6a;
-                        width: 40px;
-                        height: 40px;
+                        border: 0.5px solid #c8a7a6;
+                        width: 35px;
+                        height: 35px;
                         margin-right: 6px;
                         button{
                             width: 18px;
@@ -85,10 +91,7 @@
     a{
         margin: 20px;
     }
-    span{
     .hidden{
         display: none;
-    }
-
     }
 }
