@@ -23,13 +23,16 @@
       margin-top: 0px;
     }
   }
+
   .siteMenu {
     ul {
       display: flex;
       position: relative;
+
       li {
         @include list;
         padding: 7px 30px;
+
         a {
           text-decoration: none;
           font-size: 17px;
@@ -40,10 +43,13 @@
       }
     }
   }
+
   .siteExtra {
     float: right;
+
     ul {
       display: flex;
+
       li {
         @include list;
         background-image: url("//hince.co.kr/assets/images/hince-icon-sprite-185484.png");
@@ -53,14 +59,17 @@
         height: 35px;
         margin: 8px;
         padding: 7px 0 7px 10px;
+
         &:nth-child(1) {
           background-position-x: -35px;
           background-position-y: -35px;
         }
+
         &:nth-child(2) {
           background-position-x: -70px;
           background-position-y: -35px;
         }
+
         &:nth-child(3) {
           background-position-x: -105px;
           background-position-y: -35px;
