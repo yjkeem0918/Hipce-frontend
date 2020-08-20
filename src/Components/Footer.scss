@@ -1,8 +1,10 @@
 @import "../Styles/common.scss";
+
 @mixin listText {
   padding-bottom: 3px;
   font-size: 12px;
 }
+
 .Footer {
   position: fixed;
   bottom: 0;
@@ -11,27 +13,34 @@
   background-color: $brick;
   padding-bottom: 50px;
   color: $white;
+
   .footerTop {
     display: flex;
     padding: 50px 4.75% 0;
+
     .footerTopLeft {
       display: flex;
       width: 1200px;
+
       .footerTopItem {
         padding-right: 5%;
         width: 35%;
+
         h3 {
           color: rgba(255, 255, 255, 0.5);
           font-size: 14px;
           font-weight: 700;
           margin-bottom: 15px;
         }
+
         ul {
           margin: 20px 0 15px;
+
           li {
             @include listText;
             line-height: 1.428571429;
           }
+
           .csNumber {
             font-family: "PT Serif", serif;
             font-size: 28px;
@@ -41,20 +50,24 @@
         }
       }
     }
+
     .footerTopRight {
       display: flex;
       position: absolute;
       right: 4.75%;
       width: 340px;
+
       .footerTopItemRight {
         width: 170px;
         padding-left: 50px;
+
         h3 {
           color: rgba(255, 255, 255, 0.5);
           font-size: 14px;
           font-weight: 700;
           margin-bottom: 15px;
         }
+
         ul {
           li {
             @include listText;
@@ -64,11 +77,14 @@
       }
     }
   }
+
   .footerBottom {
     padding: 100px 4.75% 0;
+
     .legalLinks {
       ul {
         display: flex;
+
         li {
           font-size: 12px;
           font-weight: 900;
@@ -76,13 +92,17 @@
         }
       }
     }
+
     .companyInfo {
       margin-top: 20px;
+
       ul {
         display: flex;
+
         li {
           font-size: 11px;
           margin: 5px 8px 5px 0;
+
           a {
             text-decoration: none;
             color: $white;
@@ -90,26 +110,32 @@
         }
       }
     }
+
     .socialLinks {
       position: relative;
       bottom: 55px;
       float: right;
+
       ul {
         display: flex;
+
         li {
           background-image: url("//hince.co.kr/assets/images/hince-icon-sprite-185484.png");
           background-size: 448px 64px;
           width: 32px;
           height: 32px;
           margin-left: 20px;
+
           &:nth-child(1) {
             background-position-x: -224px;
             background-position-y: -32px;
           }
+
           &:nth-child(2) {
             background-position-x: -256px;
             background-position-y: -32px;
           }
+
           &:nth-child(3) {
             background-position-x: -288px;
             background-position-y: -32px;
@@ -117,6 +143,7 @@
         }
       }
     }
+
     .copyright {
       font-size: 10px;
       color: rgba(255, 255, 255, 0.6);
