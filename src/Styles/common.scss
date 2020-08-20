@@ -1,17 +1,21 @@
-&mixin center {
+* {
+  box-sizing: border-box;
+}
+
+@mixin center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-&mixin list {
+@mixin list {
   list-style: none;
   text-decoration: none;
   margin: 0;
   padding: 0;
 }
 
-&mixin button {
+@mixin button {
   outline: none;
   text-shadow: none;
   border: none;
