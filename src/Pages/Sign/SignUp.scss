@@ -1,0 +1,178 @@
+@import "../../Styles/common.scss";
+
+.SignUp {
+  .pageHeader {
+    padding: 0 60.656px;
+    .pageTitle {
+      padding-top: 80px;
+      padding-bottom: 50px;
+      font-family: "PT serif", serif;
+      font-size: 48px;
+      color: #8f5b59;
+      font-weight: bold;
+    }
+  }
+  .userInfoWrapper {
+    padding: 0 63px;
+    .formBox {
+      border-top: 2px solid #a36d6a;
+      padding-bottom: 60px;
+      .formTitleBox {
+        margin-top: 60px;
+        margin-bottom: 30px;
+        .formTitle {
+          color: #8f5b59;
+          font-size: 17.5px;
+          font-family: "Assistant", "Noto Sans KR", sans-serif;
+        }
+      }
+    }
+    .optionBox {
+      border-top: 2px solid #a36d6a;
+      padding-bottom: 60px;
+      .optionTitleBox {
+        margin-top: 60px;
+        margin-bottom: 30px;
+        color: #8f5b59;
+        .birthdayDescription {
+          margin-left: 15px;
+          color: #8f5b59;
+          font-size: 13px;
+          font-weight: 400;
+        }
+      }
+      .birthdayBox {
+        display: flex;
+        width: 100%;
+        padding: 7px 0;
+        .birthdayLabel {
+          width: 160px;
+          height: 46px;
+          .birthday {
+            color: #8f5b59;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 46px;
+          }
+        }
+        .birthdayInputBox {
+          input {
+            margin: 0 4px;
+            padding: 12px 16px;
+          }
+          .YYYY {
+            width: 120px;
+            height: 46px;
+            border: 1px solid #c8a7a6;
+          }
+          .MMDD {
+            width: 80px;
+            height: 46px;
+            border: 1px solid #c8a7a6;
+          }
+        }
+      }
+    }
+    .checkAll {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .checkBox {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+      }
+      .agree {
+        font-size: 17px;
+        color: #a36d6a;
+        font-weight: 700;
+      }
+    }
+    .signUpButtonBox {
+      display: flex;
+      justify-content: flex-end;
+      .signUpButton {
+        width: 400px;
+        height: 50px;
+        border: 2px solid #a36d6a;
+        color: #a36d6a;
+        font-size: 17px;
+        font-weight: 900;
+        margin-top: 60px;
+        cursor: pointer;
+        background-color: rgb(255, 255, 255);
+        &:hover {
+          animation: onHover 0.25s ease-out;
+          animation-fill-mode: both;
+        }
+      }
+    }
+  }
+}
+
+@keyframes onHover {
+  from {
+    background-color: rgb(255, 255, 255);
+    color: rgb(163, 109, 106);
+  }
+
+  to {
+    background-color: rgb(163, 109, 106);
+    color: rgb(255, 255, 255);
+  }
+}
+
+.checks {
+  position: relative;
+}
+.checks input[type="checkbox"] {
+  /* 실제 체크박스는 화면에서 숨김 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.checks input[type="checkbox"] + label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.checks input[type="checkbox"] + label:before {
+  /* 가짜 체크박스 */
+  content: " ";
+  display: inline-block;
+  width: 15px; /* 체크박스의 너비를 지정 */
+  height: 15px; /* 체크박스의 높이를 지정 */
+  line-height: 21px; /* 세로정렬을 위해 높이값과 일치 */
+  margin: -2px 8px 0 0;
+  text-align: center;
+  vertical-align: middle;
+  background: #ebe1e1;
+  border: 1px solid #ebe1e1;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+}
+.checks input[type="checkbox"] + label:active:before,
+.checks input[type="checkbox"]:checked + label:active:before {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.checks input[type="checkbox"]:checked + label:before {
+  /* 체크박스를 체크했을때 */
+  content: "\2714"; /* 체크표시 유니코드 사용 */
+  color: white;
+  text-shadow: #fff;
+  background: #a36d6a;
+  border-color: #a36d6a;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05),
+    inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+}

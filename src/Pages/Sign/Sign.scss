@@ -38,6 +38,7 @@
           font-weight: 800;
           border: 2px solid #a36d6a;
           color: #a36d6a;
+          cursor: pointer;
           background-color: rgb(255, 255, 255);
           &:hover {
             animation: onHover 0.25s ease-out;
@@ -74,6 +75,7 @@
           font-size: 17px;
           font-weight: 800;
           letter-spacing: 1px;
+          cursor: pointer;
           background-color: rgb(255, 255, 255);
           &:hover {
             animation: onHover 0.25s ease-out;
@@ -89,6 +91,7 @@
             width: 146.656px;
             height: 44px;
             position: relative;
+            cursor: pointer;
             background-color: #3b5998;
             img {
               position: absolute;
@@ -103,6 +106,7 @@
             width: 146.656px;
             height: 44px;
             position: relative;
+            cursor: pointer;
             background-color: #1dc800;
             img {
               position: absolute;
@@ -117,6 +121,7 @@
             width: 146.656px;
             height: 44px;
             position: relative;
+            cursor: pointer;
             background-color: #ffeb00;
             img {
               position: absolute;
