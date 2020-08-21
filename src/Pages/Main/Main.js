@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import Footer from "../../Components/Footer";
 
 class Main extends Component {
   render() {
     return (
-      <div>
-        
-      </div>
+      <>
+        <Footer />
+      </>
     );
   }
 }
