@@ -64,6 +64,7 @@ class Main extends Component {
         <MainChild3 />
         <MainChild4 />
         <MainChild5 />
+        <MainChildSlider1 />
       </>
     );
   }
