@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import {Link} from "react-router-dom"
 import "./Nav.scss";
 
 class Nav extends Component {
@@ -6,37 +7,37 @@ class Nav extends Component {
     return (
       <div className="Nav">
         <div className="siteLogo">
-          <a href="/"></a>
+          <Link to="/List"></Link>
         </div>
         <div className="siteMenu">
           <ul>
             <li>
-              <a href="/">About</a>
+              <Link to="/">About</Link>
             </li>
             <li>
-              <a href="/">Collection</a>
+              <Link to="/">Collection</Link>
             </li>
             <li>
-              <a href="/">Shop</a>
+              <Link to="/">Shop</Link>
             </li>
             <li>
-              <a href="/">Store</a>
+              <Link to="/">Store</Link>
             </li>
             <li>
-              <a href="/">Service</a>
+              <Link to="/">Service</Link>
             </li>
           </ul>
         </div>
         <div className="siteExtra">
           <ul>
             <li>
-              <a href="/"></a>
+              <Link to="/"></Link>
             </li>
             <li>
-              <a href="/"></a>
+              <Link to="/"></Link>
             </li>
             <li>
-              <a href="/"></a>
+              <Link to="/"></Link>
             </li>
           </ul>
         </div>
