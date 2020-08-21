@@ -132,6 +132,7 @@
   height: 1px;
   padding: 0;
   margin: -1px;
+
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
@@ -172,7 +173,4 @@
   text-shadow: #fff;
   background: #a36d6a;
   border-color: #a36d6a;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05),
-    inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05),
-    inset 15px 10px -12px rgba(255, 255, 255, 0.1);
 }

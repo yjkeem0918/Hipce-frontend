@@ -72,8 +72,8 @@ class SignUp extends Component {
           </div>
           <Terms />
           <div class="checks">
-            <input type="checkbox" id="ex_chk"/>
-              <label for="ex_chk">체크박스</label>
+            <input type="checkbox" />
+              <label for="ex_chk">모두 동의합니다</label>
           </div>
           <div className="signUpButtonBox">
             <button className="signUpButton">회원 가입하기</button>
