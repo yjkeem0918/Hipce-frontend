@@ -11,10 +11,10 @@ class Sign extends Component {
         <div className="formBox">
           <form className="memberForm">
             <div className="inputWrapper">
-              <input className="input" placeholder="아이디"></input>
+              <input className="input" placeholder="아이디" />
             </div>
             <div className="inputWrapper">
-              <input className="input" placeholder="비밀번호"></input>
+              <input className="input" placeholder="비밀번호" />
             </div>
             <div className="signInButtonBox">
               <button className="signInButton">SIGN IN</button>
@@ -36,14 +36,14 @@ class Sign extends Component {
                 <p class="description">SNS 계정으로 가입하고 로그인 할 수 있습니다.</p>
               </div>
               <div className="socialSignIn">
-                <div className="facebook">
-                  <img src="Images/social-facebook.png"/>
+                <div className="facebook" alt="facebook">
+                  <img src="Images/social-facebook.png" alt="facebook"/>
                 </div>
                 <div className="naver">
-                  <img src="Images/social-naver.png"/>
+                  <img src="Images/social-naver.png" alt="naver"/>
                 </div>
                 <div className="kakaotalk">
-                  <img src="images/social-kakao.png"/>
+                  <img src="images/social-kakao.png" alt="kakaotalk"/>
                 </div>
               </div>
             </div>
