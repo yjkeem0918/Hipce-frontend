@@ -9,7 +9,7 @@ class terms extends Component {
       <div className="termTitleBox">
         <h3 className="termTitle">이용약관 [필수]</h3>
         <div className="checkBox">
-          <input className="check" type="checkbox"></input>
+          <input className="check" type="checkbox" />
           <div className="agree">이용약관에 동의합니다.</div>
         </div>
       </div>
@@ -386,7 +386,7 @@ class terms extends Component {
       <div className="termTitleBox">
         <h3 className="termTitle">개인정보 수집 및 이용 [필수]</h3>
         <div className="checkBox">
-          <input className="check" type="checkbox"></input>
+          <input className="check" type="checkbox" />
           <div className="agree">개인 정보 수집 및 이용에 동의합니다.</div>
         </div>
       </div>
@@ -443,13 +443,12 @@ class terms extends Component {
             ※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다.
           </p>
       </div>   
-
       <div className="termTitleBox">
         <h3 className="termTitle">마케팅 정보 수신 [선택]</h3>
         <div className="checkBox">
-          <input className="check" type="checkbox"></input>
+          <input className="check" type="checkbox" />
           <div className="agree">SMS 수신에 동의합니다.</div>
-          <input className="check" type="checkbox"></input>
+          <input className="check" type="checkbox" />
           <div className="agree">이메일 수신에 동의합니다.</div>
         </div>
       </div>

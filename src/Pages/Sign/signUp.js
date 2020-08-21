@@ -18,7 +18,6 @@ class SignUp extends Component {
 
   getInputValue = (label,value) => {
     const {inputValue}=this.state
-    console.log("pass",label)
 
   switch(label){
     case "아이디":
@@ -39,7 +38,6 @@ class SignUp extends Component {
 
   }
   render() {
-    console.log(this.state.inputValue)
     return (
       <div className="SignUp">
         <div className="pageHeader">

@@ -2,10 +2,6 @@ import React, {Component} from "react"
 import "./InputWithLabel.scss"
 
 class InputWithLabel extends Component {
-  constructor(props){
-    super(props)
-  this.state={}
-}
   render() {
     return (
     <div className="idBox">
