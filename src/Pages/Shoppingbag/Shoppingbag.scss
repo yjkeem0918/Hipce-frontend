@@ -1,0 +1,233 @@
+@import '../../Styles/common.scss';
+
+.Shoppingbag{
+    margin-top: 120px;
+    color: #8f5b59;
+    margin-bottom: 255px;
+    a{
+        text-decoration: none;
+        color:#8f5b59;
+    }
+    .ShoppingbagTitle{
+        font-size:48px;
+        font-family: 'PT Serif', serif;
+        font-weight: bolder;
+        display: flex;
+        justify-items: flex-start;
+        align-items: center;
+        padding: 80px 0 50px;
+        max-width: calc(1300px + 9.5%);
+        margin:0 auto;
+
+    }
+    .OrderdList{
+        @include center;
+        border-top: 2px solid #a36d6a;
+        border-bottom: 2px solid #a36d6a;
+        margin: 20px auto 0 auto;
+        max-width: calc(1300px + 9.5%);
+        min-height: 300px;  
+        tr{
+            width: 100%;
+        }
+
+        .OrderdProductList{
+            @include center;
+            width: 100%;
+            img{
+                max-width: 180px;
+            }
+            .pickItem{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .pickItemPicture{
+                    @include center;
+                    img{
+                        margin-left: 40px;
+                    }
+                    input{
+                        display: none;
+                    }
+                    input[type=checkbox] + label{
+                        background-color: #ebe1e1;
+                        width: 18px;
+                        height: 18px;
+
+                    }
+                    input[type=checkbox]:checked + label:before{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-image: url('http://hince.co.kr/assets/images/hince-option-checker.png');
+                        background-size: 22px 22px;
+                        background-position: -2px -2px;
+                        content: '';
+                        border-color: #a36d6a;
+                        background-color: #a36d6a;
+                        width: 18px;
+                        height: 18px;
+                        text-align: center;
+                        font-size: 18px;
+                        color:white
+                    }
+                    // .checkbox{
+                    //     display: none;
+                    //     width: 30px;
+                    //     height: 30px;
+                    // }
+                    .productName{
+                        margin-left: 30px;
+                        font-weight: 900;
+                        font-size: 17px;
+                    }
+                }
+                .pickItemCount{
+                    @include center;
+                    font-weight: 700;
+                    .count{
+                        font-size: 17px;
+                        margin-right: 100px;
+                        a{
+                            margin: 0 50px
+                        }
+                    }
+                    .eachPrice{
+                        margin-right: 20px;
+                    }
+
+                }
+
+                button{
+                    border: none;
+                    background-color: white;
+                    color: #a36d6a;
+                    width: 35px;
+                    font-size: 24px;
+                    height: 35px;
+                }
+            }
+        }
+    }
+    .ShoppingbagEmpty{
+        display: none;
+    }
+    .ShoppingbagFooter{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: calc(1300px + 9.5%);
+        margin: 60px auto 0 auto;
+        .PriceCalculatorWrapper{
+            font-size: 14px;
+            div{
+                span{
+                    color: #666;
+                }
+                div{
+                    margin-top: 15px;
+                    a{
+                        margin-right: 15px;
+                        font-weight: 900;
+                    };
+                }
+            }
+
+        }
+
+        .PriceCalculatedWrapper{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            width: 420px;
+            float: right;
+
+
+
+            .PriceCalculated{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                ul{
+                    background-color: #f6f0f0;
+                    padding: 20px 40px;
+                    width: 100%;
+                    .sum{
+                        margin-top: 30px;
+                        border-top: 2px solid #a36d6a;
+                        font-size: 20px;
+                        font-weight: 700;
+                        padding-top: 30px;
+                    }
+                    li{
+                        padding: 0;
+                        margin:0;
+                        margin: 20px;
+                        display: flex;
+                        justify-content: space-between;
+
+                        span:nth-child(2){
+                        margin-left: 30px;
+                        }
+
+                }
+
+
+                }
+                }
+                .OrderButton{
+                    width: 100%;
+                    margin-top: 25px;;
+                    .totalOrderButton{
+                        text-decoration: none;
+                        border: 2px solid $brick;
+                        display: inline-block;
+                        color: $brick;
+                        font-size: 17px;
+                        font-weight: 900;
+                        width: 100%;
+                        height: 50px;
+                        line-height: 50px;
+                        text-align: center;
+                        transition: background-color .25s ease-out, color .25s ease-out;
+                    
+                    }
+                    div{
+                        margin-top: 15px;
+                        display: flex;
+                        a{
+                            width: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 50px;
+                        }
+                        a:nth-child(1){
+                            background-color: $brick;
+                            color: $white;
+                            font-weight: 700;
+                            font-size: 14px;
+                        }
+                        a:nth-child(2){
+                            background-color: #00c63b;
+                            background-image: url("https://hince.co.kr/layout/basic/images/npay-button-logo.png");
+                            background-size: 50px 50px;
+                            background-position: center center;
+                            background-repeat: no-repeat;
+                        
+
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+// 부모태그에 display : table을 선언해 주고!
+// 자식태그에 display : table-cell을 선언해주면
+// 갯수가 몇개가 되든 동일한 간격으로 영역 가지게 됩니다
+
