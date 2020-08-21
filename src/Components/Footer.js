@@ -6,8 +6,8 @@ class Footer extends Component {
     return (
       <div className="Footer">
         <div className="footerTop">
-          <div className="footerTopLeft">
-            <div className="footerTopItem">
+          <div className="footerContact">
+            <div className="footerContactDetail">
               <h3 className>CUSTOMER CENTER</h3>
               <ul>
                 <li className="csNumber">1644-7161</li>
@@ -15,7 +15,7 @@ class Footer extends Component {
                 <li>토,일요일 및 공휴일 휴무</li>
               </ul>
             </div>
-            <div className="footerTopItem">
+            <div className="footerContactDetail">
               <div>
                 <h3>BANK INFO</h3>
                 <ul>
@@ -31,7 +31,7 @@ class Footer extends Component {
                 </ul>
               </div>
             </div>
-            <div className="footerTopItem">
+            <div className="footerContactDetail">
               <div>
                 <h3>PARTNERSHIP</h3>
                 <ul>
@@ -51,8 +51,8 @@ class Footer extends Component {
               </div>
             </div>
           </div>
-          <div className="footerTopRight">
-            <div className="footerTopItemRight">
+          <div className="footerMenu">
+            <div className="footerMenuDetail">
               <h3>SERVICE</h3>
               <ul>
                 <li>공지사항</li>
@@ -61,7 +61,7 @@ class Footer extends Component {
                 <li>이벤트</li>
               </ul>
             </div>
-            <div className="footerTopItemRight">
+            <div className="footerMenuDetail">
               <h3>MY ACCOUNT</h3>
               <ul>
                 <li>마이페이지</li>
@@ -91,10 +91,7 @@ class Footer extends Component {
                 (Seogyo-dong, Namoo Building) 3F, 41, Yanghwa-ro 7an-gil,
                 Mapo-gu, Seoul, Republic of Korea
               </li>
-              <li>Business Registration No: 632-88-00936</li>
-            </ul>
-            <ul>
-              <li>E-commerce Permit Registration No: 2019-SeoulMapo-1141</li>
+              <li>Business Registration No: 632-88-00936 E-commerce Permit Registration No: 2019-SeoulMapo-1141</li>
             </ul>
             <ul>
               <li>Contact 1644-7161</li>
