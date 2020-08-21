@@ -3,6 +3,7 @@
 .Sign {
   .pageHeader {
     padding: 0 60.656px;
+
     .pageTitle {
       padding: 80px 0px;
       font-family: "PT serif", serif;
@@ -13,13 +14,16 @@
   }
   .formBox {
     padding: 0px 60.656px;
+
     .memberForm {
       display: flex;
       flex-direction: column;
       width: 460px;
+
       .inputWrapper {
         padding: 10px 0;
         width: 100%;
+
         .input {
           width: 100%;
           height: 46px;
@@ -31,6 +35,7 @@
       }
       .signInButtonBox {
         padding: 10px 0;
+
         .signInButton {
           width: 100%;
           height: 46px;
@@ -85,6 +90,7 @@
         .socialSignIn {
           display: flex;
           justify-content: space-between;
+
           .facebook {
             display: flex;
             justify-content: center;
