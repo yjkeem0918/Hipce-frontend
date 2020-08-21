@@ -6,16 +6,16 @@
     margin: 15px 35px;
     color:#a36d6a;
 
-
     .productImage{
         width: 100%;
         height: auto;
         img{
-            height: auto;
             width: 100%;
+            height: auto;
             max-width: 280px;
             min-height: 360px;
             transition-duration: 0.5s;
+
             &:hover{
                 content: url("http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg");
             }
@@ -28,6 +28,7 @@
         width: 100%;
         font-size: 14px;
         margin-top: 20px;
+
         img{
             width: 34px;
             height: 18px;
@@ -60,9 +61,6 @@
                     margin: 15px 0px;
                 }
             }
-
         }
-
-
     }
 }

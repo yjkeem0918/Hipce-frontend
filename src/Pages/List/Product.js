@@ -7,7 +7,7 @@ export default class Product extends Component {
         return (
             <li class = "Product">
                 <section className ="productImage">
-                    <img alt ="productimg" src = {this.props.imgsrc} />
+                    <img alt ="productImg" src = {this.props.imgsrc} />
                 </section>
                 <section className = "productBottom">
                         <div className ="productBottomValue">

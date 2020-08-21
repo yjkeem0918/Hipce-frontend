@@ -7,47 +7,33 @@ export default class ProductFilter extends Component {
         super(props)
 
         this.state = {
-            buttonId: [],
             palleteDisplay: 'hidden',
-            classification: "",
             colors:[...collorRange],
-            clickColor: "white",
-            filterdColor: "productFilteredName",
-            filterdDate:[],
-            sampleArr:["Red","Oragne","Beige","Pink","Brown","Coral","Purple","Purple","Rose","Mauve"],
+            filterdColor: "hidden",
         }
-
         for(let color of this.state.colors) color.active = false;
     }
 
     palleteDisplayChange = ()=> {
-        if(this.state.palleteDisplay = "hidden"){
-            this.setState({palleteDisplay: "ProductFilterPallete"})
-        }
-        else if(this.state.palleteDisplay ="ProductFilterPallete"){
-            this.setState({palleteDisplay: "hidden"})
-        }
-
+        this.state.palleteDisplay == "hidden" ? this.setState({palleteDisplay: "ProductFilterPallete"}) : this.setState({palleteDisplay: "hidden"})
     }  
+
     palleteButtonKeep = (e, index) => {
         e.preventDefault();
         let newColors = [...this.state.colors];
         newColors[index].active = !newColors[index].active;
         this.setState({colors: newColors});
-        if(this.state.filterdColor == "hidden"){
+
+        if(this.state.filterdColor === "hidden"){
             this.setState({filterdColor: "productFilteredName"})
         };
-
     }
 
     palleteClear =()=>{
-        console.log("clickckckckckdkdkckekd")
         let newColors =[...this.state.colors];
         for(let color of newColors) color.active = false;
         this.setState({colors: newColors ,filterdColor:"hidden"});
-
     }
-
 
     render() {
         return (
@@ -61,9 +47,17 @@ export default class ProductFilter extends Component {
                                 <span>컬러</span>
                                 <div>
                                         <ul>
-                                            {this.state.colors.map(({ color , name, active}, index)=> 
-                                            <li name ={name} key={name} style={{backgroundColor: active ? 'grey' : 'white'}} onClick ={(e) => this.palleteButtonKeep(e, index)} >
-                                                <button name ={name} index ={index} style={{backgroundColor: color}} > </button>
+                                            {this.state.colors.map(({ color, name, active}, index)=> 
+                                            <li 
+                                                name ={name} 
+                                                key={name} 
+                                                style={{backgroundColor: active ? '#a36d6a' : 'white'}} 
+                                                onClick ={(e) => this.palleteButtonKeep(e, index)} >
+                                                <button 
+                                                    name ={name} 
+                                                    index ={index} 
+                                                    style={{backgroundColor: color}} 
+                                                    > </button>
                                             </li>)}
                                         </ul>
                                 </div>
@@ -78,17 +72,18 @@ export default class ProductFilter extends Component {
                                 </div>
                             </section>
                     </form>
-                    {/* productFilteredName */}
                     <section className={this.state.filterdColor}>
                         <div>
                             <ul>
                                 <li> 
-                                    <span className = "FilteredWord"  onClick ={(e)=>this.palleteClear(e)}>초기화</span>
+                                    <span className = "FilteredWordReset"  onClick ={(e)=>this.palleteClear(e)}>초기화</span>
                                 </li>
-                                
                                 {this.state.colors.map(({active,name}, index)=> 
-                                    <li className = "FilterWordWrapper" >
-                                        <span  className = "FilterWord" style={{display: active ? '' : 'none'}} onClick ={(e)=>this.palleteButtonKeep(e,index)}>
+                                    <li>
+                                        <span  
+                                            className = "FilterWord" 
+                                            style={{display: active ? '' : 'none'}} 
+                                            onClick ={(e)=>this.palleteButtonKeep(e,index)}>
                                             컬러 : {name}  
                                         </span>
                                     </li>)}
@@ -99,7 +94,7 @@ export default class ProductFilter extends Component {
         )
     }
 }
-// FilteredWord
+//sample data
 const collorRange = [{color: '#b12a23',
                         name:"Red"},
                     {color: '#dc6b2f',

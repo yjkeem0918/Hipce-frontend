@@ -5,61 +5,59 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding:0px 13%;
-        color:#8f5b59;
-        margin: 30px 0px 0px 0px;
-        display: flex;
-        font-family: $pt;
-        font-size: 48px;
-        font-weight: bolder;
         height: 170px;
+        padding:0px 13%;
+        margin: 30px 0px 0px 0px;
+        font-size: 48px;
+        font-family: $pt;
+        font-weight: bolder;
+        color:#8f5b59;
 
         span{
+            cursor: pointer;
             width: 32px;
             height: 32px;
             background-image: url("https://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
             background-size: 490px 70px;
             background-position-x: -385px;    
-            cursor: pointer;
         }
     }
     .ProductFilterPallete{
-        padding: 0 13%;
-        color: #a36d6a;
-        font-size: 14px;
         display: flex;
-        height: 160px;
         width: 100%;
+        height: 160px;
+        padding: 0 13%;
+        font-size: 14px;
+        color: $brick;
         background-color: #F1E9E9;
+
         section:nth-child(1){
             margin: auto 0 auto;
             div{
                 margin-top: 15px;
+
                 ul{
                     display: flex;
                     flex-wrap: nowrap;
-                    margin: 0;
-                    padding: 0;
+
                     li{
-                        background-color: white;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border: 0.5px solid #c8a7a6;
+                        @include center;
                         width: 35px;
                         height: 35px;
+                        border: 0.5px solid #c8a7a6;
                         margin-right: 6px;
-                        img{
+                        background-color: white;
+
+                        button{
                             width: 18px;
                             height: 18px;
-                            border-radius: 100%;
                             padding:1px;
                             border: none;
+                            border-radius: 100%;
                         }
                     }
                 }
             }
-
         }
         section:nth-child(2){
             margin: auto 50px;
@@ -68,22 +66,23 @@
         .PalleteSearchBox{
             display: flex;
             flex-direction: column;
+
             div{
                 margin-top: 15px;
+
                 input{
                     width: 140px;
                     height: 38px;
                     margin-right: 10px;
                     padding: 0;
-                    border: 1px solid #a36d6a;
+                    border: 1px solid $brick;
                 }
+                
                 button{
-                    
-                    border: 1px solid #a36d6a;
-                    height: 40px;
                     width: 67px;
-                    padding: 0;
-                    background-color: #a36d6a;
+                    height: 40px;
+                    border: 1px solid $brick;
+                    background-color: $brick;
                     color: white;
                 }
             }
@@ -100,51 +99,39 @@
         padding: 0px 13%;
         height: 90px;
         background-color: #F1E9E9;
+
         div{
             height: 100%;
             display: flex;
             align-items: center;
             border-top: 1px solid #c8a7a6;
-        }
-        .FilteredWord{
-            display: flex;
-            align-items: center;;
-            background-color: #fff;
-            border: 1px solid #c8a7a6;
-            color: #a36d6a;
-            height: 30px;
-            font-family: 'Assistant', 'Noto Sans KR', sans-serif;
-            font-size: 12px;
-            padding: 0 10px;
-            margin-right: 5px;
-            margin-bottom: 10px;
-        }
-        .FilterWord:disabled {
-            background-color: red;
-        }
-        .colorWrapper:disabled{
-            background-color: yellow;
-        }
 
+            ul{
+                display: flex;
+            }
+            .FilteredWordReset{
+                display: flex;
+                align-items: center;;
+                height: 30px;
+                margin: 0 5px 10px 0;
+                padding: 0 10px;
+                border: 1px solid #c8a7a6;
+                background-color: #fff;
+                color: $brick;
+                font-family: 'Assistant', 'Noto Sans KR', sans-serif;
+                font-size: 12px;
+            }
+        }
         .FilterWord{
-            display: flex;
-            align-items: center;;
-            background-color: #fff;
-            border: 1px solid #c8a7a6;
-            color: #a36d6a;
+            @include center;
             height: 30px;
-            font-family: 'Assistant', 'Noto Sans KR', sans-serif;
-            font-size: 12px;
+            margin: 0 5px 10px 0;
             padding: 0 10px;
-            margin-right: 5px;
-            margin-bottom: 10px;
-        }
-        .FilterWordWrapper:disabled{
-            display: none;
-        }
-        ul{
-            display: flex;
+            border: 1px solid #c8a7a6;
+            background-color: #fff;
+            font-size: 12px;
+            color: $brick;
+            font-family: 'Assistant', 'Noto Sans KR', sans-serif;
         }
     }
-
 }
