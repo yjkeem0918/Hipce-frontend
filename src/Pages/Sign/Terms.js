@@ -4,12 +4,11 @@ import "./Terms.scss";
 class terms extends Component {
   render() {
     return (
-      <div className="termsBox">
-        <div className="termTitleBox">
-          <h3 className="termTitle">이용약관 [필수]</h3>
+      <div className="formBox">
+        <div className="termsBox">
+          <h3 className="formTitle">이용약관 [필수]</h3>
           <div className="checkBox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox"></label>
+            <input className="box" type="checkbox" id="checkbox" />
             <div className="agree">이용약관에 동의합니다.</div>
           </div>
         </div>
@@ -447,15 +446,14 @@ class terms extends Component {
           </p>
           부 칙(시행일) 이 약관은 2018년 12월 4일부터 시행합니다.
         </div>
-        <div className="termTitleBox">
-          <h3 className="termTitle">개인정보 수집 및 이용 [필수]</h3>
+        <div className="termsBox">
+          <h3 className="formTitle">개인정보 수집 및 이용 [필수]</h3>
           <div className="checkBox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox"></label>
-            <div className="agree">개인 정보 수집 및 이용에 동의합니다.</div>
+            <input className="box" type="checkbox" id="checkbox" />
+            <div className="agree">개인정보 수집 및 이용에 동의합니다.</div>
           </div>
         </div>
-        <div className="agreementContent2">
+        <div className="agreementContent">
           <p>
             &nbsp;** 본 양식은 쇼핑몰 운영에 도움을 드리고자 샘플로 제공되는
             서식으로 쇼핑몰 운영형태에 따른 수정이 필요합니다. 쇼핑몰에
@@ -504,18 +502,18 @@ class terms extends Component {
           <p>※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다.</p>
         </div>
 
-        <div className="termTitleBox">
-          <h3 className="termTitle">마케팅 정보 수신 [선택]</h3>
+        <div className="termsBox">
+          <h3 className="formTitle">마케팅 정보 수신 [선택]</h3>
           <div className="checkBox">
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox"></label>
-            <div className="agree">SMS 수신에 동의합니다.</div>
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox"></label>
-            <div className="agree">이메일 수신에 동의합니다.</div>
+            <div className="agreeBox">
+              <input className="box" type="checkbox" id="checkbox" />
+              <div className="agree">SMS 수신에 동의합니다.</div>
+              <input className="box" type="checkbox" id="checkbox" />
+              <div className="agree">이메일 수신에 동의합니다.</div>
+            </div>
           </div>
         </div>
-        <div className="agreementContent2">
+        <div className="agreementContent">
           <p>
             할인쿠폰 및 혜택, 이벤트, 신상품 소식 등 쇼핑몰에서 제공하는 유익한
             쇼핑정보를 SMS나 이메일로 받아보실 수 있습니다.
@@ -528,6 +526,12 @@ class terms extends Component {
             선택 약관에 동의하지 않으셔도 회원가입은 가능하며, 회원가입 후
             회원정보수정 페이지에서 언제든지 수신여부를 변경하실 수 있습니다.
           </p>
+        </div>
+        <div className="agreeAllBox">
+          <div className="agreeAll">
+            <input className="box" type="checkbox" id="checkbox" />
+            <div className="check">모두 동의합니다.</div>
+          </div>
         </div>
       </div>
     );

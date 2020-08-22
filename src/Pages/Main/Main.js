@@ -7,9 +7,9 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        {/* <Nav /> */}
         <SignUp />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }
