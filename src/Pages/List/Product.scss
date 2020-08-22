@@ -1,4 +1,4 @@
-.Product{
+.Product {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -6,22 +6,22 @@
     margin: 15px 35px;
     color:#a36d6a;
 
-    .productImage{
+    .productImage {
         width: 100%;
         height: auto;
-        img{
+        img {
             width: 100%;
-            height: auto;
             max-width: 280px;
+            height: auto;
             min-height: 360px;
             transition-duration: 0.5s;
 
-            &:hover{
+            &:hover {
                 content: url("http://hince.co.kr/web/product/small/201909/12dc7b682375b7859bb79e76cacc6666.jpg");
             }
         }
     }
-    .productBottom{
+    .productBottom {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -29,34 +29,34 @@
         font-size: 14px;
         margin-top: 20px;
 
-        img{
+        img {
             width: 34px;
             height: 18px;
         }
 
-        .productBottomValue{
+        .productBottomValue {
             display: flex;
             flex-direction: column;
-            div:nth-child(2){
+            div:nth-child(2) {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 font-size: 15px;
                 text-decoration: none;
-                img{
+                img {
                     width: 44px;
                     height: 44px;
                 }
-                span{
+                span {
                     padding-right: 30px;
                 }
-                a{
+                a {
                     text-overflow: clip;
                     width: 140px;
                     text-decoration: none;
                     color:#a36d6a;
                 }
-                p{
+                p {
                     font-weight: bold;
                     margin: 15px 0px;
                 }

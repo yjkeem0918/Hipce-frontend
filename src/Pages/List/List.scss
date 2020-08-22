@@ -1,7 +1,7 @@
 @import '../../Styles/common.scss';
 
 .List{
-    .ProductListContainer{
+    .productListContainer{
         @include center;
 
         ul{
@@ -12,7 +12,7 @@
             padding: 0;
         }
     }
-    .ProductListBottom{
+    .productListBottom{
         margin: 30px 0;
     }
 }

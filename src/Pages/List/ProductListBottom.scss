@@ -8,15 +8,15 @@
     cursor: pointer;
 }
 
-.ProductListBottom{
+.productListBottom{
     display: flex;
     justify-content: center;
     width: 100%;
-    .ArrowLeft{
+    .arrowLeft{
         @include ArrowDecoration;
         background-position-x: -175px;
     }
-    .ArrowRight{
+    .arrowRight{
         @include ArrowDecoration;
         background-position-x: -210px;
     }

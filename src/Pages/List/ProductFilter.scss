@@ -1,16 +1,16 @@
 @import '../../Styles/common.scss';
 
-.ProductFilter{
-    .ProductFilterName{
+.productFilter{
+    .productFilterName{
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 170px;
         padding:0px 13%;
-        margin: 30px 0px 0px 0px;
+        margin-top: 30px;
         font-size: 48px;
         font-family: $pt;
-        font-weight: bolder;
+        font-weight: 700;
         color:#8f5b59;
 
         span{
@@ -22,7 +22,7 @@
             background-position-x: -385px;    
         }
     }
-    .ProductFilterPallete{
+    .productFilterPallete{
         display: flex;
         width: 100%;
         height: 160px;
@@ -31,8 +31,15 @@
         color: $brick;
         background-color: #F1E9E9;
 
-        section:nth-child(1){
+        .palleteColorWrapper{
             margin: auto 0 auto;
+            .colorListToggle{
+                background-color: #a36d6a ;
+            }
+            .colorListToggleWhite{
+                background-color: 'white' ;
+            }
+
             div{
                 margin-top: 15px;
 
@@ -59,11 +66,11 @@
                 }
             }
         }
-        section:nth-child(2){
+        .palleteSearchBoxWrapper{
             margin: auto 50px;
         }
 
-        .PalleteSearchBox{
+        .palleteSearchBox{
             display: flex;
             flex-direction: column;
 
@@ -109,7 +116,7 @@
             ul{
                 display: flex;
             }
-            .FilteredWordReset{
+            .filteredWordReset{
                 display: flex;
                 align-items: center;;
                 height: 30px;
@@ -122,7 +129,7 @@
                 font-size: 12px;
             }
         }
-        .FilterWord{
+        .filterWord{
             @include center;
             height: 30px;
             margin: 0 5px 10px 0;

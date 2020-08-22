@@ -8,19 +8,16 @@ import Footer from '../../Components/Footer'
 import './List.scss'
 
 class List extends Component {
-  state ={
-    src:[...srcSample]
-  }
-  
+
   render() {
     return (
       <div className = "List">
         <Nav />
         <ProductNav />
         <ProductFilter />
-        <div className="ProductListContainer">
-          <ul className ="ProductList">
-            {this.state.src.map(({imgsrc}, index)=><Product key ={index} imgsrc ={imgsrc} />)}
+        <div className="productListContainer">
+          <ul className ="productList">
+            {SRC_SAMPLE.map(({ imgsrc }, index) => <Product key={index} imgsrc={imgsrc} />)}
           </ul>
         </div>
         <ProductListBottom />
@@ -30,7 +27,7 @@ class List extends Component {
   }
 }
 //sample data
-const srcSample = [{imgsrc : "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg"}
+const SRC_SAMPLE = [{imgsrc : "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg"}
                     ,{imgsrc : "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg"}
                     ,{imgsrc : "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg"}
                     ,{imgsrc : "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg"}
