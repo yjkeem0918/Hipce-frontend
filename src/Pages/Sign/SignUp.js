@@ -59,9 +59,9 @@ class SignUp extends Component {
                 <div className="birthday">생년월일</div>
               </div>
               <div className="birthdayInputBox">
-                <input className="YYYY" placeholder="YYYY"></input>
-                <input className="MMDD" placeholder="MM"></input>
-                <input className="MMDD" placeholder="DD"></input>
+                <input className="YYYY" placeholder="YYYY" />
+                <input className="MMDD" placeholder="MM" />
+                <input className="MMDD" placeholder="DD" />
               </div>
             </div>
           </div>
