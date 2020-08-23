@@ -1,10 +1,11 @@
 @import "../../Styles/common.scss";
 
-.MainChild3 {
+.MainBestSeller {
   position: relative;
   padding: none;
   width: 100%;
   min-height: 100vh;
+
   .sectionLabel {
     position: absolute;
     bottom: 6.5%;
@@ -18,12 +19,14 @@
     line-height: 1.428571429;
     z-index: 1;
   }
+
   .sectionTitle {
     position: absolute;
     top: 21.5%;
     width: 100%;
     padding: 0 4.75%;
     color: $brick;
+
     span {
       display: block;
       background-image: url("//hince.co.kr/assets/images/hince-icon-sprite-185484.png");
@@ -33,6 +36,7 @@
       background-position-x: 0px;
       background-position-y: 0px;
     }
+
     h1 {
       margin-top: 35px;
       margin-bottom: 10px;
@@ -42,6 +46,7 @@
       letter-spacing: 1px;
       line-height: 1.428571429;
     }
+
     p {
       font-family: $assistance;
       font-size: 18px;
@@ -49,31 +54,36 @@
       line-height: 1.675;
     }
   }
+
   .sectionProduct {
     position: absolute;
     top: 50%;
     left: 4.75%;
     font-size: 20px;
     font-weight: 500;
+
     a {
       text-decoration: none;
       color: $brick;
     }
   }
+
   .sectionCarousel {
     ul {
       display: flex;
       position: absolute;
-      top: calc(50% - 35px); //50%너비에서 20픽셀만큼 뺀 너비
+      top: calc(50% - 35px);
       left: 4.75%;
     }
   }
+
   .sectionBottom {
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 32.5%;
     background-color: #f6f0f0;
+
     a {
       position: absolute;
       bottom: 20%;

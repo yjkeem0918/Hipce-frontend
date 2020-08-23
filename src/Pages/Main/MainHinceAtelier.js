@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./MainChild5.scss";
+import "./MainHinceAtelier.scss";
 
-class MainChild5 extends Component {
+class MainHinceAtelier extends Component {
   render() {
     return (
-      <div className="MainChild5">
+      <div className="MainHinceAtelier">
         <img src="http://hince.co.kr/images/main/section/19-01-05-atelier.jpg" />
         <div className="sectionLabel">05</div>
         <div className="sectionTitle">
@@ -20,4 +20,4 @@ class MainChild5 extends Component {
   }
 }
 
-export default MainChild5;
+export default MainHinceAtelier;
