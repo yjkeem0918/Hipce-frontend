@@ -27,27 +27,22 @@ class Sign extends Component {
     }
   };
 
-  // handleLogin = () => {
-  //   fetch("http://localhost:8000/login/", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       email: this.state.id,
-  //       password: this.state.pw
-  //     }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((response) => {
-  //       if (response.token) {
-  //         localStorage.setItem("token", response.token);
-  //         this.props.history.push('/main');
-  //       } else {
-  //         alert("아이디 또는 비밀번호가 일치하지 않습니다.");
-  //         return;
-  //     });
-  // };
+  handleLogin = () => {
+    fetch("http://10.58.5.29:8001/user/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        account: this.state.id,
+        password: this.state.pw,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+      });
+  };
 
   render() {
     return (
@@ -56,7 +51,12 @@ class Sign extends Component {
           <div className="pageTitle">Sign In</div>
         </div>
         <div className="formBox">
-          <form className="memberForm">
+          <form
+            className="memberForm"
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
             <div className="inputWrapper">
               <input
                 className="input"
@@ -71,12 +71,19 @@ class Sign extends Component {
                 className="input"
                 placeholder="비밀번호"
                 name="pw"
+                type="password"
                 onChange={this.handleChange}
                 autocomplete="off"
               />
             </div>
             <div className="signInButtonBox">
-              <button onClick={this.handleButton} className="signInButton">
+              <button
+                onClick={() => {
+                  this.handleButton();
+                  this.handleLogin();
+                }}
+                className="signInButton"
+              >
                 SIGN IN
               </button>
               <div className="forgotAccount">
