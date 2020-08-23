@@ -37,13 +37,20 @@ class SignUp extends Component {
                 <div className="phoneLabel">휴대전화</div>
                 <span className="requiredMark">*</span>
               </div>
-              <div className="phoneInputBox">
-                <input className="phone1" type="text"></input>
-                <div className="hypen">-</div>
-                <input className="phone1" type="text"></input>
-                <div className="hypen">-</div>
-                <input className="phone1" type="text"></input>
-              </div>
+              <select className="mobileNumber" size="1">
+                <option value="student" selected>
+                  010
+                </option>
+                <option value="mobile">011</option>
+                <option value="mobile">016</option>
+                <option value="mobile">017</option>
+                <option value="mobile">018</option>
+                <option value="mobile">019</option>
+              </select>
+              <div className="hypen">-</div>
+              <input className="phone2" type="text" maxlength="4" />
+              <div className="hypen">-</div>
+              <input className="phone3" type="text" maxlength="4" />
             </div>
             <InputWithLabel option={{ label: "이메일" }}></InputWithLabel>
           </div>
@@ -59,9 +66,14 @@ class SignUp extends Component {
                 <div className="birthday">생년월일</div>
               </div>
               <div className="birthdayInputBox">
-                <input className="YYYY" placeholder="YYYY" />
-                <input className="MMDD" placeholder="MM" />
-                <input className="MMDD" placeholder="DD" />
+                <input
+                  type="text"
+                  className="YYYY"
+                  placeholder="YYYY"
+                  maxlength="4"
+                />
+                <input className="MMDD" placeholder="MM" maxlength="2" />
+                <input className="MMDD" placeholder="DD" maxlength="2" />
               </div>
             </div>
           </div>
