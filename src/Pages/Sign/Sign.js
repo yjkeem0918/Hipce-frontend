@@ -27,6 +27,28 @@ class Sign extends Component {
     }
   };
 
+  // handleLogin = () => {
+  //   fetch("http://localhost:8000/login/", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       email: this.state.id,
+  //       password: this.state.pw
+  //     }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((response) => {
+  //       if (response.token) {
+  //         localStorage.setItem("token", response.token);
+  //         this.props.history.push('/main');
+  //       } else {
+  //         alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+  //         return;
+  //     });
+  // };
+
   render() {
     return (
       <div className="Sign">
