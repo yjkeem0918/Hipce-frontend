@@ -31,6 +31,9 @@
         .OrderdProductList{
             @include center;
             width: 100%;
+            .ItemList{
+                width: 100%;
+            }
             img{
                 max-width: 180px;
             } 

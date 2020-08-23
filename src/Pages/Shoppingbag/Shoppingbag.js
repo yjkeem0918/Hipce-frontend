@@ -41,12 +41,15 @@ export default class Shoppingbag extends Component {
         }
     }
     clearList = ()=>{
-        console.log(this.state.pickItem)
-        this.setState({pickItem: <span>what</span>})
-        console.log(this.state.pickItem)
+        this.setState({pickItem:[]})
+        
+    }
+    componentDidUpdate(){
+        console.log("update")
     }
 
     render() {
+        console.log("parent state",this.state)
         return (
             <div className = "Shoppingbag">
                 <Nav />

@@ -5,10 +5,22 @@ export default class ItemList extends Component {
         super(props)
         this.handleCounting = this.handleCounting.bind(this);
         this.state = {
-            pickedItem: props.pickedItem,
+            pickedItem: this.props.pickedItem,
             totalPrice: 0,
         };
+
     }
+
+    // // shouldComponentUpdate(){
+    // //     if(this.props.pickedItem.length === 0){
+
+    // //     }
+    // // }
+
+    // componentWillReceiveProps(){
+    //     this.setState({pickedItem:this.props.pickedItem})
+
+    // }
 
     handleCounting=(item, inDecrement, e)=>{
         if(e.target.name =="plusButton" && item.count == 5){
@@ -43,15 +55,15 @@ export default class ItemList extends Component {
     }
     clearList = ()=>{
         console.log(this.state.pickItem)
-        this.setState({pickItem:''})
+        this.setState({pickItem:[]})
         console.log(this.state.pickItem)
     }
 
     render() {
-        console.log("state",this.state.pickedItem)
-        console.log("props",this.props.pickedItem)
+        console.log("childState",this.state.pickedItem)
+        console.log("getLenth",this.props.pickedItem.length)
         return (
-            <div className = "ItemList">
+            <div className = "ItemList" onChange ={this.clearList}>
                 {this.state.pickedItem.map((item, index)=>{
                     return <td key = {index} className = "pickItem">
                     <div className = "pickItemPicture">
