@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SignUp from "../Sign/SignUp";
+import SignUp from "../Sign/signUp";
 import Footer from "../../Components/Footer";
 import Nav from "../../Components/Nav";
 
