@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Nav from "../../Components/Nav";
 import Footer from "../../Components/Footer";
 import "./Login.scss";
@@ -71,14 +71,16 @@ class Login extends Component {
               </div>
             </div>
             <div className="signInMenu">
-              <div className="descriptionBox">np
+              <div className="descriptionBox">
                 <p className="description">
                   아직 회원이 아니신가요?
                   <br></br>
                   가입 후 쿠폰 및 포인트 적립 등의 다양한 헤택을 받아보세요.
                 </p>
               </div>
-              <Link to="/signUp"><button className="signUpButton">회원가입</button></Link>
+              <Link to="/signUp">
+                <button className="signUpButton">회원가입</button>
+              </Link>
               <div className="descriptionBox">
                 <p className="description">
                   SNS 계정으로 가입하고 로그인 할 수 있습니다.
