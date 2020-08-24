@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import "./SignUp.scss";
+import Nav from "../../Components/Nav";
 import InputWithLabel from "./InputWithLabel";
 import Terms from "./Terms";
+import Footer from "../../Components/Footer";
+import "./SignUp.scss";
 
 class SignUp extends Component {
   constructor() {
@@ -9,37 +11,52 @@ class SignUp extends Component {
     this.state = {
       inputValue: {
         id: "",
-        password: "",
-        confirm: "",
+        pw: "",
+        checkpw: "",
         name: "",
+        email: "",
       },
+      mobile1: "",
+      mobile2: "",
     };
   }
 
+  handleMobile = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+    console.log("mobile");
+  };
+
   getInputValue = (label, value) => {
     const { inputValue } = this.state;
+    console.log("pw", label);
 
     switch (label) {
       case "아이디":
         this.setState({ inputValue: { ...inputValue, id: value } });
         break;
       case "비밀번호":
-        this.setState({ inputValue: { ...inputValue, password: value } });
+        this.setState({ inputValue: { ...inputValue, pw: value } });
         break;
       case "비밀번호 확인":
-        this.setState({ inputValue: { ...inputValue, confirm: value } });
+        this.setState({ inputValue: { ...inputValue, checkpw: value } });
         break;
       case "이름":
         this.setState({ inputValue: { ...inputValue, name: value } });
         break;
       default:
         break;
+      case "이메일":
+        this.setState({ inputValue: { ...inputValue, email: value } });
+        break;
     }
   };
 
   render() {
+    console.log(this.state.inputValue);
     return (
       <div className="SignUp">
+        <Nav />
         <div className="pageHeader">
           <div className="pageTitle">Sign Up</div>
         </div>
@@ -52,7 +69,7 @@ class SignUp extends Component {
               onChange={this.getInputValue}
               option={{
                 label: "아이디",
-                description: " 영문 소문자와 숫자를 조합하여 4-16자",
+                description: "영문 소문자와 숫자를 조합하여 4-16자",
               }}
             ></InputWithLabel>
             <InputWithLabel
@@ -65,11 +82,11 @@ class SignUp extends Component {
             ></InputWithLabel>
             <InputWithLabel
               onChange={this.getInputValue}
-              option={{ label: "비밀번호 확인", description: "" }}
+              option={{ label: "비밀번호 확인" }}
             ></InputWithLabel>
             <InputWithLabel
               onChange={this.getInputValue}
-              option={{ label: "이름", description: "" }}
+              option={{ label: "이름" }}
             ></InputWithLabel>
             <div className="phoneNumberBox">
               <div className="phoneNumberLabel">
@@ -105,10 +122,6 @@ class SignUp extends Component {
                 maxlength="4"
               />
             </div>
-            {/* <InputWithLabel
-              onChange={this.getInputValue}
-              option={{ label: "휴대전화" }}
-            ></InputWithLabel> */}
             <InputWithLabel
               onChange={this.getInputValue}
               option={{ label: "이메일" }}
@@ -116,33 +129,33 @@ class SignUp extends Component {
           </div>
           <div className="formBox">
             <div className="formTitleBox">
-              <h3 className="formTitle">
-                선택항목
-                <span className="birthdayDescription">
-                  생일을 입력하시면, 생일 축하 쿠폰을 선물로 보내드립니다.
-                </span>
-              </h3>
+              <h3 className="formTitle">선택항목</h3>
+              <span className="birthdayDescription">
+                생일을 입력하시면, 생일 축하 쿠폰을 선물로 보내드립니다.
+              </span>
             </div>
             <div className="birthdayBox">
               <div className="birthdayLabel">
                 <div className="birthday">생년월일</div>
               </div>
               <div className="birthdayInputBox">
-                <input className="YYYY" placeholder="YYYY"></input>
-                <input className="MMDD" placeholder="MM"></input>
-                <input className="MMDD" placeholder="DD"></input>
+                <input
+                  type="text"
+                  className="YYYY"
+                  placeholder="YYYY"
+                  maxlength="4"
+                />
+                <input className="MMDD" placeholder="MM" maxlength="2" />
+                <input className="MMDD" placeholder="DD" maxlength="2" />
               </div>
             </div>
           </div>
           <Terms />
-          <div class="checks">
-            <input type="checkbox" />
-            <label for="ex_chk">모두 동의합니다</label>
-          </div>
           <div className="signUpButtonBox">
             <button className="signUpButton">회원 가입하기</button>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

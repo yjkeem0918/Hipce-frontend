@@ -6,8 +6,8 @@
     margin: 0 219px;
 
     .pageTitle {
-      padding-top: 80px;
-      padding-bottom: 50px;
+      padding-top: 210px;
+      padding-bottom: 60px;
       font-family: "PT serif", serif;
       font-size: 48px;
       color: #8f5b59;
@@ -22,8 +22,6 @@
       border-top: 2px solid #a36d6a;
       padding-bottom: 60px;
       .formTitleBox {
-        margin-top: 60px;
-        margin-bottom: 30px;
         .formTitle {
           color: #8f5b59;
           font-size: 1.17em;
@@ -37,8 +35,8 @@
       padding-bottom: 60px;
       .formTitleBox {
         display: flex;
-        margin-top: 60px;
-        margin-bottom: 30px;
+        margin-top: 65px;
+        margin-bottom: 35px;
         color: #8f5b59;
         .birthdayDescription {
           margin-left: 15px;
@@ -66,7 +64,7 @@
             color: #a36d6a;
             font-weight: 700;
             line-height: 46px;
-            font-size: 14px;
+            font-size: 16px;
             font-family: "Assistant", "Noto Sans KR", sans-serif;
           }
         }
@@ -123,7 +121,7 @@
             padding: 12px 16px;
             outline: none;
           }
-          
+
           .YYYY {
             width: 120px;
             height: 46px;
@@ -165,7 +163,7 @@
         color: #a36d6a;
         font-size: 17px;
         font-weight: 900;
-        margin-top: 60px;
+        margin-bottom: 120px;
         cursor: pointer;
         background-color: rgb(255, 255, 255);
         &:hover {
@@ -187,26 +185,4 @@
     background-color: rgb(163, 109, 106);
     color: rgb(255, 255, 255);
   }
-}
-
-input[type="checkbox"] + label {
-  background-color: #ebe1e1;
-  width: 18px;
-  height: 18px;
-}
-input[type="checkbox"]:checked + label:before {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("http://hince.co.kr/assets/images/hince-option-checker.png");
-  background-size: 22px 22px;
-  background-position: -2px -2px;
-  content: "";
-  border-color: #a36d6a;
-  background-color: #a36d6a;
-  width: 18px;
-  height: 18px;
-  text-align: center;
-  font-size: 18px;
-  color: white;
 }
