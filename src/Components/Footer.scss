@@ -1,0 +1,150 @@
+@import "../Styles/common.scss";
+
+@mixin listText {
+  padding-bottom: 3px;
+  font-size: 12px;
+}
+
+.Footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: $brick;
+  padding-bottom: 50px;
+  color: $white;
+
+  .footerTop {
+    display: flex;
+    padding: 50px 4.75% 0;
+
+    .footerContact {
+      display: flex;
+      width: calc(100% - 340px);
+
+      .footerContactDetail {
+        padding-right: 5%;
+        width: 35%;
+
+        h3 {
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 14px;
+          font-weight: 700;
+        }
+
+        ul {
+          margin: 20px 0 15px;
+
+          li {
+            @include listText;
+            line-height: 1.5;
+          }
+
+          .csNumber {
+            font-family: $pt;
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+
+    .footerMenu {
+      display: flex;
+      position: absolute;
+      right: 4.75%;
+      width: 340px;
+
+      .footerMenuDetail {
+        width: 170px;
+        padding-left: 50px;
+
+        h3 {
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 14px;
+          font-weight: 700;
+        }
+
+        ul {
+          margin-top: 15px;
+
+          li {
+            @include listText;
+            line-height: 1.8;
+          }
+        }
+      }
+    }
+  }
+
+  .footerBottom {
+    position: relative;
+    padding: 100px 4.75% 0;
+
+    .legalLinks {
+      ul {
+        display: flex;
+
+        li {
+          font-size: 12px;
+          font-weight: 900;
+          margin-right: 15px;
+        }
+      }
+    }
+
+    .companyInfo {
+      margin-top: 20px;
+
+      ul {
+        display: flex;
+
+        li {
+          font-size: 11px;
+          margin: 5px 8px 5px 0;
+
+          a {
+            text-decoration: none;
+            color: $white;
+          }
+        }
+      }
+    }
+
+    .socialLinks {
+      position: absolute;
+      right: 4.75%;
+      bottom: 55px;
+
+      ul {
+        display: flex;
+
+        li {
+          background-image: url("http://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
+          background-size: 448px 64px;
+          width: 32px;
+          height: 32px;
+          margin-left: 20px;
+
+          &:nth-child(1) {
+            background-position: -224px -32px;
+          }
+
+          &:nth-child(2) {
+            background-position: -256px -32px;
+          }
+
+          &:nth-child(3) {
+            background-position: -288px -32px;
+          }
+        }
+      }
+    }
+
+    .copyright {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 30px;
+    }
+  }
+}
