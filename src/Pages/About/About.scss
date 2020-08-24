@@ -1,133 +1,129 @@
-@import '../../Styles/common.scss';
-
+@import "../../Styles/common.scss";
 
 .About {
-
-    margin: 120px auto 0 auto;
-    .aboutTitle {
-        display: block;
-        font-size: 40px;
-        font-family: $pt;
-        color: #8f5b59;
-        font-weight: 700;
-        margin-bottom: 20px;
-        max-width: calc(1300px + 9.5%);
-        padding: 3% 4.75%;
+  margin: 120px auto 0 auto;
+  .aboutTitle {
+    display: block;
+    font-size: 40px;
+    font-family: $pt;
+    color: #8f5b59;
+    font-weight: 700;
+    margin-bottom: 20px;
+    max-width: calc(1300px + 9.5%);
+    padding: 3% 4.75%;
+  }
+  .sampleVideo {
+    width: 100%;
+    height: 65vh;
+    overflow: hidden;
+    position: relative;
+    video {
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
     }
-    .sampleVideo {
+  }
+  .aboutExplanation {
+    @include center;
+    flex-direction: column;
+    img {
+      margin: 160px auto 80px auto;
+      width: 200px;
+    }
+    p {
+      text-align: center;
+      text-indent: 10px;
+      line-height: 1.65;
+      font-family: $assistance;
+    }
+    .explanationKorean {
+      margin: 20px;
+      font-size: 24px;
+      font-weight: 500;
+    }
+    .explanationEnglish {
+      margin: 20px;
+      font-size: 18px;
+      font-weight: 400;
+      color: #333;
+    }
+  }
+  .explanationTheme {
+    display: flex;
+    justify-content: center;
+    .themeImageWrapper {
+      display: flex;
+      margin: 0px 50px;
+      padding: 10%;
+      padding: 5% 10% 10% 10%;
+      div {
         width: 100%;
-        height: 65vh;
-        overflow: hidden;
+        margin: 30px;
         position: relative;
-        video {
-            width: auto;
-            height: auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            transform: translate(-50%, -50%);
-        }
-    }
-    .aboutExplanation {
-        @include center;
-        flex-direction: column;
+
         img {
-            margin: 160px auto 80px auto;
-            width: 200px
+          width: 100%;
         }
-        p{
-            text-align: center;
-            text-indent: 10px;
-            line-height: 1.65;
-            font-family: $assistance;
+        span {
+          font-size: 28px;
+          font-weight: 900;
+          position: absolute;
+          font-family: $assistance;
+          transform: translate(-50%, -50%);
+          color: rgba(255, 255, 255, 0.85);
+          top: 50%;
+          left: 50%;
         }
-        .explanationKorean {
-            margin: 20px;
-            font-size: 24px;
-            font-weight: 500;
-        }
-        .explanationEnglish {
-            margin: 20px;
-            font-size: 18px;
-            font-weight: 400;
-            color: #333
-        }
+      }
     }
-    .explanationTheme{
+  }
+  .explanationInspiration {
+    .themeExplanation {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .themeExplanationKorean {
+        font-size: 24px;
+        font-weight: 500;
+        margin: 10px;
+      }
+      .themeExplanationEnglish {
+        font-size: 18px;
+        font-weight: 500;
+        margin-top: 30px;
+        color: #333;
+      }
+    }
+    .inspirationImg {
+      margin-top: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      div {
         display: flex;
-        justify-content: center;
-        .themeImageWrapper{
-            display: flex;
-            margin: 0px 50px;
-            padding: 10%;
-            padding: 5% 10% 10% 10%;
-            div{
-                width: 100%;
-                margin: 30px;
-                position: relative;
-
-                img{
-                    width: 100%;
-                }
-                span{
-                    font-size: 28px;
-                    font-weight: 900;
-                    position: absolute;
-                    font-family: $assistance;
-                    transform: translate(-50%, -50%);
-                    color:rgba(255,255,255,0.85);
-                    top: 50%;
-                    left: 50%;
-                }
-            }
+        align-items: flex-start;
+        img {
+          margin: 30px;
         }
+      }
     }
-    .explanationInspiration{
-        .themeExplanation{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            .themeExplanationKorean{  
-                font-size: 24px;
-                font-weight: 500;
-                margin: 10px;
-            }
-            .themeExplanationEnglish{
-                font-size: 18px;
-                font-weight: 500;
-                margin-top: 30px;
-                color: #333;
-            }
-        }
-        .inspirationImg{
-            margin-top: 100px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            div{
-                display: flex;
-                align-items: flex-start;
-                img{
-                    margin: 30px;
-                }
-            }
-
-        }
+  }
+  .bottomLogo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    img {
+      width: 80px;
     }
-    .bottomLogo {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-top: 100px;
-        margin-bottom: 100px;
-        img{
-            width: 80px;
-        }
-    }
-
+  }
 }
