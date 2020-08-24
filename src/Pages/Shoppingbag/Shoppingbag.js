@@ -169,7 +169,7 @@ const pickedItem = [
       "https://hince.co.kr/web/product/tiny/20200617/b4b788b34fdd1c711ee75bf74a8096a6.jpg",
     name: "무드인핸서 리퀴드 마뜨 오운 스킨",
     price: 19000,
-    count: 1,
+    count: 2,
   },
   {
     img:
