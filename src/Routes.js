@@ -6,6 +6,7 @@ import Detail from '../src/Pages/Detail/Detail'
 import Sign from '../src/Pages/Sign/Sign'
 import About from '../src/Pages/About/About'
 
+
 class Routes extends React.Component {
   render() {
     return (
