@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Sign.scss";
+import "./Login.scss";
 
 class Sign extends Component {
   constructor() {
@@ -68,7 +68,7 @@ class Sign extends Component {
             </div>
             <div className="signInMenu">
               <div className="descriptionBox">
-                <p class="description">
+                <p className="description">
                   아직 회원이 아니신가요?
                   <br></br>
                   가입 후 쿠폰 및 포인트 적립 등의 다양한 헤택을 받아보세요.
@@ -76,7 +76,7 @@ class Sign extends Component {
               </div>
               <button className="signUpButton">회원가입</button>
               <div className="descriptionBox">
-                <p class="description">
+                <p className="description">
                   SNS 계정으로 가입하고 로그인 할 수 있습니다.
                 </p>
               </div>
