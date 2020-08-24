@@ -30,6 +30,29 @@ class Login extends Component {
     }
   };
 
+  handleLogin = () => {
+    fetch("http://10.58.5.29:8001/user/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        account: this.state.id,
+        password: this.state.pw,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.token) {
+          localStorage.setItem("token", response.token);
+          this.props.history.push("/main");
+        } else {
+          alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+          return;
+        }
+      });
+  };
+
   render() {
     return (
       <div className="Login">
@@ -53,12 +76,19 @@ class Login extends Component {
                 className="input"
                 placeholder="비밀번호"
                 name="pw"
+                type="password"
                 onChange={this.handleChange}
                 autocomplete="off"
               />
             </div>
             <div className="signInButtonBox">
-              <button onClick={this.handleButton} className="signInButton">
+              <button
+                onClick={() => {
+                  this.handleButton();
+                  this.handleLogin();
+                }}
+                className="signInButton"
+              >
                 SIGN IN
               </button>
               <div className="forgotAccount">
