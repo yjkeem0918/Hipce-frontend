@@ -27,9 +27,7 @@ class Main extends Component {
 
     return (
       <div>
-        {/* <Nav /> */}
         <SignUp />
-        {/* <Footer /> */}
       </div>
     );
   }

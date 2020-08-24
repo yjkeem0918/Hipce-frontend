@@ -1,0 +1,28 @@
+.ReviewFrame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  border-bottom: 1px solid #dadada;
+  .title {
+    padding: 100px 12px 30px;
+    border-bottom: 2px solid #a36d6a;
+    h3 {
+      color: #a36d6a;
+      font-size: 20px;
+      font-weight: 900;
+    }
+  }
+  header {
+    border-bottom: 1px solid #dadada;
+    font-size: 16px;
+    padding-top: 44px;
+    padding-bottom: 7px;
+    strong {
+      font-weight: bold;
+      letter-spacing: -1px;
+    }
+  }
+}
