@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SignUp from "../Sign/SignUp";
 import Nav from "../../Components/Nav";
 import MainCollection from "../../Pages/Main/MainCollection";
 import MainNewProduct from "../../Pages/Main/MainNewProduct";
@@ -32,7 +31,6 @@ class Main extends Component {
 
     return (
       <div>
-        <SignUp />
         <Nav />
         <MainCollection />
         <MainNewProduct />

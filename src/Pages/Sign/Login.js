@@ -38,7 +38,7 @@ class Login extends Component {
           <div className="pageTitle">Sign In</div>
         </div>
         <div className="formBox">
-          <form className="memberForm">
+          <div className="memberForm">
             <div className="inputWrapper">
               <input
                 className="input"
@@ -98,7 +98,7 @@ class Login extends Component {
                 </div>
               </div>
             </div>
-          </form>
+          </div>
         </div>
         <Footer />
       </div>

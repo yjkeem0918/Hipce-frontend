@@ -4,7 +4,7 @@ import Main from "../src/Pages/Main/Main";
 import List from "../src/Pages/List/List";
 import Detail from "../src/Pages/Detail/Detail";
 import Login from "../src/Pages/Sign/Login";
-import SignUp from "../src/Pages/Sign/SignUp";
+import SignUp from "../src/Pages/Sign/signUp";
 import About from "../src/Pages/About/About";
 
 class Routes extends React.Component {
