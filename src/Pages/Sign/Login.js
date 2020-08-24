@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Sign.scss";
+import "./Login.scss";
 
 class Sign extends Component {
   constructor() {
