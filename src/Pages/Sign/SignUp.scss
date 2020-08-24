@@ -2,7 +2,8 @@
 
 .SignUp {
   .pageHeader {
-    padding: 0 60.656px;
+    padding: 0 91px;
+    margin: 0 219px;
 
     .pageTitle {
       padding-top: 80px;
@@ -11,42 +12,95 @@
       font-size: 48px;
       color: #8f5b59;
       font-weight: bold;
+      letter-spacing: 1px;
     }
   }
   .userInfoWrapper {
-    padding: 0 63px;
-
+    padding: 0 91px;
+    margin: 0 219px;
     .formBox {
       border-top: 2px solid #a36d6a;
       padding-bottom: 60px;
-
       .formTitleBox {
         margin-top: 60px;
         margin-bottom: 30px;
-
         .formTitle {
           color: #8f5b59;
-          font-size: 17.5px;
+          font-size: 1.17em;
           font-family: "Assistant", "Noto Sans KR", sans-serif;
+          font-weight: bold;
         }
       }
     }
-    .optionBox {
+    .formBox {
       border-top: 2px solid #a36d6a;
       padding-bottom: 60px;
-
-      .optionTitleBox {
+      .formTitleBox {
+        display: flex;
         margin-top: 60px;
         margin-bottom: 30px;
         color: #8f5b59;
-
         .birthdayDescription {
           margin-left: 15px;
           color: #8f5b59;
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 400;
         }
       }
+      .phoneNumberBox {
+        width: 100%;
+        padding: 7px 0;
+        display: flex;
+        .phoneNumberLabel {
+          display: flex;
+          width: 160px;
+          height: 46px;
+          .requiredMark {
+            margin-left: 5px;
+            color: #a36d6a;
+            font-weight: 500;
+            line-height: 46px;
+            font-size: 14px;
+          }
+          .phoneLabel {
+            color: #a36d6a;
+            font-weight: 700;
+            line-height: 46px;
+            font-size: 14px;
+            font-family: "Assistant", "Noto Sans KR", sans-serif;
+          }
+        }
+        .mobileNumber {
+          width: 90px;
+          height: 46px;
+          border: 1px solid #c8a7a6;
+          outline: none;
+          padding: 15px;
+          margin-right: 5px;
+        }
+        .hypen {
+          color: #a36d69;
+          font-weight: 300;
+          padding-top: 17px;
+        }
+        .phone2 {
+          width: 90px;
+          height: 46px;
+          margin: 0 5px;
+          border: 1px solid #c8a7a6;
+          outline: none;
+          padding: 12px 16px;
+        }
+        .phone3 {
+          width: 90px;
+          height: 46px;
+          margin: 0 5px;
+          border: 1px solid #c8a7a6;
+          outline: none;
+          padding: 12px 16px;
+        }
+      }
+
       .birthdayBox {
         display: flex;
         width: 100%;
@@ -67,7 +121,9 @@
           input {
             margin: 0 4px;
             padding: 12px 16px;
+            outline: none;
           }
+
           .YYYY {
             width: 120px;
             height: 46px;
@@ -110,7 +166,6 @@
         font-size: 17px;
         font-weight: 900;
         margin-top: 60px;
-
         cursor: pointer;
         background-color: rgb(255, 255, 255);
         &:hover {

@@ -1,6 +1,5 @@
 {
   "eslint.alwaysShowStatus": true,
   "eslint.format.enable": true,
-  "terminal.integrated.fontFamily": "MesloLGS NF",
-  "editor.fontFamily": "'SourceCodePro+Powerline+Awesome Regular'"
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

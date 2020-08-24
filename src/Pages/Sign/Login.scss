@@ -1,9 +1,9 @@
 @import "../../Styles/common.scss";
 
-.Sign {
+.Login {
   .pageHeader {
-    padding: 0 64px;
-    margin: 0 219px;
+    padding: 0 60.656px;
+
     .pageTitle {
       padding: 80px 0px;
       font-family: "PT serif", serif;
@@ -13,8 +13,7 @@
     }
   }
   .formBox {
-    padding: 0px 64px;
-    margin: 0 219px;
+    padding: 0px 60.656px;
 
     .memberForm {
       display: flex;
@@ -44,10 +43,8 @@
           font-weight: 800;
           border: 2px solid #a36d6a;
           color: #a36d6a;
-          background-color: rgb(255, 255, 255);
-          letter-spacing: 1px;
-          outline: none;
           cursor: pointer;
+          background-color: rgb(255, 255, 255);
           &:hover {
             animation: onHover 0.25s ease-out;
             animation-fill-mode: both;
@@ -86,10 +83,10 @@
           color: #a36d6a;
           font-size: 17px;
           font-weight: 800;
-          letter-spacing: 1.5px;
-          background-color: rgb(255, 255, 255);
-          outline: none;
+          letter-spacing: 1px;
           cursor: pointer;
+          background-color: rgb(255, 255, 255);
+
           &:hover {
             animation: onHover 0.25s ease-out;
             animation-fill-mode: both;
@@ -105,6 +102,7 @@
             width: 146.656px;
             height: 44px;
             position: relative;
+            cursor: pointer;
             background-color: #3b5998;
             cursor: pointer;
 
@@ -121,6 +119,7 @@
             width: 146.656px;
             height: 44px;
             position: relative;
+            cursor: pointer;
             background-color: #1dc800;
             cursor: pointer;
 
@@ -137,6 +136,7 @@
             width: 146.656px;
             height: 44px;
             position: relative;
+            cursor: pointer;
             background-color: #ffeb00;
             cursor: pointer;
 
