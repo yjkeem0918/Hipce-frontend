@@ -24,9 +24,10 @@ class Main extends Component {
     console.log(this.state.scrollY);
 
     return (
-      <>
-        <Footer />
-      </>
+      <div>
+        <SignUp />
+      </div>
+
     );
   }
 }

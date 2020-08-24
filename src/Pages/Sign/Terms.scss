@@ -1,0 +1,50 @@
+.termsBox {
+  border-top: 2px solid #a36d6a;
+  padding-bottom: 60px;
+  .termTitleBox {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    .termTitle {
+      color: #8f5b59;
+      font-size: 1.17em;
+    }
+    .checkBox {
+      display: flex;
+      align-items: center;
+      .check {
+        width: 15px;
+        height: 15px;
+        margin-right: 8px;
+        background-color: #a36d6a;
+      }
+      .agree {
+        color: #8f5b59;
+        font-size: 13px;
+        font-weight: 700;
+        padding-right: 10px;
+      }
+    }
+  }
+  .agreementContent {
+    color: #333333;
+    background-color: #faf6f6;
+    width: 100%;
+    height: 200px;
+    padding: 35px 50px;
+    overflow-y: scroll;
+    line-height: 1.8;
+    font-size: 12px;
+  }
+  .agreementContent2 {
+    color: #333333;
+    background-color: #faf6f6;
+    width: 100%;
+    height: 200px;
+    padding: 35px 50px;
+    overflow-y: scroll;
+    line-height: 0.8;
+    font-size: 12px;
+  }
+}
