@@ -1,98 +1,100 @@
 @import "../../Styles/common.scss";
 
-@mixin checkBoxDetail {
-  input[type="checkbox"] + label {
-    background-color: #ebe1e1;
-    width: 18px;
-    height: 18px;
-    margin: 0 10px;
-  }
-  input[type="checkbox"]:checked + label:before {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url("http://hince.co.kr/assets/images/hince-option-checker.png");
-    background-size: 22px 22px;
-    background-position: -2px -2px;
-    content: "";
-    border-color: #a36d6a;
-    background-color: #a36d6a;
-    width: 18px;
-    height: 18px;
-    text-align: center;
-    font-size: 18px;
-    color: white;
-  }
-}
-
-.formBox {
-  border-top: 2px solid #a36d6a;
-  padding-bottom: 60px;
-  
-  .termsBox {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 60px;
-    margin-bottom: 30px;
-
-    .formTitle {
-      color: #8f5b59;
-      font-size: 1.17em;
-      font-family: "Assistant", "Noto Sans KR", sans-serif;
-      font-weight: bold;
+.Terms {
+  @mixin checkBoxDetail {
+    input[type="checkbox"] + label {
+      background-color: #ebe1e1;
+      width: 18px;
+      height: 18px;
+      margin: 0 10px;
     }
-    .checkBox {
+    input[type="checkbox"]:checked + label:before {
       display: flex;
+      justify-content: center;
       align-items: center;
-      input {
-        display: none;
+      background-image: url("http://hince.co.kr/assets/images/hince-option-checker.png");
+      background-size: 22px 22px;
+      background-position: -2px -2px;
+      content: "";
+      border-color: #a36d6a;
+      background-color: #a36d6a;
+      width: 18px;
+      height: 18px;
+      text-align: center;
+      font-size: 18px;
+      color: white;
+    }
+  }
+  
+  .formBox {
+    border-top: 2px solid #a36d6a;
+    padding-bottom: 60px;
+    
+    .termsBox {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+      margin-bottom: 30px;
+  
+      .formTitle {
+        color: #8f5b59;
+        font-size: 1.17em;
+        font-family: "Assistant", "Noto Sans KR", sans-serif;
+        font-weight: bold;
       }
-      @include checkBoxDetail;
-
-      .agreeBox {
+      .checkBox {
         display: flex;
         align-items: center;
-      }
-      
-      .box {
-        margin-right: 8px;
-      }
-      
-      .agree {
-        color: #8f5b59;
-        font-size: 13px;
-        font-weight: 700;
+        input {
+          display: none;
+        }
+        @include checkBoxDetail;
+  
+        .agreeBox {
+          display: flex;
+          align-items: center;
+        }
+        
+        .box {
+          margin-right: 8px;
+        }
+        
+        .agree {
+          color: #8f5b59;
+          font-size: 13px;
+          font-weight: 700;
+        }
       }
     }
-  }
+    
+    .agreementContent {
+      color: #333333;
+      background-color: #faf6f6;
+      width: 100%;
+      height: 200px;
+      padding: 35px 50px;
+      overflow-y: scroll;
+      line-height: 1.8;
+      font-size: 12px;
+    }
   
-  .agreementContent {
-    color: #333333;
-    background-color: #faf6f6;
-    width: 100%;
-    height: 200px;
-    padding: 35px 50px;
-    overflow-y: scroll;
-    line-height: 1.8;
-    font-size: 12px;
-  }
-
-  .agreeAllBox {
-    margin-top: 30px;
-    .agreeAll {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-
-      @include checkBoxDetail;
-      input {
-        margin-right: 8px;
-        display: none;
-      }
-      .check {
-        color: #a36d6a;
-        font-size: 17px;
-        font-weight: 700;
+    .agreeAllBox {
+      margin-top: 30px;
+      .agreeAll {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+  
+        @include checkBoxDetail;
+        input {
+          margin-right: 8px;
+          display: none;
+        }
+        .check {
+          color: #a36d6a;
+          font-size: 17px;
+          font-weight: 700;
+        }
       }
     }
   }
