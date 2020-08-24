@@ -4,7 +4,7 @@ import Main from "../src/Pages/Main/Main";
 import List from "../src/Pages/List/List";
 import Detail from "../src/Pages/Detail/Detail";
 import Sign from "../src/Pages/Sign/Sign";
-import SignUp from "../src/Pages/Sign/SignUp";
+import About from "../src/Pages/About/About";
 
 class Routes extends React.Component {
   render() {
@@ -16,6 +16,7 @@ class Routes extends React.Component {
           <Route exact path="/Detail" component={Detail} />
           <Route exact path="/Sign" component={Sign} />
           <Route exact path="/SignUp" component={SignUp} />
+          <Route exact path="/About" component={About} />
         </Switch>
       </Router>
     );

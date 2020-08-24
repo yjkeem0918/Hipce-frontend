@@ -1,0 +1,206 @@
+@import "../../Styles/common.scss";
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.mainContainer {
+  display: flex;
+  @include center;
+  width: 1920px;
+  height: 855px;
+  background-color: #faf9f7;
+  .detail_mainImg {
+    img {
+      width: 800.2px;
+      height: 665px;
+      margin-right: 90px;
+    }
+  }
+  .productInfo {
+    min-height: 650px;
+    width: 400px;
+    font-family: "Assistant", "Noto Sans KR", sans-serif;
+    .productName {
+      border-bottom: 2px solid #a36d6a;
+      padding-bottom: 35px;
+      margin-bottom: 40px;
+      span {
+        font-weight: 900;
+        font-size: 30px;
+        line-height: 40px;
+        color: #8f5b59;
+        width: auto;
+        height: auto;
+      }
+    }
+    .productElement {
+      padding-bottom: 125px;
+      font-size: 14px;
+      color: #a36d6a;
+      .productPrice {
+        display: flex;
+        .nameBox {
+          width: 100px;
+        }
+        .price {
+          font-size: 14px;
+          font-weight: bold;
+          padding: 0 10px;
+        }
+      }
+      .productNumBox {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        .numWrapper {
+          position: relative;
+          .minus {
+            @include button;
+            cursor: pointer;
+            position: absolute;
+            background-color: transparent;
+            color: #a36d6a;
+            font-size: 14px;
+            width: 40px;
+            height: 44px;
+          }
+          input {
+            background-color: transparent;
+            border: 1px solid #c8a7a6;
+            color: #a36d6a;
+            text-align: center;
+            font-weight: bold;
+            font-size: 15px;
+            height: 44px;
+            width: 288px;
+            outline: none;
+          }
+          .plus {
+            @include button;
+            position: absolute;
+            right: 0;
+            cursor: pointer;
+            background-color: transparent;
+            color: #a36d6a;
+            font-size: 14px;
+            width: 40px;
+            height: 44px;
+          }
+        }
+      }
+      .productColor {
+        display: flex;
+        justify-content: space-between;
+        span {
+          margin-top: 20px;
+        }
+        .colorSet {
+          display: flex;
+          flex-wrap: wrap;
+          width: calc(100% - 100px);
+          padding: 20px 3px;
+          li {
+            display: block;
+            width: 32px;
+            height: 32px;
+            background-color: #c48490;
+            border-radius: 16px;
+            margin: 5px 7px;
+            &:hover {
+              animation: onHoverAtag 0.25s ease-out;
+              animation-fill-mode: both;
+            }
+            .colorSelected{
+              background-image: url("https://hince.co.kr/assets/images/hince-option-checker.png");
+              background-size: 32px 32px;
+              background-position: center center;
+            }
+            }
+        }
+      }
+    }
+  }
+}
+.totalPrice {
+  position: relative;
+  border-top: 2px solid #a36d6a;
+  padding: 25px 0;
+  color: #a36d6a;
+  font-size: 17px;
+  font-weight: 700;
+  .priceTitle {
+    width: 80px;
+  }
+  .total {
+    position: absolute;
+    right: 0;
+  }
+}
+.buttonBox {
+  display: flex;
+  span{
+  @include center;
+  width: 50px;
+  heigh: 50px;  
+  background-color: #a36d6a;
+  margin-right: 12px;
+  .cartBtn {
+    height: 35px;
+    width: 35px;
+    background-color: #a36d6a;
+    background-image: url("https://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
+    background-position-y: -35px;
+    background-position-x: -105px;
+    background-size: 490px 70px;
+    cursor: pointer;
+    @include button;
+  }
+}
+  .buyBtn {
+    width: calc(100% - 62px);
+    height: 50px;
+    border: 2px solid #a36d6a;
+    background-color: rgb(255, 255, 255);
+    color: #a36d6a;
+    font-size: 14px;
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+      animation: onHover 0.25s ease-out;
+      animation-fill-mode: both;
+    }
+  }
+}
+.anotherPay {
+  button {
+    margin-top: 12px;
+    width: 100%;
+    height: 50px;
+    background-color: #00c63b;
+    background-image: url("https://hince.co.kr/assets/images/npay-button-logo.png");
+    background-size: 50px 50px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    @include button;
+  }
+}
+
+@keyframes onHover {
+  from {
+    background-color: rgb(255, 255, 255);
+    color: rgb(163, 109, 106);
+  }
+  to {
+    background-color: rgb(163, 109, 106);
+    color: rgb(255, 255, 255);
+  }
+}
+
+ 

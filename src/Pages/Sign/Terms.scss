@@ -28,11 +28,13 @@
 .formBox {
   border-top: 2px solid #a36d6a;
   padding-bottom: 60px;
+  
   .termsBox {
     display: flex;
     justify-content: space-between;
     margin-top: 60px;
     margin-bottom: 30px;
+
     .formTitle {
       color: #8f5b59;
       font-size: 1.17em;
@@ -51,9 +53,11 @@
         display: flex;
         align-items: center;
       }
+      
       .box {
         margin-right: 8px;
       }
+      
       .agree {
         color: #8f5b59;
         font-size: 13px;
@@ -61,7 +65,7 @@
       }
     }
   }
-
+  
   .agreementContent {
     color: #333333;
     background-color: #faf6f6;

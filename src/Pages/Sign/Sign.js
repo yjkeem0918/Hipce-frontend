@@ -2,6 +2,31 @@ import React, { Component } from "react";
 import "./Sign.scss";
 
 class Sign extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      id: "",
+      pw: "",
+    };
+  }
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleButton = (e) => {
+    if (!this.state.id && !this.state.pw) {
+      alert("아이디 입력값은 필수입니다.");
+    } else if (this.state.id.length >= 1 && !this.state.pw) {
+      alert("패스워드 항목은 필수 입력값입니다.");
+    } else if (this.state.pw.length >= 1 && !this.state.id) {
+      alert("아이디 항목은 필수 입력값입니다.");
+    } else if (this.state.pw.length < 4 && this.state.id) {
+      alert("패스워드 항목이 4자(개) 이상으로 해주십시오.");
+    }
+  };
+
   render() {
     return (
       <div className="Sign">
@@ -11,13 +36,27 @@ class Sign extends Component {
         <div className="formBox">
           <form className="memberForm">
             <div className="inputWrapper">
-              <input className="input" placeholder="아이디" />
+              <input
+                className="input"
+                placeholder="아이디"
+                name="id"
+                onChange={this.handleChange}
+                autocomplete="off"
+              />
             </div>
             <div className="inputWrapper">
-              <input className="input" placeholder="비밀번호" />
+              <input
+                className="input"
+                placeholder="비밀번호"
+                name="pw"
+                onChange={this.handleChange}
+                autocomplete="off"
+              />
             </div>
             <div className="signInButtonBox">
-              <button className="signInButton">SIGN IN</button>
+              <button onClick={this.handleButton} className="signInButton">
+                SIGN IN
+              </button>
               <div className="forgotAccount">
                 <div>
                   <a href="#">아이디 찾기</a>
