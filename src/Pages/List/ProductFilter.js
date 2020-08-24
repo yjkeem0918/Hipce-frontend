@@ -18,22 +18,16 @@ export default class ProductFilter extends Component {
 
   palleteButtonKeep = (e, index) => {
     e.preventDefault();
-    let checkArr = this.state.colors.map((el) => el.active);
     let newColors = [...this.state.colors];
     newColors[index].active = !newColors[index].active;
-    this.setState({ colors: newColors });
-
-    if (this.state.filterdColor === "hidden") {
-      this.setState({ filterdColor: "productFilteredName" });
-    }
-    for (let i = 0; i < checkArr.length; i++) {
-      if ((checkArr[i] = true)) {
-        return;
-      } else if ((checkArr[i] = false)) {
-        console.log(checkArr[i]);
+    this.setState({ colors: newColors }, () => {
+      let checkArr = this.state.colors.map((el) => el.active);
+      if (!checkArr.filter((el) => el === true).includes(true)) {
         this.setState({ filterdColor: "hidden" });
+      } else {
+        this.setState({ filterdColor: "productFilteredName" });
       }
-    }
+    });
   };
 
   palleteClear = () => {
