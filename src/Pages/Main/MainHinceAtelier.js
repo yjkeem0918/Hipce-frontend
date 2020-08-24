@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 import "./MainHinceAtelier.scss";
 
 class MainHinceAtelier extends Component {
@@ -13,7 +14,7 @@ class MainHinceAtelier extends Component {
           <p>힌스의 첫 공식 플래그십 스토어를 성수동에서 만나 보세요.</p>
         </div>
         <div className="sectionBottom">
-          <a to="/List"></a>
+          <Link to="/List"></Link>
         </div>
       </div>
     );

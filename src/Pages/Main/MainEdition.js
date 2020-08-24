@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 import "./MainEdition.scss";
 
 class MainEdition extends Component {
@@ -13,7 +14,7 @@ class MainEdition extends Component {
           <p>리미티드 에디션으로 만나는 무드인핸서 마뜨 미니 컬렉션</p>
         </div>
         <div className="sectionBottom">
-          <a to="/List"></a>
+          <Link to="/List"></Link>
         </div>
       </div>
     );

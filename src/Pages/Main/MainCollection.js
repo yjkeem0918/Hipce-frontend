@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom"
 import "./MainCollection.scss";
 
 class MainCollection extends Component {
+
   render() {
     return (
       <div className="MainCollection">
@@ -18,7 +20,7 @@ class MainCollection extends Component {
           <p>My Own Attitude. 나의 관점, 나의 태도.</p>
         </div>
         <div className="sectionBottom">
-          <a to="/List"></a>
+          <Link to="/List"></Link>
         </div>
       </div>
     );

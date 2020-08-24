@@ -36,7 +36,7 @@ class MainBestSellerSlider extends Component {
 
   render() {
     return (
-      <div className="MainNewProductSlider">
+      <div className="MainBestSellerSlider">
         <div className="sectionProduct">
           <a href="/">{newProduct.pictures[this.state.activeTab].name}</a>
         </div>

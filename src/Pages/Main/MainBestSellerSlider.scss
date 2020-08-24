@@ -1,22 +1,9 @@
 @import "../../Styles/common.scss";
 
-.MainNewProductSlider {
+.MainBestSellerSlider {
   width: 100vw;
   height: 100vh;
   position: relative;
-
-  .sectionProduct {
-    position: absolute;
-    top: 50%;
-    left: 4.75%;
-    font-size: 20px;
-    font-weight: 500;
-
-    a {
-      text-decoration: none;
-      color: $brick;
-    }
-  }
 
   .sectionCarousel {
     ul {
@@ -46,26 +33,9 @@
     }
   }
 
-  .sectionBottom {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 32.5%;
-
-    a {
-      position: absolute;
-      bottom: 20%;
-      right: 4.75%;
-      background-image: url("//hince.co.kr/assets/images/hince-icon-sprite-185484.png");
-      background-size: 448px 64px;
-      width: 35px;
-      height: 35px;
-      background-position-x: -128px;
-      background-position-y: -32px;
-    }
-  }
-
   .sliderContent {
+    max-width: 67%;
+    min-height: 65%;
     position: relative;
     top: 17.5%;
     right: 0;
@@ -73,14 +43,16 @@
     left: 33.3%;
 
     .sliderWrapper {
+      left: 13%;
       position: absolute;
       display: flex;
       transition: transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
       .ImgBox {
+        // background-color: #faf9f7;
         img {
-          display: block;
-          margin: 0 auto;
+          // display: block;
+          // margin: 0 auto;
           opacity: 0;
           transition: opacity 0.35s ease-out;
         }
