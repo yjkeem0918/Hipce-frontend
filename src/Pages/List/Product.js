@@ -18,7 +18,7 @@ export default class Product extends Component {
               />
             </div>
             <div>
-              <Link to="/Main">
+              <Link to="/Detail">
                 <p>무드인핸서 리퀴드 마뜨 얼루어먼트</p>
               </Link>
               <img

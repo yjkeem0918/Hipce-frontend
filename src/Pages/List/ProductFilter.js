@@ -7,13 +7,10 @@ export default class ProductFilter extends Component {
 
     this.state = {
       palleteDisplay: "hidden",
-      palleteDisplay: "hidden",
-      colors: [...colorRange],
+      colors: [...colorRange].map((color) => ({ ...color, active: false })),
       filterdColor: "hidden",
-      colors2: [...colorRange].map((el) => ({ ...el, active: "false" })),
-      colors3: [...colorRange].forEach((el) => ({ ...el, active: "false" })),
+      colors3: [...colorRange].forEach((el) => ({ ...el, active: false })),
     };
-    for (let color of this.state.colors) color.active = false;
 
     // this.state = {
     //     palleteDisplay: fals,
@@ -23,21 +20,30 @@ export default class ProductFilter extends Component {
     // Results.map(obj=> ({ ...obj, Active: 'false' }))
   }
 
-  palleteDisplayChange = (e) => {
-    e.target.boolean = false
-      ? this.setState({ palleteDisplay: "hidden" })
-      : this.setState({ palleteDisplay: "productFilterPallete" });
-    e.target.boolean = true;
+  palleteDisplayChange = () => {
+    // this.setState({});
+    this.state.palleteDisplay === "hidden"
+      ? this.setState({ palleteDisplay: "productFilterPallete" })
+      : this.setState({ palleteDisplay: "hidden" });
   };
 
   palleteButtonKeep = (e, index) => {
     e.preventDefault();
+    let checkArr = this.state.colors.map((el) => el.active);
     let newColors = [...this.state.colors];
     newColors[index].active = !newColors[index].active;
     this.setState({ colors: newColors });
 
     if (this.state.filterdColor === "hidden") {
       this.setState({ filterdColor: "productFilteredName" });
+    }
+    for (let i = 0; i < checkArr.length; i++) {
+      if ((checkArr[i] = true)) {
+        return;
+      } else if ((checkArr[i] = false)) {
+        console.log(checkArr[i]);
+        this.setState({ filterdColor: "hidden" });
+      }
     }
   };
 
@@ -48,9 +54,6 @@ export default class ProductFilter extends Component {
   };
 
   render() {
-    console.log("color3", this.state.colors3);
-    console.log("color2", this.state.colors2);
-    console.log("color1", this.state.colors);
     return (
       <div className="productFilter">
         <div className="productFilterName">
@@ -67,9 +70,9 @@ export default class ProductFilter extends Component {
               <ul>
                 {this.state.colors.map(({ color, name, active }, index) => (
                   <li
-                    className={
-                      active ? "colorListToggle" : "colorListToggleWhite"
-                    }
+                    // className={
+                    //   active ? "colorListToggle" : "colorListToggleWhite"
+                    // }
                     name={name}
                     key={name}
                     onClick={(e) => this.palleteButtonKeep(e, index)}
