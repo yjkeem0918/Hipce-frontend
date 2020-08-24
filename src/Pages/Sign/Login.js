@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
+import Nav from "../../Components/Nav";
+import Footer from "../../Components/Footer";
 import "./Login.scss";
 
-class Sign extends Component {
+class Login extends Component {
   constructor() {
     super();
 
@@ -29,7 +32,8 @@ class Sign extends Component {
 
   render() {
     return (
-      <div className="Sign">
+      <div className="Login">
+        <Nav />
         <div className="pageHeader">
           <div className="pageTitle">Sign In</div>
         </div>
@@ -67,14 +71,14 @@ class Sign extends Component {
               </div>
             </div>
             <div className="signInMenu">
-              <div className="descriptionBox">
+              <div className="descriptionBox">np
                 <p className="description">
                   아직 회원이 아니신가요?
                   <br></br>
                   가입 후 쿠폰 및 포인트 적립 등의 다양한 헤택을 받아보세요.
                 </p>
               </div>
-              <button className="signUpButton">회원가입</button>
+              <Link to="/signUp"><button className="signUpButton">회원가입</button></Link>
               <div className="descriptionBox">
                 <p className="description">
                   SNS 계정으로 가입하고 로그인 할 수 있습니다.
@@ -94,9 +98,10 @@ class Sign extends Component {
             </div>
           </form>
         </div>
+        <Footer />
       </div>
     );
   }
 }
 
-export default Sign;
+export default Login;

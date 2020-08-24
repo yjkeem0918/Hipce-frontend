@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import "./SignUp.scss";
+import Nav from "../../Components/Nav";
 import InputWithLabel from "./InputWithLabel"
 import Terms from "./Terms"
+import Footer from "../../Components/Footer";
+import "./SignUp.scss";
 
 class SignUp extends Component {
   constructor(){
@@ -40,6 +42,7 @@ class SignUp extends Component {
   render() {
     return (
       <div className="SignUp">
+        <Nav />
         <div className="pageHeader">
           <div className="pageTitle">Sign Up</div>
         </div>
@@ -77,6 +80,7 @@ class SignUp extends Component {
             <button className="signUpButton">회원 가입하기</button>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

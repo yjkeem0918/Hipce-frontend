@@ -14,7 +14,7 @@ class MainEdition extends Component {
           <p>리미티드 에디션으로 만나는 무드인핸서 마뜨 미니 컬렉션</p>
         </div>
         <div className="sectionBottom">
-          <Link to="/List"></Link>
+          <Link to="/list"></Link>
         </div>
       </div>
     );

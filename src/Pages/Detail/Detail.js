@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import Nav from "../../Components/Nav";
 import DetailMain from './DetailMain';
 import Review from './Review'
 import ProductDetail from './ProductDetail'
 import Reviewframe from './ReviewFrame'
+import Footer from "../../Components/Footer";
 import './Detail.scss';
  
 
@@ -23,6 +25,7 @@ class Detail extends Component {
   render() {
     return (
       <div className="Detail">
+         <Nav />
          <DetailMain />
          <ProductDetail />
          <Reviewframe />
@@ -32,6 +35,7 @@ class Detail extends Component {
               />
             })}
          </ul>
+         <Footer />         
       </div>
     );
   }
