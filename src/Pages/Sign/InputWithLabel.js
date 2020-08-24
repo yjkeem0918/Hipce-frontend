@@ -19,7 +19,7 @@ class InputWithLabel extends Component {
           <input
             type="text"
             onChange={(e) => {
-              this.props.onChange(this.props.option.label, e.target.value);
+              this.props.onChange(this.props.option.label, e.target);
             }}
           ></input>
           <div className="descriptionBox">
