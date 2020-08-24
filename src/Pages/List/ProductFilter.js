@@ -6,25 +6,14 @@ export default class ProductFilter extends Component {
     super();
 
     this.state = {
-      palleteDisplay: "hidden",
+      palleteDisplay: false,
       colors: [...colorRange].map((color) => ({ ...color, active: false })),
       filterdColor: "hidden",
-      colors3: [...colorRange].forEach((el) => ({ ...el, active: false })),
     };
-
-    // this.state = {
-    //     palleteDisplay: fals,
-    //     colors: [...colorRange].forEach(el => el.active = false),
-    //     filterdColor: false,
-    // }
-    // Results.map(obj=> ({ ...obj, Active: 'false' }))
   }
 
   palleteDisplayChange = () => {
-    // this.setState({});
-    this.state.palleteDisplay === "hidden"
-      ? this.setState({ palleteDisplay: "productFilterPallete" })
-      : this.setState({ palleteDisplay: "hidden" });
+    this.setState({ palleteDisplay: this.state.palleteDisplay ? false : true });
   };
 
   palleteButtonKeep = (e, index) => {
@@ -63,16 +52,20 @@ export default class ProductFilter extends Component {
             boolean="false"
           ></span>
         </div>
-        <form className={this.state.palleteDisplay}>
+        <form
+          className={
+            this.state.palleteDisplay ? "productFilterPallete" : "hidden"
+          }
+        >
           <section className="palleteColorWrapper">
             <span>컬러</span>
             <div>
               <ul>
                 {this.state.colors.map(({ color, name, active }, index) => (
                   <li
-                    // className={
-                    //   active ? "colorListToggle" : "colorListToggleWhite"
-                    // }
+                    className={
+                      active ? "colorListToggle" : "colorListToggleWhite"
+                    }
                     name={name}
                     key={name}
                     onClick={(e) => this.palleteButtonKeep(e, index)}
