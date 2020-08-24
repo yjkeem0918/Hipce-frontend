@@ -120,7 +120,7 @@ body {
               background-size: 32px 32px;
               background-position: center center;
             }
-          }
+            }
         }
       }
     }
@@ -203,11 +203,4 @@ body {
   }
 }
 
-@keyframes onHoverAtag {
-  from {
-    border: none;
-  }
-  to {
-    border: 3px solid rgba(255,255,255,0.25);
-  }
-}
+ 

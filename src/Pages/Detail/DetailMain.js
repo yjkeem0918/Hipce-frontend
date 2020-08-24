@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './DetailMain.scss';
+import Color from './Color';
 
 class DetailMain extends Component {
     constructor() {
@@ -7,6 +8,9 @@ class DetailMain extends Component {
         this.state ={
             count: 1,
             totalPrice: 19000,
+            colorList : [ {title: "얼루어먼트", bgc: "#C48490"},{title: "오운 스킨", bgc: "#E8927C"},{title: "포인트 오브 뷰", bgc: "#E03C31"} ,
+            {title: "언체인드", bgc: "#EBA0A5"},{title: "해치 아웃", bgc: "#E3785E"},{title: "파워하우스", bgc: "#DF4661"},{title: "스탠스", bgc: "#BE3A34"},
+            {title: "뉴 퍼스펙티브", bgc: "#C74d66"},{title: "오픈 도어", bgc: "#D05A57"},{title: "풀 크레딧", bgc: "#BA0C2F"},],
         }
     }
     
@@ -31,6 +35,8 @@ class DetailMain extends Component {
             totalPrice: this.state.totalPrice - 19000
         })
     }
+
+   
 
     render() {
         return (
@@ -58,19 +64,12 @@ class DetailMain extends Component {
                                 <input value={this.state.count} />
                             </div>            
                         </div>
-                        <div className="productColor">
+                        <div className="productColor ">
                             <span className="detailName">컬러</span>
-                            <ul className="colorSet">
-                                 <a href="#"><li class="colorSelected" title="얼루어먼트"> </li></a>  
-                                 <a href="#"><li class="color" title="얼루어먼트"> </li></a>
-                                 <a href="#"><li class="color" title="얼루어먼트"> </li></a>
-                                 <a href="#"><li class="color" title="얼루어먼트"> </li></a>
-                                 <a href="#"><li class="color" title="얼루어먼트"> </li></a>
-                                 <a href="#"><li class="color" title="얼루어먼트"> </li></a>
-                                 <a href="#"><li class="color" title="얼루어먼트"> </li></a>
-                                 <a href="#"><li class="color" title="얼루어먼트"> </li></a>
-                                 <a href="#"><li class="color" title="얼루어먼트"> </li></a>
-                                 <a href="#"><li class="color" title="얼루어먼트"> </li></a>
+                            <ul className={`colorSet active-color-${this.state.nowidx}`}>  
+                                {this.state.colorList.map((obj,idx) => (
+                                    <Color name={obj.title} bgc={obj.bgc} key={this.state.colorList.title}/>
+                                ))}
                             </ul>
                         </div>
                         </div>

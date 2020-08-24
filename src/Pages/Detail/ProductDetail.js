@@ -24,7 +24,6 @@ class ProductDetail extends Component {
                         </p>
                     </div>   
                     <p><img alt src="./Images/collection_1.jpg" /></p>
-                    {/* <p><<img alt src="./Images/collection.gif" /></p>    */}
                     <p><img alt src="./Images/collection_2.jpg" /></p>
                     <p><img alt src="./Images/collection_3.jpg" /></p>
                     <p><img alt src="./Images/collection_4.jpg" /></p>
