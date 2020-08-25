@@ -25,12 +25,12 @@ class SignUp extends Component {
   handleMobile = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    console.log("mobile");
+    // console.log("mobile");
   };
 
   getInputValue = (label, value) => {
     const { inputValue } = this.state;
-    console.log("pw", label);
+    // console.log("pw", label);
 
     switch (label) {
       case "아이디":
@@ -91,7 +91,7 @@ class SignUp extends Component {
                 validation: {
                   true: "사용 가능한 아이디입니다.",
                   false: "사용 불가능한 아이디 입니다.",
-                  initial: "아이디를 입력하세요.",
+                  initial: "아이디를 입력해 주세요.",
                 },
                 isPassed: this.state.validation.id,
               }}
@@ -126,12 +126,6 @@ class SignUp extends Component {
               onChange={this.getInputValue}
               option={{
                 label: "이름",
-                validation: {
-                  true: "사용 가능한 아이디입니다.",
-                  false: "사용 불가능한 아이디 입니다.",
-                  initial: "아이디를 입력하세요.",
-                },
-                isPassed: false,
               }}
             ></InputWithLabel>
             <div className="phoneNumberBox">
