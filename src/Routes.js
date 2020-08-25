@@ -1,11 +1,10 @@
 import React from "react";
+
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Main from "../src/Pages/Main/Main";
 import List from "../src/Pages/List/List";
 import Detail from "../src/Pages/Detail/Detail";
-import Login from "../src/Pages/Sign/Login";
-import SignUp from "../src/Pages/Sign/SignUp";
-import About from "../src/Pages/About/About";
+import Sign from "../src/Pages/Sign/Sign";
 import Shoppingbag from "../src/Pages/Shoppingbag/Shoppingbag";
 
 class Routes extends React.Component {
@@ -19,7 +18,7 @@ class Routes extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/Shoppingbag" component={Shoppingbag} />
+          <Route exact path="/shoppingbag" component={Shoppingbag} />
         </Switch>
       </Router>
     );
