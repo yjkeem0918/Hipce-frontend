@@ -65,18 +65,54 @@
           }
         }
       }
-      .curationZoneWrapper {
-        display: flex;
-        .curationZone {
-          background-image: url(http://hince.co.kr/images/location/curation-1.jpg);
-          background-size: 800px;
-          // background-size: cover;
-          // background-position: center center;
-          background-repeat: no-repeat;
-          width: 800px;
-          height: auto;
-        }
-      }
     }
   }
 }
+
+.StoreWrapper {
+  padding: 0 68px;
+  .StoreBox {
+    color: #8f5b59;
+    font-size: 48px;
+    font-family: $pt;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+  .searchBarBox {
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-end;
+    .storeSearchInput {
+      border: none;
+      outline: none;
+      font-size: 14px;
+      padding: 10px;
+      width: 290px;
+    }
+  }
+  .tabHeader {
+    cursor: pointer;
+    padding: 25px 12px;
+    position: relative;
+    padding: 25px 15px;
+    border: 1px solid black;
+    height: 71px;
+    .storeName {
+      display: inline-block;
+      width: 260px;
+    }
+  }
+}
+
+// .curationZoneWrapper {
+//   display: flex;
+//   .curationZone {
+//     background-image: url(http://hince.co.kr/images/location/curation-1.jpg);
+//     background-size: 800px;
+//     // background-size: cover;
+//     // background-position: center center;
+//     background-repeat: no-repeat;
+//     width: 800px;
+//     height: auto;
+//   }
+// }
