@@ -7,6 +7,7 @@ class InputWithLabel extends Component {
     this.state = {};
   }
   render() {
+    console.log("validation", this.props.option);
     return (
       <div className="idBox">
         <div className="formLabel">
@@ -19,11 +20,24 @@ class InputWithLabel extends Component {
           <input
             type="text"
             onChange={(e) => {
-              this.props.onChange(this.props.option.label, e.target);
+              this.props.onChange(this.props.option.label, e.target.value);
             }}
           ></input>
           <div className="descriptionBox">
-            <div className="description">{this.props.option.description}</div>
+            <div className="description">
+              {this.props.option.description}
+              <div className="description">
+                {this.props.option.validation &&
+                this.props.option.isPassed === "initial"
+                  ? this.props.option.validation.initial
+                  : this.props.option.isPassed === "pass"
+                  ? this.props.option.validation.true
+                  : this.props.option.isPassed === "denied"
+                  ? this.props.option.validation.false
+                  : ""}
+              </div>
+              <span onChange></span>
+            </div>
           </div>
         </div>
       </div>
