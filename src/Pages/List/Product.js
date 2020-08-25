@@ -27,7 +27,7 @@ export default class Product extends Component {
               />
             </div>
           </div>
-          <span>19,000원</span>
+          <span>{Number(this.props.price).toLocaleString()}원</span>
         </section>
       </li>
     );
