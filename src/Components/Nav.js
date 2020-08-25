@@ -11,8 +11,8 @@ class Nav extends Component {
         </div>
         <div className="siteMenu">
           <ul>
-            <li className="about">
-              <Link to="/">About</Link>
+            <li>
+              <Link to="/About">About</Link>
             </li>
             <li>
               <Link to="/">Collection</Link>
