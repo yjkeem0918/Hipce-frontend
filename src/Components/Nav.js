@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom"
 import "./Nav.scss";
 
-class Nav extends Component {
+class Nav extends Component {  
   render() {
     return (
       <div className="Nav">
@@ -11,7 +11,7 @@ class Nav extends Component {
         </div>
         <div className="siteMenu">
           <ul>
-            <li>
+            <li className="about">
               <Link to="/">About</Link>
             </li>
             <li>
