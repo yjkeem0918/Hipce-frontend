@@ -14,83 +14,123 @@ export default class Shoppingbag extends Component {
 
     this.state = {
       countNumber: {},
-      pickItem: [...pickedItem],
+      pickItem: [...pickedItem].map((el) => ({ ...el, active: false })),
       totalPrice: 0,
       realtotalPrice: null,
       shippingFee: 2500,
+      checkItem: false,
+      emptyDisplay: false,
     };
   }
 
+  componentDidMount() {
+    this.setFirstPrice();
+  }
   handleCounting = (item, inDecrement, e) => {
     e.preventDefault();
-    if (e.target.name == "plusButton" && item.count == 5) {
+    if (e.target.name === "plusButton" && item.count === 5) {
       alert("최대주문수량 5개");
       return;
     }
-    if (e.target.name == "plusButton") {
-      this.setState({
-        pickItem: this.state.pickItem.map((el) =>
-          el.name == item.name
-            ? {
-                ...el,
-                price: (el.price * (el.count + 1)) / el.count,
-                count: el.count + inDecrement,
-              }
-            : el
-        ),
-      });
+    if (e.target.name === "plusButton") {
+      this.setState(
+        {
+          pickItem: this.state.pickItem.map((el) =>
+            el.name === item.name
+              ? {
+                  ...el,
+                  price: (el.price * (el.count + 1)) / el.count,
+                  count: el.count + inDecrement,
+                }
+              : el
+          ),
+        },
+        () => this.calculatePrice()
+      );
     }
-    if (e.target.name == "minusButton" && item.count == 1) {
+    if (e.target.name === "minusButton" && item.count === 1) {
       return;
     }
-    if (e.target.name == "minusButton") {
-      this.setState({
-        pickItem: this.state.pickItem.map((el) =>
-          el.name == item.name
-            ? {
-                ...el,
-                price: parseInt((el.price * (el.count - 1)) / el.count),
-                count: el.count + inDecrement,
-              }
-            : el
-        ),
-      });
+    if (e.target.name === "minusButton") {
+      this.setState(
+        {
+          pickItem: this.state.pickItem.map((el) =>
+            el.name === item.name
+              ? {
+                  ...el,
+                  price: parseInt((el.price * (el.count - 1)) / el.count),
+                  count: el.count + inDecrement,
+                }
+              : el
+          ),
+        },
+        () => this.calculatePrice()
+      );
     }
+  };
+  checkItem = (item) => {
+    this.setState({
+      pickItem: this.state.pickItem.map((el) =>
+        el.name === item.name ? { ...el, active: true } : el
+      ),
+    });
+  };
+
+  calculatePrice = () => {
+    this.setState(
+      {
+        totalPrice: this.state.pickItem
+          .map((el) => el.price)
+          .reduce((a, b) => a + b, 0),
+      },
+      () => this.shippingfeeDelete()
+    );
+    sessionStorage.setItem(
+      "product",
+      this.state.pickItem.map((el) => el)
+    );
+  };
+
+  shippingfeeDelete = () => {
     if (this.state.totalPrice >= 50000) {
       this.setState({ shippingFee: 0 });
+    } else {
+      this.setState({ shippingFee: 2500 });
     }
-    this.setState({
-      totalPrice: this.state.pickItem
-        .map((el) => el.price)
-        .reduce((a, b) => a + b, 0),
-    });
   };
 
   deleteList = (item) => {
-    this.setState({
-      pickItem: this.state.pickItem.filter((el) => el.name !== item.name),
-    });
+    this.setState(
+      {
+        pickItem: this.state.pickItem.filter((el) => el.name !== item.name),
+      },
+      () => this.calculatePrice()
+    );
   };
 
   clearList = () => {
-    console.log(this.state.pickItem);
-    this.setState({ pickItem: [] });
-    console.log(this.state.pickItem);
+    this.setState({ pickItem: [] }, () => this.calculatePrice());
   };
 
-  componentDidMount() {
-    // fetch.("URL")
-    // .then(res => res.json())
-    // .then(res =>this.setState({pickItem: res.map(el => el.sth)}))
-    this.setFirstPrice();
-  }
+  deleteCheckedItem = (e) => {
+    this.setState(
+      {
+        pickItem: this.state.pickItem.filter((el) => el.active === false),
+        emptyDisplay: this.state.pickItem.length === 0 ? true : false,
+      },
+      () => this.calculatePrice()
+    );
+  };
 
   setFirstPrice = () => {
-    this.setState({
-      totalPrice: this.state.pickItem
-        .map((el) => el.price)
-        .reduce((a, b) => a + b, 0),
-    });
+    this.setState(
+      {
+        totalPrice: this.state.pickItem
+          .map((el) => el.price)
+          .reduce((a, b) => a + b, 0),
+      },
+      () => this.calculatePrice()
+    );
   };
 
   render() {
@@ -99,7 +139,9 @@ export default class Shoppingbag extends Component {
         <Nav />
         <span className="ShoppingbagTitle">Shopping Bag</span>
         <section className="OrderdList">
-          <span className="ShoppingbagEmpty">
+          <span
+            className={!this.state.emptyDisplay ? "hidden" : "ShoppingbagEmpty"}
+          >
             장바구니에 담으신 상품이 없습니다.
           </span>
           <table className="OrderdProductList">
@@ -110,6 +152,7 @@ export default class Shoppingbag extends Component {
               clearList={this.clearList}
               deleteList={this.deleteList}
               handleCounting={this.handleCounting}
+              checkItem={this.checkItem}
             />
           </table>
         </section>
@@ -118,7 +161,9 @@ export default class Shoppingbag extends Component {
             <div>
               <span>5만원 이상 결제 시 무료로 배송 받을 수 있습니다.</span>
               <div>
-                <span>선택한 상품 삭제하기</span>
+                <span onClick={(e) => this.deleteCheckedItem(e)}>
+                  선택한 상품 삭제하기
+                </span>
                 <span onClick={this.clearList}>장바구니 비우기</span>
               </div>
             </div>
@@ -147,12 +192,12 @@ export default class Shoppingbag extends Component {
               </ul>
             </div>
             <div className="OrderButton">
-              <Link className="totalOrderButton" to="/Main">
+              <Link className="totalOrderButton" to="/checkout">
                 전체 주문하기
               </Link>
               <div>
-                <Link to="/List">선택 상품만 주문</Link>
-                <Link to="/List" className="NaverOrder"></Link>
+                <Link to="/checkout">선택 상품만 주문</Link>
+                <Link to="/checkout" className="NaverOrder"></Link>
               </div>
             </div>
           </div>

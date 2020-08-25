@@ -3,20 +3,21 @@ import React, { Component } from "react";
 export default class ItemList extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   render() {
-    console.log("childState", this.state.pickedItem);
-    console.log("getLenth", this.props.pickedItem.length);
     return (
       <div className="ItemList" onChange={this.clearList}>
         {this.props.pickedItem.map((item, index) => {
           return (
             <td key={index} className="pickItem">
               <div className="pickItemPicture">
-                <input type="checkbox" id={`checkbox${index}`} />
-                <label for={`checkbox${index}`}></label>
+                <input
+                  type="checkbox"
+                  id={`checkbox${index}`}
+                  onClick={(e) => this.props.checkItem(e, item)}
+                />
+                <label htmlFor={`checkbox${index}`}></label>
                 <img alt="productImage" src={item.img} />
                 <span className="productName">{item.name}</span>
               </div>
