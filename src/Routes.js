@@ -6,6 +6,7 @@ import Detail from "../src/Pages/Detail/Detail";
 import Login from "../src/Pages/Sign/Login";
 import SignUp from "../src/Pages/Sign/SignUp";
 import About from "../src/Pages/About/About";
+import Store from "../src/Pages/Sign/Store";
 
 class Routes extends React.Component {
   render() {
@@ -18,6 +19,7 @@ class Routes extends React.Component {
           <Route exact path="/Sign" component={Login} />
           <Route exact path="/SignUp" component={SignUp} />
           <Route exact path="/About" component={About} />
+          <Route exact path="/Store" component={Store} />
         </Switch>
       </Router>
     );
