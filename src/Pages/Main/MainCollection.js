@@ -20,7 +20,7 @@ class MainCollection extends Component {
           <p>My Own Attitude. 나의 관점, 나의 태도.</p>
         </div>
         <div className="sectionBottom">
-          <Link to="/List"></Link>
+          <Link to="/list"></Link>
         </div>
       </div>
     );
