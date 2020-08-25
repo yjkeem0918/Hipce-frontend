@@ -169,7 +169,7 @@ export default class Shoppingbag extends Component {
             </div>
           </div>
           <div className="priceCalculatedWrapper">
-            <div className="PriceCalculated" onChange={(e) => this.cutValue(e)}>
+            <div className="priceCalculated" onChange={(e) => this.cutValue(e)}>
               <ul>
                 <li>
                   <span>주문금액</span>
