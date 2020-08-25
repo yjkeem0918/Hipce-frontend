@@ -23,11 +23,28 @@ export default class Shoppingbag extends Component {
     };
   }
 
-  componentDidMount() {
-    this.setFirstPrice();
-  }
   handleCounting = (item, inDecrement, e) => {
     e.preventDefault();
+    const minusValue = this.state.pickItem.map((el) =>
+      el.name === item.name
+        ? {
+            ...el,
+            price: parseInt((el.price * (el.count - 1)) / el.count),
+            count: el.count + inDecrement,
+          }
+        : el
+    );
+
+    const plusValue = this.state.pickItem.map((el) =>
+      el.name === item.name
+        ? {
+            ...el,
+            price: (el.price * (el.count + 1)) / el.count,
+            count: el.count + inDecrement,
+          }
+        : el
+    );
+
     if (e.target.name === "plusButton" && item.count === 5) {
       alert("최대주문수량 5개");
       return;
@@ -35,15 +52,7 @@ export default class Shoppingbag extends Component {
     if (e.target.name === "plusButton") {
       this.setState(
         {
-          pickItem: this.state.pickItem.map((el) =>
-            el.name === item.name
-              ? {
-                  ...el,
-                  price: (el.price * (el.count + 1)) / el.count,
-                  count: el.count + inDecrement,
-                }
-              : el
-          ),
+          pickItem: plusValue,
         },
         () => this.calculatePrice()
       );
@@ -54,20 +63,13 @@ export default class Shoppingbag extends Component {
     if (e.target.name === "minusButton") {
       this.setState(
         {
-          pickItem: this.state.pickItem.map((el) =>
-            el.name === item.name
-              ? {
-                  ...el,
-                  price: parseInt((el.price * (el.count - 1)) / el.count),
-                  count: el.count + inDecrement,
-                }
-              : el
-          ),
+          pickItem: minusValue,
         },
         () => this.calculatePrice()
       );
     }
   };
+
   checkItem = (item) => {
     this.setState({
       pickItem: this.state.pickItem.map((el) =>
@@ -84,10 +86,6 @@ export default class Shoppingbag extends Component {
           .reduce((a, b) => a + b, 0),
       },
       () => this.shippingfeeDelete()
-    );
-    sessionStorage.setItem(
-      "product",
-      this.state.pickItem.map((el) => el)
     );
   };
 
@@ -122,6 +120,10 @@ export default class Shoppingbag extends Component {
     );
   };
 
+  componentDidMount() {
+    this.setFirstPrice();
+  }
+
   setFirstPrice = () => {
     this.setState(
       {
@@ -137,67 +139,75 @@ export default class Shoppingbag extends Component {
     return (
       <div className="Shoppingbag">
         <Nav />
-        <span className="shoppingbagTitle">Shopping Bag</span>
-        <section className="OrderdList">
-          <span
-            className={!this.state.emptyDisplay ? "hidden" : "ShoppingbagEmpty"}
-          >
-            장바구니에 담으신 상품이 없습니다.
-          </span>
-          <table className="orderdProductList">
-            <ItemList
-              pickedItem={this.state.pickItem}
-              totalPrice={this.state.totalPrice}
-              onSubmit={this.onSearchSubmit}
-              clearList={this.clearList}
-              deleteList={this.deleteList}
-              handleCounting={this.handleCounting}
-              checkItem={this.checkItem}
-            />
-          </table>
-        </section>
-        <section className="shoppingbagFooter">
-          <div className="priceCalculatorWrapper">
-            <div>
-              <span>5만원 이상 결제 시 무료로 배송 받을 수 있습니다.</span>
+        <section className="shoppingbagContainer">
+          <span className="shoppingbagTitle">Shopping Bag</span>
+          <section className="OrderdList">
+            <span
+              className={
+                !this.state.emptyDisplay ? "hidden" : "ShoppingbagEmpty"
+              }
+            >
+              장바구니에 담으신 상품이 없습니다.
+            </span>
+            <table className="orderdProductList">
+              <ItemList
+                pickedItem={this.state.pickItem}
+                totalPrice={this.state.totalPrice}
+                onSubmit={this.onSearchSubmit}
+                clearList={this.clearList}
+                deleteList={this.deleteList}
+                handleCounting={this.handleCounting}
+                checkItem={this.checkItem}
+              />
+            </table>
+          </section>
+          <section className="shoppingbagFooter">
+            <div className="priceCalculatorWrapper">
               <div>
-                <span onClick={(e) => this.deleteCheckedItem(e)}>
-                  선택한 상품 삭제하기
-                </span>
-                <span onClick={this.clearList}>장바구니 비우기</span>
-              </div>
-            </div>
-          </div>
-          <div className="priceCalculatedWrapper">
-            <div className="priceCalculated" onChange={(e) => this.cutValue(e)}>
-              <ul>
-                <li>
-                  <span>주문금액</span>
-                  <span>{this.state.totalPrice}원</span>
-                </li>
-                <li>
-                  <span>배송비</span>
-                  <span>{this.state.shippingFee}원</span>
-                </li>
-                <li className="sum">
-                  <span>합계</span>
-                  <span>
-                    {this.state.totalPrice + this.state.shippingFee}원
+                <span>5만원 이상 결제 시 무료로 배송 받을 수 있습니다.</span>
+                <div>
+                  <span onClick={(e) => this.deleteCheckedItem(e)}>
+                    선택한 상품 삭제하기
                   </span>
-                </li>
-              </ul>
-            </div>
-            <div className="orderButton">
-              <Link className="totalOrderButton" to="/checkout">
-                전체 주문하기
-              </Link>
-              <div>
-                <Link to="/checkout">선택 상품만 주문</Link>
-                <Link to="/checkout" className="naverOrder"></Link>
+                  <span onClick={this.clearList}>장바구니 비우기</span>
+                </div>
               </div>
             </div>
-          </div>
+            <div className="priceCalculatedWrapper">
+              <div
+                className="priceCalculated"
+                onChange={(e) => this.cutValue(e)}
+              >
+                <ul>
+                  <li>
+                    <span>주문금액</span>
+                    <span>{this.state.totalPrice}원</span>
+                  </li>
+                  <li>
+                    <span>배송비</span>
+                    <span>{this.state.shippingFee}원</span>
+                  </li>
+                  <li className="sum">
+                    <span>합계</span>
+                    <span>
+                      {this.state.totalPrice + this.state.shippingFee}원
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div className="orderButton">
+                <Link className="totalOrderButton" to="/checkout">
+                  전체 주문하기
+                </Link>
+                <div>
+                  <Link to="/checkout">선택 상품만 주문</Link>
+                  <Link to="/checkout" className="naverOrder"></Link>
+                </div>
+              </div>
+            </div>
+          </section>
         </section>
+
         <Footer />
       </div>
     );

@@ -15,7 +15,7 @@ export default class ItemList extends Component {
                 <input
                   type="checkbox"
                   id={`checkbox${index}`}
-                  onClick={(e) => this.props.checkItem(e, item)}
+                  onClick={() => this.props.checkItem(item)}
                 />
                 <label htmlFor={`checkbox${index}`}></label>
                 <img alt="productImage" src={item.img} />

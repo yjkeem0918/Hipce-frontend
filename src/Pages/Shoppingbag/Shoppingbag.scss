@@ -1,7 +1,9 @@
 @import "../../Styles/common.scss";
 
 .Shoppingbag {
-  margin: 120px 20px 255px 20px;
+  .shoppingbagContainer {
+    margin: 100px auto;
+  }
   color: #8f5b59;
   a {
     text-decoration: none;
@@ -132,7 +134,7 @@
     justify-content: space-between;
     align-items: flex-start;
     max-width: calc(1300px + 9.5%);
-    margin: 60px auto 0 auto;
+    margin: 60px auto;
 
     .priceCalculatorWrapper {
       font-size: 14px;
