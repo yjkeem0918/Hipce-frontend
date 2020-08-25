@@ -1,8 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import ModalPortal from "../Pages/Search/ModalPortal";
+import Search from "../Pages/Search/Search";
+
 import "./Nav.scss";
 
 class Nav extends Component {
+  state = {
+    show: false,
+  };
+
+  showModal = () => {
+    console.log(this.state.show);
+
+    this.setState({ show: true });
+  };
+  hideModal = () => {
+    console.log(this.state.show);
+
+    this.setState({ show: false });
+  };
+
   render() {
     return (
       <div className="Nav">
@@ -34,7 +52,12 @@ class Nav extends Component {
               <Link to="/login" />
             </li>
             <li>
-              <Link to="/" />
+              <Link alt="search " onClick={this.showModal} />
+              {this.state.show && (
+                <ModalPortal>
+                  <Search onClose={this.hideModal} />
+                </ModalPortal>
+              )}
             </li>
             <li>
               <Link to="/shoppingbag" />

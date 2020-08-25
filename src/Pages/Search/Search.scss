@@ -1,0 +1,80 @@
+@import "../../Styles/common.scss";
+
+.Search {
+  @include center;
+  z-index: 100000;
+  background: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  .content {
+    background: white;
+    padding: 1rem;
+    width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60%;
+    .searchInput {
+      padding: 0 12%;
+      display: flex;
+      flex-direction: column;
+      margin: auto 0;
+    }
+
+    span {
+      font-size: 40px;
+      font-family: $pt;
+      color: #a36d6a;
+      margin-bottom: 5%;
+      font-weight: 700;
+      padding: 0px 50px;
+    }
+    button {
+      top: 10%;
+      width: 35px;
+      height: 35px;
+      position: absolute;
+      right: 4.75%;
+      border: black;
+      background-image: url("//hince.co.kr/assets/images/hince-icon-sprite-185484.png");
+      background-size: 490px 70px;
+      background-position-x: -350px;
+      background-color: white;
+      &:focus {
+        outline: none;
+      }
+    }
+    .inputWrapper {
+      margin: 0 50px;
+      input {
+        border: none;
+        border-bottom: 2px solid #a36d6a;
+        font-size: 40px;
+        padding: 20px;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+      .searchImg {
+        right: 14%;
+        position: absolute;
+        cursor: pointer;
+        background-image: url("//hince.co.kr/assets/images/hince-search-button.png");
+        background-size: 60px 60px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-color: white;
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+}
