@@ -1,0 +1,143 @@
+@import "../../Styles/common.scss";
+
+.productFilter {
+  .productFilterName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 170px;
+    padding: 0px 13%;
+    margin-top: 30px;
+    font-size: 48px;
+    font-family: $pt;
+    font-weight: 700;
+    color: #8f5b59;
+
+    span {
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      background-image: url("https://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
+      background-size: 490px 70px;
+      background-position-x: -385px;
+    }
+  }
+  .productFilterPallete {
+    display: flex;
+    width: 100%;
+    height: 160px;
+    padding: 0 13%;
+    font-size: 14px;
+    color: $brick;
+    background-color: #f1e9e9;
+
+    .palleteColorWrapper {
+      margin: auto 0 auto;
+      .colorListToggle {
+        background-color: #a36d6a;
+      }
+      .colorListToggleWhite {
+        background-color: "white";
+      }
+
+      div {
+        margin-top: 15px;
+
+        ul {
+          display: flex;
+          flex-wrap: nowrap;
+
+          li {
+            @include center;
+            width: 35px;
+            height: 35px;
+            border: 0.5px solid #c8a7a6;
+            margin-right: 6px;
+            background-color: white;
+
+            button {
+              width: 18px;
+              height: 18px;
+              padding: 1px;
+              border: none;
+              border-radius: 100%;
+            }
+          }
+        }
+      }
+    }
+    .palleteSearchBoxWrapper {
+      margin: auto 50px;
+    }
+
+    .palleteSearchBox {
+      display: flex;
+      flex-direction: column;
+
+      div {
+        margin-top: 15px;
+
+        input {
+          width: 140px;
+          height: 38px;
+          margin-right: 10px;
+          padding: 0;
+          border: 1px solid $brick;
+        }
+
+        button {
+          width: 67px;
+          height: 40px;
+          border: 1px solid $brick;
+          background-color: $brick;
+          color: white;
+        }
+      }
+    }
+  }
+  a {
+    margin: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+  .productFilteredName {
+    padding: 0px 13%;
+    height: 90px;
+    background-color: #f1e9e9;
+
+    div {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid #c8a7a6;
+
+      ul {
+        display: flex;
+      }
+      .filteredWordReset {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        margin: 0 5px 10px 0;
+        padding: 0 10px;
+        border: 1px solid #c8a7a6;
+        background-color: #fff;
+        color: $brick;
+        font-family: "Assistant", "Noto Sans KR", sans-serif;
+        font-size: 12px;
+      }
+    }
+    .filterWord {
+      @include center;
+      height: 30px;
+      margin: 0 5px 10px 0;
+      padding: 0 10px;
+      border: 1px solid #c8a7a6;
+      background-color: #fff;
+      font-size: 12px;
+      color: $brick;
+      font-family: "Assistant", "Noto Sans KR", sans-serif;
+    }
+  }
+}
