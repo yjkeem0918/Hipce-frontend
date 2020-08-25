@@ -8,7 +8,7 @@
     color: #8f5b59;
   }
 
-  .ShoppingbagTitle {
+  .shoppingbagTitle {
     display: flex;
     justify-items: flex-start;
     align-items: center;
@@ -32,7 +32,7 @@
       width: 100%;
     }
 
-    .OrderdProductList {
+    .orderdProductList {
       @include center;
       width: 100%;
 
@@ -127,14 +127,14 @@
     display: inline;
   }
 
-  .ShoppingbagFooter {
+  .shoppingbagFooter {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     max-width: calc(1300px + 9.5%);
     margin: 60px auto 0 auto;
 
-    .PriceCalculatorWrapper {
+    .priceCalculatorWrapper {
       font-size: 14px;
 
       div {
@@ -154,14 +154,14 @@
       }
     }
 
-    .PriceCalculatedWrapper {
+    .priceCalculatedWrapper {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       flex-direction: column;
       width: 420px;
 
-      .PriceCalculated {
+      .priceCalculated {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -193,7 +193,7 @@
         }
       }
 
-      .OrderButton {
+      .orderButton {
         width: 100%;
         margin-top: 25px;
 

@@ -137,14 +137,14 @@ export default class Shoppingbag extends Component {
     return (
       <div className="Shoppingbag">
         <Nav />
-        <span className="ShoppingbagTitle">Shopping Bag</span>
+        <span className="shoppingbagTitle">Shopping Bag</span>
         <section className="OrderdList">
           <span
             className={!this.state.emptyDisplay ? "hidden" : "ShoppingbagEmpty"}
           >
             장바구니에 담으신 상품이 없습니다.
           </span>
-          <table className="OrderdProductList">
+          <table className="orderdProductList">
             <ItemList
               pickedItem={this.state.pickItem}
               totalPrice={this.state.totalPrice}
@@ -156,8 +156,8 @@ export default class Shoppingbag extends Component {
             />
           </table>
         </section>
-        <section className="ShoppingbagFooter">
-          <div className="PriceCalculatorWrapper">
+        <section className="shoppingbagFooter">
+          <div className="priceCalculatorWrapper">
             <div>
               <span>5만원 이상 결제 시 무료로 배송 받을 수 있습니다.</span>
               <div>
@@ -168,36 +168,32 @@ export default class Shoppingbag extends Component {
               </div>
             </div>
           </div>
-          <div className="PriceCalculatedWrapper">
+          <div className="priceCalculatedWrapper">
             <div className="PriceCalculated" onChange={(e) => this.cutValue(e)}>
               <ul>
                 <li>
                   <span>주문금액</span>
-                  <span className="CalculatedPrice">
-                    {this.state.totalPrice}원
-                  </span>
+                  <span>{this.state.totalPrice}원</span>
                 </li>
                 <li>
                   <span>배송비</span>
-                  <span className="ShippingFee">
-                    {this.state.shippingFee}원
-                  </span>
+                  <span>{this.state.shippingFee}원</span>
                 </li>
                 <li className="sum">
                   <span>합계</span>
-                  <span className="ShippingFee">
+                  <span>
                     {this.state.totalPrice + this.state.shippingFee}원
                   </span>
                 </li>
               </ul>
             </div>
-            <div className="OrderButton">
+            <div className="orderButton">
               <Link className="totalOrderButton" to="/checkout">
                 전체 주문하기
               </Link>
               <div>
                 <Link to="/checkout">선택 상품만 주문</Link>
-                <Link to="/checkout" className="NaverOrder"></Link>
+                <Link to="/checkout" className="naverOrder"></Link>
               </div>
             </div>
           </div>
