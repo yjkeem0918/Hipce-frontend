@@ -14,11 +14,17 @@ class Main extends Component {
       currentPosY: 0,
       scroll: false,
       navBright: false,
+      newProduct: []
     };
   }
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
+    fetch("http://10.58.2.217:8000/products?tag=new")
+      .then(res => res.json())
+      .then(res => this.setState({
+        newProduct: res.products
+      }));
   }
 
   handleScroll = () => {
@@ -46,7 +52,7 @@ class Main extends Component {
       <div>
         <Nav />
         <MainCollection />
-        <MainNewProduct />
+        <MainNewProduct newProduct={newProduct}/>
         <MainBestSeller />
         <MainEdition />
         <MainHinceAtelier />
