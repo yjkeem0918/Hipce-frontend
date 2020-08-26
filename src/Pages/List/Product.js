@@ -7,19 +7,25 @@ export default class Product extends Component {
     return (
       <li className="Product">
         <section className="productImage">
-          <img alt="productImg" src={this.props.imgsrc} />
+          <img
+            className="productMainImg"
+            alt="productMainImg"
+            src={this.props.mainImgSrc}
+          />
+          <img
+            className="productSubImg"
+            alt="productSubImg"
+            src={this.props.subImgSrc}
+          />
         </section>
         <section className="productBottom">
           <div className="productBottomValue">
             <div>
-              <img
-                alt="cartbutton"
-                src="http://hince.co.kr/web/upload/custom_1.png"
-              />
+              <img alt="newTag" src={this.props.tag} />
             </div>
             <div>
               <Link to="/detail">
-                <p>무드인핸서 리퀴드 마뜨 얼루어먼트</p>
+                <p>{this.props.name}</p>
               </Link>
               <img
                 alt="cartMark"
