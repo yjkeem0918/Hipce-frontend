@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import "./Product.scss";
 
 export default class Product extends Component {
+  state = {
+    hidden:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQG3kNuIYI6goHe8l5pt9j3Nw1Sm96BqS5yVw&usqp=CAU",
+  };
+
   render() {
     return (
       <li className="Product">
@@ -23,7 +28,11 @@ export default class Product extends Component {
         <section className="productBottom">
           <div className="productBottomValue">
             <div>
-              <img alt="newTag" src={this.props.tag} />
+              {this.props.tag === null ? (
+                ""
+              ) : (
+                <img alt="stateLogo" src={this.props.tag} />
+              )}
             </div>
             <div>
               <Link to="/detail">

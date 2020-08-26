@@ -7,19 +7,22 @@ import ProductListBottom from "../List/ProductListBottom";
 import Footer from "../../Components/Footer";
 import "./List.scss";
 
+const hidden =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQG3kNuIYI6goHe8l5pt9j3Nw1Sm96BqS5yVw&usqp=CAU";
+
 class List extends Component {
   constructor() {
     super();
 
     this.state = {
-      newColors: [...SRC_SAMPLE],
+      newColors: [],
     };
   }
-  // componentDidMount() {
-  //   fetch("http://10.58.2.217:8000/shop/products")
-  //     .then((res) => res.json())
-  //     .then((res) => this.setState({ newColors: res.products }));
-  // }
+  componentDidMount() {
+    fetch("http://10.58.2.217:8000/products")
+      .then((res) => res.json())
+      .then((res) => this.setState({ newColors: res.products }));
+  }
 
   // componentDidUpdate(prevProps){
   //   if(prevProps.match.params.sth ! == this.props.match.params.sth){
@@ -39,14 +42,14 @@ class List extends Component {
         <div className="productListContainer">
           <ul className="productList">
             {this.state.newColors.map(
-              ({ main_image, price, name, tag, sub_image }, index) => (
+              ({ main_image, price, name, tag__image, sub_image }, index) => (
                 <Product
                   key={index}
                   mainImgSrc={main_image}
                   subImgSrc={sub_image}
                   price={price}
                   name={name}
-                  tag={tag}
+                  tag={tag__image}
                 />
               )
             )}
