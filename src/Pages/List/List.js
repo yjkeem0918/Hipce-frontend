@@ -7,9 +7,6 @@ import ProductListBottom from "../List/ProductListBottom";
 import Footer from "../../Components/Footer";
 import "./List.scss";
 
-const hidden =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQG3kNuIYI6goHe8l5pt9j3Nw1Sm96BqS5yVw&usqp=CAU";
-
 class List extends Component {
   constructor() {
     super();
@@ -19,29 +16,27 @@ class List extends Component {
     };
   }
   componentDidMount() {
-    fetch("http://10.58.2.217:8000/products")
+    fetch("http://localhost:3000/data/productMockdata.json")
       .then((res) => res.json())
-      .then((res) => this.setState({ newColors: res.products }));
+      .then((res) =>
+        this.setState({
+          newColors: res.srcsample,
+        })
+      );
   }
 
-  // componentDidUpdate(prevProps){
-  //   if(prevProps.match.params.sth ! == this.props.match.params.sth){
-  //   fetch("http://10.58.2.217:8000/shop/products")
-  //     .then((res) => res.json())
-  //     .then((res) => this.setState({ newColors: res.products }));
-  //   }
-  // }
-
   render() {
-    console.log(this.state.newColors);
+    const {
+      state: { newColors },
+    } = this;
     return (
       <div className="List">
         <Nav />
-        <ProductNav newColors={this.state.newColors} />
+        <ProductNav newColors={newColors} />
         <ProductFilter />
         <div className="productListContainer">
           <ul className="productList">
-            {this.state.newColors.map(
+            {newColors.map(
               ({ main_image, price, name, tag__image, sub_image }, index) => (
                 <Product
                   key={index}
@@ -61,131 +56,5 @@ class List extends Component {
     );
   }
 }
-//sample data
-
-// ("http://hince.co.kr//hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg");
-// ("무드인핸서 리퀴드 마뜨 얼루어먼트");
-// ("19000.0000");
-// ("http://hince.co.kr//hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg");
-// ("http://hince.co.kr/web/upload/custom_1.png");
-const SRC_SAMPLE = [
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-  {
-    main_image:
-      "https://hince.co.kr/web/product/tiny/20200617/799189befb8ee4dbb9a2e1bb31f970fd.jpg",
-    name: "무드인핸서 리퀴드 마뜨 얼루어먼트",
-    price: "19000.0000",
-    sub_image:
-      "https://hince.co.kr/web/product/medium/20200617/306c6ab8ac1a6d72f935c93b4fbfd672.jpg",
-    tag: "http://hince.co.kr/web/upload/custom_1.png",
-  },
-];
 
 export default List;

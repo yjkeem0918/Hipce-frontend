@@ -3,12 +3,10 @@ import { Link } from "react-router-dom";
 import "./Product.scss";
 
 export default class Product extends Component {
-  state = {
-    hidden:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQG3kNuIYI6goHe8l5pt9j3Nw1Sm96BqS5yVw&usqp=CAU",
-  };
-
   render() {
+    const {
+      props: { mainImgSrc, subImgSrc, tag, name, price },
+    } = this;
     return (
       <li className="Product">
         <section className="productImage">
@@ -16,27 +14,21 @@ export default class Product extends Component {
             <img
               className="productMainImg"
               alt="productMainImg"
-              src={this.props.mainImgSrc}
+              src={mainImgSrc}
             />
             <img
               className="productSubImg"
               alt="productSubImg"
-              src={this.props.subImgSrc}
+              src={subImgSrc}
             />
           </Link>
         </section>
         <section className="productBottom">
           <div className="productBottomValue">
-            <div>
-              {this.props.tag === null ? (
-                ""
-              ) : (
-                <img alt="stateLogo" src={this.props.tag} />
-              )}
-            </div>
+            <div>{tag === null ? "" : <img alt="stateLogo" src={tag} />}</div>
             <div>
               <Link to="/detail">
-                <p>{this.props.name}</p>
+                <p>{name}</p>
               </Link>
               <Link>
                 <img
@@ -46,7 +38,7 @@ export default class Product extends Component {
               </Link>
             </div>
           </div>
-          <span>{Number(this.props.price).toLocaleString()}원</span>
+          <span>{Number(price).toLocaleString()}원</span>
         </section>
       </li>
     );
