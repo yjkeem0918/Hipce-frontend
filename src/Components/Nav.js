@@ -3,9 +3,26 @@ import { Link } from "react-router-dom";
 import "./Nav.scss";
 
 class Nav extends Component {  
+  constructor() {
+    super();
+    this.state = {
+      navReduced: false,
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleNavReduced)
+  }
+
+  handleNavReduced = () => {
+    this.setState({
+      navReduced: document.body.getBoundingClientRect().top <= -100
+    })
+  }
+
   render() {
     return (
-      <div className="Nav">
+      <div className={this.state.navReduced? "NavReduced" : "Nav"}>
         <div className="siteLogo">
           <Link to="/main" />
         </div>
