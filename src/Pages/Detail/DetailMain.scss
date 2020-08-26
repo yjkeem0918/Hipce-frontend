@@ -15,8 +15,8 @@ body {
   background-color: #faf9f7;
   .detail_mainImg {
     img {
-      width: 800.2px;
-      height: 665px;
+      width: 800px;
+      height: 650px;
       margin-right: 90px;
     }
   }
@@ -115,12 +115,12 @@ body {
               animation: onHoverAtag 0.25s ease-out;
               animation-fill-mode: both;
             }
-            .colorSelected{
+            .colorSelected {
               background-image: url("https://hince.co.kr/assets/images/hince-option-checker.png");
               background-size: 32px 32px;
               background-position: center center;
             }
-            }
+          }
         }
       }
     }
@@ -143,24 +143,24 @@ body {
 }
 .buttonBox {
   display: flex;
-  span{
-  @include center;
-  width: 50px;
-  heigh: 50px;  
-  background-color: #a36d6a;
-  margin-right: 12px;
-  .cartBtn {
-    height: 35px;
-    width: 35px;
+  span {
+    @include center;
+    width: 50px;
+    heigh: 50px;
     background-color: #a36d6a;
-    background-image: url("https://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
-    background-position-y: -35px;
-    background-position-x: -105px;
-    background-size: 490px 70px;
-    cursor: pointer;
-    @include button;
+    margin-right: 12px;
+    .cartBtn {
+      height: 35px;
+      width: 35px;
+      background-color: #a36d6a;
+      background-image: url("https://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
+      background-position-y: -35px;
+      background-position-x: -105px;
+      background-size: 490px 70px;
+      cursor: pointer;
+      @include button;
+    }
   }
-}
   .buyBtn {
     width: calc(100% - 62px);
     height: 50px;
@@ -202,5 +202,3 @@ body {
     color: rgb(255, 255, 255);
   }
 }
-
- 

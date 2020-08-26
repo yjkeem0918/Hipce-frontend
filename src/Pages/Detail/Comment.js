@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import "./Comment.scss";
 import CommentList from './CommentList'
+import "./Comment.scss";
 
 class Comment extends Component {
     constructor(){
@@ -15,7 +15,6 @@ class Comment extends Component {
         };
     }  
     
-    num=0  
     
     handleText = (e) => {
      this.setState({
@@ -58,7 +57,6 @@ class Comment extends Component {
     
     render() {
         const disabled = this.state.text.length > 0;
-        
         return (
             <div className="Comment">
                 <div className="hiddenInput">

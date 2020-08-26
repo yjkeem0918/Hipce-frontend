@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import CommentList from './CommentList'
-import Showmore from './Showmore'
-import CountLike from './CountLike';
 import './Review.scss';
  
  
 
 class Review extends Component {
+    
     constructor(){
         super();
         this.state = {
@@ -16,13 +15,15 @@ class Review extends Component {
                 name:"",
                 comment:""
             }],
-            buttonName: "댓글을 작성해주세요",
             show: true,
-            totalScore: 0,
-            score: 0,
+            buttonName: "댓글을 작성해주세요",
+            yesClicked: true,
+            noClicked: false,
         };
-    }  
-    // num=0  
+    }   
+   
+    
+
     
     handleText = (e) => {
      this.setState({
@@ -52,8 +53,8 @@ class Review extends Component {
     handleRemove=(num)=>{
         alert('이 댓글을 정말로 삭제하시겠습니까?')
         const{ replies } =this.state;
-        const nextReply = replies.filter((text)=>{
-            return text.num!== num;
+        const nextReply = replies.filter((text,index)=>{
+            return index!== num;
         });
         this.setState({
             replies: nextReply,
@@ -75,11 +76,20 @@ class Review extends Component {
         }
     
     handleYesButton = () => {
-        this.setState({
-            
-        })
+        this.setState((prevState) => ({
+           yesClicked: !prevState.yesClicked
+        }))
+        console.log("hi", this.state.yesClicked)
+    }
+
+    handleNoButton = () => {
+        this.setState((prevState) => ({
+            noClicked: !prevState.noClicked
+        }))
+        console.log("no", this.state.noClicked)
     }
      
+
     
 
     render() {
@@ -92,42 +102,31 @@ class Review extends Component {
                         <li className="commentContainer">
                             <div className="reviewContentsBox">
                                 <div className="ratingWrapper">
-                                    <div className="starRating">
+                                    {/* <div className="starRating">
                                         <span className="star"></span>
                                         <span className="star"></span>
                                         <span className="star"></span>
                                         <span className="star"></span>
                                         <span className="star"></span>
                                     </div>
-                                    <div className="goodRating">-아주 좋아요</div>
+                                    <div className="goodRating">-아주 좋아요</div> */}
                                     <div className="scoreCount">
-                                    (<strong className="totalScore">{this.state.totalScore}</strong>
+                                    (<strong className="totalScore">{this.state.totalScore}0</strong>
                                         명 중
-                                    <strong className="totalScore">{this.state.score}</strong>
+                                    <strong className="totalScore">{this.state.score}0</strong>
                                         명이 이 리뷰에 도움이 된다고 선택 했습니다.)
                                     </div>
                                 </div>
                                 <div className="reviewContent">
                                 {this.props.content}
-                                {/* 힌스 디자인에 반해서 리뷰 찾아보다가 한번 사봤어요.
-                                <br />
-                                원체 쨍한 색감은 안받는 편이라 얼루어먼트 구매했고, 생각대로 너무 예쁜 색상이에요. 단품으로 발라도 예쁘고, 다른 색상이랑 섞어서 발라도 무난하게 섞여드는 색상이라 활용 잘 할 것 같네요. 
-                                <br />
-                                <br />
-                                디자인은 말할 것 없이 곡선, 색감 다 마음에 들고, 패키징도 예뻐서 박스를 못 버리고 있네요.
-                                <br /> 
-                                <br />
-                                예쁘게 잘 사용하겠습니다:-) */}
                                 </div>
-                                {/* <img src="./Images/review.jpg" /> */}
+                                <img  src={this.props.img} />
                                 <div className="reviewFoot">
                                 <a onClick={this.showAllComment}>{this.state.buttonName}</a>
                                 <div className="titleDivider">|</div>
                                 <div className="userQuestion">
                                     이 리뷰가 도움이 되었나요?
                                 </div>
-                                 {/* <CountLike handleYesButton={this.handleYesButton}
-                                 handleNoButton={this.handleNoButton}/> */}
                                  <div className="buttonWrapper">
                                 <button className="like" onClick={this.handleYesButton}>네</button>
                                 <button className="dislike" onClick={this.handleNoButton}>아니요</button>
@@ -141,7 +140,7 @@ class Review extends Component {
                             <ul>
                                 {this.state.replies.map((el,idx) => {
                                     return <CommentList key={idx} comment={el.comment} userName={el.name}  
-                                    handleRemove={() => this.handleRemove(el.num)}/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                                    handleRemove={() => this.handleRemove(idx)}/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
                                 })}
                                 
                             </ul>
