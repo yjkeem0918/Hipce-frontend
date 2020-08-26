@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import API from "../../config";
 import Nav from "../../Components/Nav";
 import Footer from "../../Components/Footer";
 import "./Login.scss";
@@ -19,16 +20,17 @@ class Login extends Component {
   };
 
   handleLogin = () => {
-    if (!this.state.id && !this.state.pw) {
+    const { id, pw } = this.state;
+    if (!id && !pw) {
       alert("아이디 입력값은 필수입니다.");
-    } else if (this.state.id.length >= 1 && !this.state.pw) {
+    } else if (id.length >= 1 && !pw) {
       alert("패스워드 항목은 필수 입력값입니다.");
     } else if (this.state.pw.length >= 1 && !this.state.id) {
       alert("아이디 항목은 필수 입력값입니다.");
     } else if (this.state.pw.length < 4 && this.state.id) {
       alert("패스워드 항목이 4자(개) 이상으로 해주십시오.");
     } else {
-      fetch("http://10.58.5.29:8001/user/signin", {
+      fetch(`${API}/user/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -79,12 +81,7 @@ class Login extends Component {
               />
             </div>
             <div className="signInButtonBox">
-              <button
-                onClick={() => {
-                  this.handleLogin();
-                }}
-                className="signInButton"
-              >
+              <button onClick={this.handleLogin} className="signInButton">
                 SIGN IN
               </button>
               <div className="forgotAccount">
