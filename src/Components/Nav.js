@@ -2,10 +2,32 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import "./Nav.scss";
 
-class Nav extends Component {
+class Nav extends Component {  
+  constructor() {
+    super();
+    this.state = {
+      navReduced: false,
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleNavReduced)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleNavReduced)
+  }
+
+  handleNavReduced = () => {
+    this.setState({
+      navReduced: window.scrollY >= 100
+    })
+  }
+
   render() {
+    const {navReduced} = this.state;
     return (
-      <div className="Nav">
+      <div className={navReduced? "NavReduced" : "Nav"}>
         <div className="siteLogo">
           <Link to="/main" />
         </div>
