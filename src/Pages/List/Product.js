@@ -7,16 +7,18 @@ export default class Product extends Component {
     return (
       <li className="Product">
         <section className="productImage">
-          <img
-            className="productMainImg"
-            alt="productMainImg"
-            src={this.props.mainImgSrc}
-          />
-          <img
-            className="productSubImg"
-            alt="productSubImg"
-            src={this.props.subImgSrc}
-          />
+          <Link>
+            <img
+              className="productMainImg"
+              alt="productMainImg"
+              src={this.props.mainImgSrc}
+            />
+            <img
+              className="productSubImg"
+              alt="productSubImg"
+              src={this.props.subImgSrc}
+            />
+          </Link>
         </section>
         <section className="productBottom">
           <div className="productBottomValue">
@@ -27,10 +29,12 @@ export default class Product extends Component {
               <Link to="/detail">
                 <p>{this.props.name}</p>
               </Link>
-              <img
-                alt="cartMark"
-                src="http://hince.co.kr/assets/images/hince-cart-icon.jpg"
-              />
+              <Link>
+                <img
+                  alt="cartMark"
+                  src="http://hince.co.kr/assets/images/hince-cart-icon.jpg"
+                />
+              </Link>
             </div>
           </div>
           <span>{Number(this.props.price).toLocaleString()}원</span>

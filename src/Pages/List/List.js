@@ -21,12 +21,20 @@ class List extends Component {
   //     .then((res) => this.setState({ newColors: res.products }));
   // }
 
+  // componentDidUpdate(prevProps){
+  //   if(prevProps.match.params.sth ! == this.props.match.params.sth){
+  //   fetch("http://10.58.2.217:8000/shop/products")
+  //     .then((res) => res.json())
+  //     .then((res) => this.setState({ newColors: res.products }));
+  //   }
+  // }
+
   render() {
     console.log(this.state.newColors);
     return (
       <div className="List">
         <Nav />
-        <ProductNav />
+        <ProductNav newColors={this.state.newColors} />
         <ProductFilter />
         <div className="productListContainer">
           <ul className="productList">

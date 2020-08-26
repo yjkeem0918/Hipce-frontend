@@ -6,7 +6,11 @@ export default class ProductNav extends Component {
   render() {
     return (
       <div className="productNav">
-        <Link to="/main">
+        <Link
+        // onClick={() =>
+        //   this.props.history.push(`http://10.58.2.217:8000/shop/products?category=${}`)
+        // }
+        >
           <img
             alt="productCategory"
             src="https://hince.co.kr/assets/images/hince-category-lip.png"
