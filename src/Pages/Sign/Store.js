@@ -19,7 +19,7 @@ class Store extends Component {
         <div className="pageCover"></div>
         <div className="storeBox">
           <div className="descriptionContainer">
-            <h3>
+            <h3 className="descriptionTitle">
               무드 내러티브 브랜드 힌스의
               <br />
               첫번째 플래그쉽 스토어, 힌스 아틀리에.
@@ -31,37 +31,69 @@ class Store extends Component {
               경험할 수 있는 특별한 테스팅 서비스와 무드룸을 경험하며 당신만의
               분위기를 마주해 보세요.
             </div>
-
-            {/* <div className="map">
-              <img src="/Images/store.jpg" alt="store" />
-              <div className="hinceStore">
-                <h3 className="titleContainer">hince Atelier Seongsu</h3>
-                <div className="titleBox">
-                  <p className="des1">서울 성동구 왕십리로14길 22-2</p>
-                  <p className="des2">02-2135-3031</p>
-                </div>
-                <div className="titleBox">
-                  <p className="des1">월요일 ~ 일요일</p>
-                  <p className="des2">12:00 ~ 8:00</p>
-                </div>
-              </div>
-            </div> */}
-            {/* <div className="curationZoneWrapper">
-              <div className="curationZone">
-                <h3 className="titleContainer">Curation Zone</h3>
-                <p className="des1">
-                  매장 내에 비치된 립 테스터 카드를 이용해
-                  <br />
-                  나에게 맞는 컬러 무드를 찾아보세요.
-                </p>
-              </div>
-            </div> */}
+          </div>
+          <div className="StoreWrapper">
+            <img src="/Images/store.jpg" alt="store" />
+            <div className="textSideBox">
+              <p className="textSideTitle">hince Atelier Seongsu</p>
+              <p className="textSide">
+                서울 성동구 왕십리로14길 22-2
+                <br />
+                02-2135-3031
+              </p>
+              <p className="textSide">
+                월요일 ~ 일요일
+                <br />
+                12:00~8:00
+              </p>
+            </div>
+          </div>
+          <div className="imageWrapper">
+            <div className="imageSideBox">
+              <p className="imageSideTitle">Curation Zone</p>
+              <p className="imageSide">
+                매장 내에 비치된 립 테스터 카드를 이용해
+                <br />
+                나에게 맞는 컬러 무드를 찾아보세요.
+              </p>
+            </div>
+            <img src="/Images/store2.jpg" alt="store" />
+          </div>
+          <div className="imageWrapper">
+            <img src="/Images/store3.jpg" alt="store" />
+            <div className="imageSideBox">
+              <p className="imageSideTitle">Private Test Bar</p>
+              <p className="imageSide">
+                프라이빗 테스트바에서 조금 더 온전히 힌스의 제품을 경험해보세요.
+                여러분을 위해 준비된 립 스크럽은 각질없이 부드러운 입술을
+                선사합니다. 매끄러운 입술 위, 힌스의 무드를 만끽해보세요!
+              </p>
+            </div>
+          </div>
+          <div className="imageWrapper">
+            <div className="imageSideBox">
+              <p className="imageSideTitle">Mood Room</p>
+              <p className="imageSide">
+                힌스의 무드룸에서 나만의 분위기를 마주해보세요.
+              </p>
+            </div>
+            <img src="/Images/store1.jpg" alt="store" />
           </div>
         </div>
-        <div className="StoreBox">Store</div>
-        {this.state.locationInfo.map((location, index) => (
-          <StoreList info={location.info} name={location.name} />
-        ))}
+        <div className="storeSection">
+          <div className="StoreBox">Store</div>
+          <div className="storeSearchBarBox">
+            <span className="searchIcon"></span>
+            <input
+              className="searchBar"
+              type="text"
+              placeholder="매장명 또는 지역명으로 가까운 곳을 찾아보세요."
+            ></input>
+          </div>
+          {this.state.locationInfo.map((location, index) => (
+            <StoreList info={location.info} name={location.name} />
+          ))}
+        </div>
       </div>
     );
   }

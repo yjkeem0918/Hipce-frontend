@@ -2,10 +2,9 @@
 
 .Store {
   .pageHeader {
-    padding: 0 69px;
-    max-width: calc(1300px + 9.5%);
+    padding: 0 300px;
     .pageTitle {
-      padding: 215px 0 50px;
+      padding: 200px 0 50px;
       color: #8f5b59;
       font-size: 48px;
       letter-spacing: 1px;
@@ -23,96 +22,98 @@
   }
   .storeBox {
     padding: 0 300px;
+    margin-bottom: 120px;
     .descriptionContainer {
       padding: 80px 0;
-      color: #8f5b59;
-      font-size: 20px;
-      margin-bottom: 30px;
-      font-weight: bold;
-      line-height: 1.8;
+      .descriptionTitle {
+        font-weight: bold;
+        line-height: 1.8;
+        color: #8f5b59;
+        font-size: 20px;
+        margin-bottom: 30px;
+      }
       .description {
-        margin-top: 30px;
         font-size: 16px;
         font-weight: 400;
         max-width: 700px;
-        word-break: keep-all;
-        color: black;
+        line-height: 1.8;
       }
-      .map {
-        display: flex;
-        padding-top: 80px;
-        .hinceStore {
-          padding: 65px;
+    }
+    .StoreWrapper {
+      display: flex;
+      .textSideBox {
+        padding: 65px;
+        .textSideTitle {
+          color: #8f5b59;
+          font-size: 24px;
+          font-weight: 700;
           margin-bottom: 20px;
-          .titleContainer {
-            font-size: 24px;
-            font-weight: 700;
-            font-family: $assistance;
-            line-height: 1.8;
-            color: #8f5b59;
-            margin-bottom: 20px;
-          }
-          .titleBox {
-            margin-top: 10px;
-          }
-          .des1,
-          .des2 {
-            font-size: 16px;
-            word-break: keep-all;
-            color: #333;
-            font-weight: 400;
-            line-height: px;
-          }
+          font-weight: bold;
+        }
+        .textSide {
+          font-size: 16px;
+          line-height: 1.8;
+          color: #333;
+          margin-top: 30px;
+        }
+      }
+    }
+    .imageWrapper {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 100px;
+      img {
+        width: 845px;
+        height: 528px;
+      }
+      .imageSideBox {
+        padding: 65px 0 65px;
+        width: 325px;
+        height: 185px;
+        .imageSideTitle {
+          color: #8f5b59;
+          font-size: 24px;
+          font-weight: 700;
+          margin-bottom: 20px;
+          font-weight: bold;
+        }
+        .imageSide {
+          font-size: 16px;
+          margin-top: 10px;
+          line-height: 1.8;
         }
       }
     }
   }
-}
-
-.StoreWrapper {
-  padding: 0 68px;
-  .StoreBox {
-    color: #8f5b59;
-    font-size: 48px;
-    font-family: $pt;
-    letter-spacing: 1px;
-    font-weight: bold;
-  }
-  .searchBarBox {
-    margin: 20px 0;
-    display: flex;
-    justify-content: flex-end;
-    .storeSearchInput {
-      border: none;
-      outline: none;
-      font-size: 14px;
-      padding: 10px;
-      width: 290px;
+  .storeSection {
+    margin: 0 300px;
+    .StoreBox {
+      color: #8f5b59;
+      font-size: 48px;
+      font-family: $pt;
+      letter-spacing: 1px;
+      font-weight: bold;
     }
-  }
-  .tabHeader {
-    cursor: pointer;
-    padding: 25px 12px;
-    position: relative;
-    padding: 25px 15px;
-    border: 1px solid black;
-    height: 71px;
-    .storeName {
-      display: inline-block;
-      width: 260px;
+    .storeSearchBarBox {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .searchIcon {
+        display: inline-block;
+        background-size: 350px 50px;
+        background-position-x: -50px;
+        width: 25px;
+        height: 25px;
+        background-image: url("http://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
+      }
+      .searchBar {
+        border: none;
+        outline: none;
+        font-size: 14px;
+        padding: 10px;
+        width: 290px;
+        margin: 20px 0;
+      }
     }
   }
 }
-
-// .curationZoneWrapper {
-//   display: flex;
-//   .curationZone {
-//     background-image: url(http://hince.co.kr/images/location/curation-1.jpg);
-//     background-size: 800px;
-//     // background-size: cover;
-//     // background-position: center center;
-//     background-repeat: no-repeat;
-//     width: 800px;
-//     height: auto;
-//   }
-// }
