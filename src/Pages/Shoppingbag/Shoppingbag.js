@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Nav from "../../Components/Nav";
-import Footer from "../../Components/Footer";
-import "../../Styles/common.scss";
-import "./Shoppingbag.scss";
-import "../../Styles/reset.scss";
-import "./ItemList";
 import ItemList from "./ItemList";
+import Footer from "../../Components/Footer";
+import "./Shoppingbag.scss";
 
 export default class Shoppingbag extends Component {
   constructor(props) {
@@ -14,27 +11,21 @@ export default class Shoppingbag extends Component {
 
     this.state = {
       countNumber: {},
-      pickItem: [...pickedItem].map((el) => ({ ...el, active: false })),
+      pickItem: [].map((el) => ({ ...el, active: false })),
       totalPrice: 0,
-      realtotalPrice: null,
       shippingFee: 2500,
       checkItem: false,
       emptyDisplay: false,
     };
   }
+  componentDidMount() {
+    fetch("http://localhost:3000/data/mockDataForShopping.json")
+      .then((res) => res.json())
+      .then((res) => this.setState({ pickItem: res.pickedItem }));
+    this.setFirstPrice();
+  }
 
-  handleCounting = (item, inDecrement, e) => {
-    e.preventDefault();
-    const minusValue = this.state.pickItem.map((el) =>
-      el.name === item.name
-        ? {
-            ...el,
-            price: parseInt((el.price * (el.count - 1)) / el.count),
-            count: el.count + inDecrement,
-          }
-        : el
-    );
-
+  countPlus = (item, inDecrement, e) => {
     const plusValue = this.state.pickItem.map((el) =>
       el.name === item.name
         ? {
@@ -45,11 +36,11 @@ export default class Shoppingbag extends Component {
         : el
     );
 
-    if (e.target.name === "plusButton" && item.count === 5) {
-      alert("최대주문수량 5개");
-      return;
-    }
-    if (e.target.name === "plusButton") {
+    if (inDecrement === +1) {
+      if (item.count === 5) {
+        alert("최대주문수량 5개");
+        return;
+      }
       this.setState(
         {
           pickItem: plusValue,
@@ -57,10 +48,23 @@ export default class Shoppingbag extends Component {
         () => this.calculatePrice()
       );
     }
-    if (e.target.name === "minusButton" && item.count === 1) {
-      return;
-    }
-    if (e.target.name === "minusButton") {
+  };
+
+  countMinus = (item, inDecrement) => {
+    const minusValue = this.state.pickItem.map((el) =>
+      el.name === item.name
+        ? {
+            ...el,
+            price: parseInt((el.price * (el.count - 1)) / el.count),
+            count: el.count + inDecrement,
+          }
+        : el
+    );
+
+    if (inDecrement === -1) {
+      if (item.count === 1) {
+        return;
+      }
       this.setState(
         {
           pickItem: minusValue,
@@ -71,30 +75,29 @@ export default class Shoppingbag extends Component {
   };
 
   checkItem = (item) => {
+    const newPickItem = this.state.pickItem.map((el) =>
+      el.name === item.name ? { ...el, active: true } : el
+    );
     this.setState({
-      pickItem: this.state.pickItem.map((el) =>
-        el.name === item.name ? { ...el, active: true } : el
-      ),
+      pickItem: newPickItem,
     });
   };
 
   calculatePrice = () => {
+    const sumPrice = this.state.pickItem
+      .map((el) => el.price)
+      .reduce((a, b) => a + b, 0);
     this.setState(
       {
-        totalPrice: this.state.pickItem
-          .map((el) => el.price)
-          .reduce((a, b) => a + b, 0),
+        totalPrice: sumPrice,
       },
       () => this.shippingfeeDelete()
     );
   };
 
   shippingfeeDelete = () => {
-    if (this.state.totalPrice >= 50000) {
-      this.setState({ shippingFee: 0 });
-    } else {
-      this.setState({ shippingFee: 2500 });
-    }
+    const { totalPrice } = this.state;
+    this.setState({ shippingFee: totalPrice >= 50000 ? 0 : 2500 });
   };
 
   deleteList = (item) => {
@@ -120,10 +123,6 @@ export default class Shoppingbag extends Component {
     );
   };
 
-  componentDidMount() {
-    this.setFirstPrice();
-  }
-
   setFirstPrice = () => {
     this.setState(
       {
@@ -136,28 +135,40 @@ export default class Shoppingbag extends Component {
   };
 
   render() {
+    const {
+      state: {
+        emptyDisplay,
+        pickItem,
+        totalPrice,
+        onSearchSubmit,
+        shippingFee,
+      },
+      clearList,
+      deleteList,
+      checkItem,
+      deleteCheckedItem,
+      countPlus,
+      countMinus,
+    } = this;
     return (
       <div className="Shoppingbag">
         <Nav />
         <section className="shoppingbagContainer">
           <span className="shoppingbagTitle">Shopping Bag</span>
           <section className="OrderdList">
-            <span
-              className={
-                !this.state.emptyDisplay ? "hidden" : "ShoppingbagEmpty"
-              }
-            >
+            <span className={!emptyDisplay ? "hidden" : "ShoppingbagEmpty"}>
               장바구니에 담으신 상품이 없습니다.
             </span>
             <table className="orderdProductList">
               <ItemList
-                pickedItem={this.state.pickItem}
-                totalPrice={this.state.totalPrice}
-                onSubmit={this.onSearchSubmit}
-                clearList={this.clearList}
-                deleteList={this.deleteList}
-                handleCounting={this.handleCounting}
-                checkItem={this.checkItem}
+                pickedItem={pickItem}
+                totalPrice={totalPrice}
+                onSubmit={onSearchSubmit}
+                clearList={clearList}
+                deleteList={deleteList}
+                checkItem={checkItem}
+                countPlus={countPlus}
+                countMinus={countMinus}
               />
             </table>
           </section>
@@ -166,32 +177,27 @@ export default class Shoppingbag extends Component {
               <div>
                 <span>5만원 이상 결제 시 무료로 배송 받을 수 있습니다.</span>
                 <div>
-                  <span onClick={(e) => this.deleteCheckedItem(e)}>
+                  <span onClick={(e) => deleteCheckedItem(e)}>
                     선택한 상품 삭제하기
                   </span>
-                  <span onClick={this.clearList}>장바구니 비우기</span>
+                  <span onClick={clearList}>장바구니 비우기</span>
                 </div>
               </div>
             </div>
             <div className="priceCalculatedWrapper">
-              <div
-                className="priceCalculated"
-                onChange={(e) => this.cutValue(e)}
-              >
+              <div className="priceCalculated">
                 <ul>
                   <li>
                     <span>주문금액</span>
-                    <span>{this.state.totalPrice}원</span>
+                    <span>{totalPrice}원</span>
                   </li>
                   <li>
                     <span>배송비</span>
-                    <span>{this.state.shippingFee}원</span>
+                    <span>{shippingFee}원</span>
                   </li>
                   <li className="sum">
                     <span>합계</span>
-                    <span>
-                      {this.state.totalPrice + this.state.shippingFee}원
-                    </span>
+                    <span>{totalPrice + shippingFee}원</span>
                   </li>
                 </ul>
               </div>
@@ -207,33 +213,8 @@ export default class Shoppingbag extends Component {
             </div>
           </section>
         </section>
-
         <Footer />
       </div>
     );
   }
 }
-//sampleData
-const pickedItem = [
-  {
-    img:
-      "https://hince.co.kr/web/product/tiny/20200617/b4b788b34fdd1c711ee75bf74a8096a6.jpg",
-    name: "무드인핸서 리퀴드 마뜨 오운 스킨",
-    price: 19000,
-    count: 2,
-  },
-  {
-    img:
-      "https://hince.co.kr/web/product/tiny/20200617/b4b788b34fdd1c711ee75bf74a8096a6.jpg",
-    name: "무드 무드무드 리퀴드 마뜨 오운 스킨",
-    price: 15000,
-    count: 1,
-  },
-  {
-    img:
-      "https://hince.co.kr/web/product/tiny/20200617/b4b788b34fdd1c711ee75bf74a8096a6.jpg",
-    name: "무드 무드무드 와라라 마뜨 오운 스킨",
-    price: 15000,
-    count: 1,
-  },
-];

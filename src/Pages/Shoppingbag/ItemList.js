@@ -1,48 +1,45 @@
 import React, { Component } from "react";
 
 export default class ItemList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
+    const {
+      props: { pickedItem, checkItem, deleteList, countPlus, countMinus },
+    } = this;
     return (
       <div className="ItemList" onChange={this.clearList}>
-        {this.props.pickedItem.map((item, index) => {
+        {pickedItem.map((item, index) => {
           return (
-            <td key={index} className="pickItem">
+            <td className="pickItem" key={index}>
               <div className="pickItemPicture">
                 <input
-                  type="checkbox"
                   id={`checkbox${index}`}
-                  onClick={() => this.props.checkItem(item)}
+                  type="checkbox"
+                  onClick={() => checkItem(item)}
                 />
                 <label htmlFor={`checkbox${index}`}></label>
                 <img alt="productImage" src={item.img} />
                 <span className="productName">{item.name}</span>
               </div>
               <div className="pickItemCount">
-                <form className="count" onSubmit={this.onFormSubmit}>
-                  <button
+                <form className="count">
+                  <span
                     className="countButton"
                     name="minusButton"
-                    onClick={(e) => this.props.handleCounting(item, -1, e)}
+                    onClick={() => countMinus(item, -1)}
                   >
-                    {" "}
-                    -{" "}
-                  </button>
+                    -
+                  </span>
                   <span>{item.count}</span>
-                  <button
+                  <span
                     className="countButton"
                     name="plusButton"
-                    onClick={(e) => this.props.handleCounting(item, +1, e)}
+                    onClick={() => countPlus(item, +1)}
                   >
-                    {" "}
-                    +{" "}
-                  </button>
+                    +
+                  </span>
                 </form>
                 <div className="eachPrice">{item.price}원</div>
-                <button onClick={() => this.props.deleteList(item)}>X</button>
+                <button onClick={() => deleteList(item)}>X</button>
               </div>
             </td>
           );

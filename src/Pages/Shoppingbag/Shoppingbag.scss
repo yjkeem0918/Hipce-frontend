@@ -50,6 +50,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin: 10px 0;
 
         .pickItemPicture {
           @include center;
@@ -99,6 +100,9 @@
             font-size: 20px;
 
             .countButton {
+              width: 30px;
+              height: 30px;
+              padding: 10px;
               margin: 0 50px;
               cursor: pointer;
             }
