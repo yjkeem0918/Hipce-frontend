@@ -1,7 +1,12 @@
 import React, { Component } from "react";
-import SignUp from "../Sign/SignUp";
-import Footer from "../../Components/Footer";
 import Nav from "../../Components/Nav";
+import MainCollection from "../../Pages/Main/MainCollection";
+import MainNewProduct from "../../Pages/Main/MainNewProduct";
+import MainBestSeller from "../../Pages/Main/MainBestSeller";
+import MainEdition from "../../Pages/Main/MainEdition";
+import MainHinceAtelier from "../../Pages/Main/MainHinceAtelier";
+import Footer from "../../Components/Footer";
+
 
 class Main extends Component {
   constructor() {
@@ -27,7 +32,13 @@ class Main extends Component {
 
     return (
       <div>
-        <SignUp />
+        <Nav />
+        <MainCollection />
+        <MainNewProduct />
+        <MainBestSeller />
+        <MainEdition />
+        <MainHinceAtelier />
+        <Footer />    
       </div>
     );
   }
