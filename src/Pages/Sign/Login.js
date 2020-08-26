@@ -18,7 +18,7 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleButton = (e) => {
+  handleLogin = () => {
     if (!this.state.id && !this.state.pw) {
       alert("아이디 입력값은 필수입니다.");
     } else if (this.state.id.length >= 1 && !this.state.pw) {
@@ -27,27 +27,27 @@ class Login extends Component {
       alert("아이디 항목은 필수 입력값입니다.");
     } else if (this.state.pw.length < 4 && this.state.id) {
       alert("패스워드 항목이 4자(개) 이상으로 해주십시오.");
+    } else {
+      fetch("http://10.58.5.29:8001/user/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          account: this.state.id,
+          password: this.state.pw,
+        }),
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          if (response.ACCESS_TOKEN) {
+            localStorage.setItem("ACCESS_TOKEN", response.ACCESS_TOKEN);
+            this.props.history.push("/main");
+          } else {
+            alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+          }
+        });
     }
-  };
-
-  handleLogin = () => {
-    fetch("http://10.58.5.29:8001/user/signin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        account: this.state.id,
-        password: this.state.pw,
-      }),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.ACCESS_TOKEN) {
-          localStorage.setItem("ACCESS_TOKEN", response.token);
-          this.props.history.push("/main");
-        }
-      });
   };
 
   render() {
@@ -81,7 +81,6 @@ class Login extends Component {
             <div className="signInButtonBox">
               <button
                 onClick={() => {
-                  this.handleButton();
                   this.handleLogin();
                 }}
                 className="signInButton"
