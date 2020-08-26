@@ -17,7 +17,7 @@ class Main extends Component {
 
   handleScroll = () => {
     if (this.state.scroll && window.scrollY < this.state.currentPosY) return;
-    this.setState({ scroll: false }, ()=>this.handleNav());
+    this.setState({ scroll: false });
 
     if (this.prev > window.scrollY && 
         window.scrollY < this.state.currentPosY
