@@ -1,10 +1,4 @@
 import React, { Component } from "react";
-import Nav from "../../Components/Nav";
-import MainCollection from "../../../src/Pages/Main/MainCollection";
-import MainNewProduct from "../../../src/Pages/Main/MainNewProduct";
-import MainBestSeller from "../../../src/Pages/Main/MainBestSeller";
-import MainEdition from "./MainEdition";
-import MainHinceAtelier from "./MainHinceAtelier";
 import Footer from "../../Components/Footer";
 
 class Main extends Component {
@@ -49,12 +43,6 @@ class Main extends Component {
   render() {
     return (
       <>
-        <Nav />
-        <MainCollection />
-        <MainNewProduct />
-        <MainBestSeller />
-        <MainEdition />
-        <MainHinceAtelier />
         <Footer />
       </>
     );
