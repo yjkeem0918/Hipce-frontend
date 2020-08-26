@@ -76,6 +76,11 @@
         padding: 7px 0 7px 10px;
         cursor: pointer;
 
+        a {
+          width: 35px;
+          height: 35px;
+        }
+
         &:nth-child(1) {
           background-position-x: -35px;
         }
