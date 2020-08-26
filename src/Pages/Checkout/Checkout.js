@@ -1,128 +1,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Nav from "../../Components/Nav";
+import Card from "./Card";
+import Transfer from "./Transfer";
+import Account from "./Account";
+import Virtual from "./Virtual";
 import Footer from "../../Components/Footer";
 import "./Checkout.scss";
-import { scryRenderedDOMComponentsWithClass } from "react-dom/test-utils";
 
-class Card extends Component {
-  render() {
-    return (
-      <>
-        <div className="selectCard">
-          <label>카드선택</label>
-          <select>
-            <option>선택해주세요.</option>
-            <option>신한카드</option>
-            <option>비씨카드</option>
-            <option>우리카드</option>
-            <option>KB국민카드</option>
-            <option>롯데카드</option>
-            <option>현대카드</option>
-            <option>삼성카드</option>
-            <option>NH카드</option>
-            <option>하나카드</option>
-            <option>씨티카드</option>
-            <option>카카오뱅크</option>
-            <option>광주카드</option>
-            <option>전북카드</option>
-          </select>
-        </div>
-        <div className="installmentPeriod">
-          <label>할부기간</label>
-          <div className="selectInstallment">
-            <select disabled>
-              <option>일시불</option>
-              <option>2개월(무이자)</option>
-              <option>3개월(무이자)</option>
-              <option>4개월(무이자)</option>
-              <option>5개월(무이자)</option>
-              <option>6개월(무이자)</option>
-            </select>
-            <span>법인카드는 무이자 할부 적용이 되지 않습니다.</span>
-          </div>
-        </div>
-      </>
-    );
-  }
-}
-class Transfer extends Component {
-  render() {
-    return (
-      <>
-        <div className="transferToWhom">
-          <label>예금주명</label>
-          <input></input>
-        </div>
-        <div className="cashReceipt">
-          <label>현금영수증 신청</label>
-          <input type="radio" id="receiptRegister" name="cashReceipt"/>
-          <label for="receiptRegister">
-            <span></span>현금영수증 신청
-          </label>
-          <input type="radio" id="notRegister" name="cashReceipt"/>
-          <label for="notRegister">
-            <span></span>신청 안함
-          </label>
-        </div>
-      </>
-    );
-  }
-}
-class Account extends Component {
-  render() {
-    return (
-      <>
-        <div className="sendToWhom">
-          <label>입금자명</label>
-          <input></input>
-        </div>
-        <div className="snedToBank">
-          <label>입금은행</label>
-          <select>
-            <option>:::선택해 주세요.:::</option>
-            <option>국민은행:929001-01-357649 주식회사 비바웨이브</option>
-            <option>국민은행:189-910038-52304 주식회사 비바웨이브</option>
-          </select>
-        </div>
-        <div className="cashReceipt">
-          <label>현금영수증 신청</label>
-          <input type="radio" id="receiptRegister" name="cashReceipt"/>
-          <label for="receiptRegister">
-            <span></span>현금영수증 신청
-          </label>
-          <input type="radio" id="notRegister" name="cashReceipt"/>
-          <label for="notRegister">
-            <span></span>신청 안함
-          </label>
-        </div>
-      </>
-    );
-  }
-}
-class Virtual extends Component {
-  render() {
-    return (
-      <div className="cashReceipt">
-        <label>현금영수증 신청</label>
-        <input type="radio" id="receiptRegister" name="cashRecipht"/>
-        <label for="receiptRegister">
-          <span></span>현금영수증 신청
-        </label>
-        <input type="radio" id="notRegister" name="cashRecipht"/>
-        <label for="notRegister">
-          <span></span>신청 안함
-        </label>
-      </div>
-    );
-  }
-}
 const paymentMethod = {
   0: <Card />,
   1: <Transfer />,
   3: <Account />,
   4: <Virtual />
 };
+
 class Checkout extends Component {
   constructor() {
     super();
@@ -136,6 +28,7 @@ class Checkout extends Component {
       activeTab: id,
     });
   };
+
   render() {
     return (
       <>
@@ -150,11 +43,11 @@ class Checkout extends Component {
                 <h3>배송정보</h3>
                 <div className="toWhere">
                   <label>배송지 선택</label>
-                  <input type="radio" id="myInfo"></input>
+                  <input id="myInfo" type="radio" name="deliveryPlace"></input>
                   <label for="myInfo">
                     <span></span>회원 정보와 동일
                   </label>
-                  <input type="radio" id="newInfo"></input>
+                  <input id="newInfo" type="radio" name="deliveryPlace"></input>
                   <label for="newInfo">
                     <span></span>새로운 배송지
                   </label>

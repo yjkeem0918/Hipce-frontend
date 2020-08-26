@@ -6,7 +6,6 @@ import Detail from "../src/Pages/Detail/Detail";
 import Login from "../src/Pages/Sign/Login";
 import SignUp from "../src/Pages/Sign/SignUp";
 import About from "../src/Pages/About/About";
-import Checkout from "../src/Pages/Checkout/Checkout";
 
 class Routes extends React.Component {
   render() {

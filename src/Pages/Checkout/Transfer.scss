@@ -1,0 +1,9 @@
+@import "../../Styles/common.scss";
+@use 'Checkout';
+
+.transferToWhom {
+  input {
+    width: 100%;
+    max-width: 300px;
+  }
+}
