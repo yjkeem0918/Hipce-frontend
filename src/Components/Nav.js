@@ -14,15 +14,20 @@ class Nav extends Component {
     window.addEventListener("scroll", this.handleNavReduced)
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleNavReduced)
+  }
+
   handleNavReduced = () => {
     this.setState({
-      navReduced: document.body.getBoundingClientRect().top <= -100
+      navReduced: window.scrollY >= 100
     })
   }
 
   render() {
+    const {navReduced} = this.state;
     return (
-      <div className={this.state.navReduced? "NavReduced" : "Nav"}>
+      <div className={navReduced? "NavReduced" : "Nav"}>
         <div className="siteLogo">
           <Link to="/main" />
         </div>

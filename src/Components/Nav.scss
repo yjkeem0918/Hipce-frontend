@@ -149,6 +149,7 @@
             z-index: -1;
             background-color: rgba(217, 188, 186, 0.25);
           }
+
           &:hover::after {
             width: 100%;
             transition: 300ms;
@@ -200,6 +201,7 @@
   margin: 0 auto;
   padding: 10px 4.75% 0;
   background-color: rgba(255, 255, 255, 0.92);
+
   .siteLogo {
     a {
       background-image: url("http://hince.co.kr/assets/images/hince-logo-sprite.png");
