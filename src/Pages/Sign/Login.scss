@@ -10,8 +10,8 @@
       font-family: $pt;
       letter-spacing: 1px;
       font-size: 48px;
-      color: #8f5b59;
       font-weight: bold;
+      color: #8f5b59;
     }
   }
   .formBox {
@@ -153,16 +153,15 @@
       }
     }
   }
-}
+  @keyframes onHover {
+    from {
+      background-color: rgb(255, 255, 255);
+      color: rgb(163, 109, 106);
+    }
 
-@keyframes onHover {
-  from {
-    background-color: rgb(255, 255, 255);
-    color: rgb(163, 109, 106);
-  }
-
-  to {
-    background-color: rgb(163, 109, 106);
-    color: rgb(255, 255, 255);
+    to {
+      background-color: rgb(163, 109, 106);
+      color: rgb(255, 255, 255);
+    }
   }
 }

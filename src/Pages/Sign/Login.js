@@ -43,12 +43,9 @@ class Login extends Component {
     })
       .then((response) => response.json())
       .then((response) => {
-        if (response.token) {
-          localStorage.setItem("token", response.token);
+        if (response.ACCESS_TOKEN) {
+          localStorage.setItem("ACCESS_TOKEN", response.token);
           this.props.history.push("/main");
-        } else {
-          alert("아이디 또는 비밀번호가 일치하지 않습니다.");
-          return;
         }
       });
   };
