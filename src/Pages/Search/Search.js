@@ -5,7 +5,7 @@ const Search = ({ onClose }) => {
   const moveList = () => {
     return;
   };
-  const getValue = () => {
+  const getValue = (e) => {
     return;
   };
   return (
@@ -16,11 +16,11 @@ const Search = ({ onClose }) => {
           <span> Search</span>
           <div className="inputWrapper">
             <input
+              type="text"
               placeholder="검색어를 입력해주세요"
-              value=""
               onChange={(e) => getValue(e)}
             />
-            <span className="searchImg" onClick={() => moveList()}></span>
+            <button className="searchImg" onClick={() => moveList()} />
           </div>
         </div>
       </div>
