@@ -1,12 +1,14 @@
-@import "../../Styles/common.scss";
+@import "../../../Styles/common.scss";
 
-.MainHinceAtelier {
+.MainCollection {
   position: relative;
+  height: 100vh;
+  overflow: hidden;
   padding: none;
 
-  img {
-    width: 100vw;
-    height: 100vh;
+  video {
+    width: 100%;
+    height: auto;
   }
 
   .sectionLabel {
@@ -31,12 +33,13 @@
 
     span {
       display: block;
-      background-image: url("http://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
+      background-image: url("//hince.co.kr/assets/images/hince-icon-sprite-185484.png");
       background-size: 448px 64px;
       width: 32px;
       height: 32px;
       background-position-x: 0px;
       background-position-y: -32px;
+      animation: 1.2s blink step-end infinite;
     }
 
     h1 {
@@ -68,12 +71,11 @@
       position: absolute;
       bottom: 20%;
       right: 4.75%;
-      background-image: url("http://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
+      background-image: url("//hince.co.kr/assets/images/hince-icon-sprite-185484.png");
       background-size: 448px 64px;
       width: 35px;
       height: 35px;
-      background-position-x: -128px;
-      background-position-y: -32px;
+      background-position: -128px -32px;
     }
   }
 }

@@ -1,0 +1,137 @@
+@import "../../Styles/common.scss";
+.Review {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  border-bottom: 1px solid #dadada;
+  ul {
+    .commentContainer {
+      padding-top: 30px;
+      .reviewContentsBox {
+        width: 1040px;
+        font-size: 12px;
+        .ratingWrapper {
+          display: flex;
+          color: #a4a4a4;
+          .starRating {
+            .star {
+              display: inline-block;
+              width: 12px;
+              height: 12px;
+              background-image: url("https://assets6.cre.ma/p/hince-co-kr/brand_settings/00/00/00/00/01/sprite/ed77d94ad433a7fb.png");
+            }
+          }
+          .goodRating {
+            margin-left: 9px;
+          }
+          .scoreCount {
+            margin-left: 5px;
+            .totalScore {
+              color: black;
+              font-weight: bold;
+            }
+          }
+        }
+        .reviewContent {
+          padding-top: 10px;
+          line-height: 19px;
+        }
+        img {
+          width: 128px;
+          height: 128px;
+          margin-top: 18px;
+        }
+        .reviewFoot {
+          display: flex;
+          align-items: center;
+          padding: 12px 0 13px 0;
+          margin-top: 8px;
+          a {
+            color: #cccccc;
+            font-weight: bold;
+            cursor: pointer;
+          }
+          .titleDivider {
+            margin: 0 9px;
+          }
+          .userQuestion {
+            margin-right: 12px;
+            color: #7b7b7b;
+          }
+        }
+        .hiddenInput {
+          max-width: 800px;
+          display: none;
+          margin-top: 7px;
+          margin-right: 30px;
+          padding: 10px 15px;
+          border: 1px solid #e2e2e2;
+          .inputWrapper {
+            position: relative;
+            height: 30px;
+            border: 1px solid #e2e2e2;
+            input {
+              border: none;
+              width: 715px;
+              font-size: 13px;
+              height: 28px;
+            }
+            button {
+              position: absolute;
+              border: 1px solid #dadada;
+              width: 50px;
+              height: 25px;
+              margin-top: 2px;
+              background-color: white;
+              color: #7b7b7b;
+            }
+          }
+        }
+        .showInput{
+          max-width: 800px;
+          margin-top: 7px;
+          margin-right: 30px;
+          padding: 10px 15px;
+          border: 1px solid #e2e2e2;
+          .inputWrapper {
+            position: relative;
+            height: 30px;
+            border: 1px solid #e2e2e2;
+            input {
+              border: none;
+              width: 715px;
+              font-size: 13px;
+              height: 28px;
+            }
+            button {
+              position: absolute;
+              border: 1px solid #dadada;
+              width: 50px;
+              height: 25px;
+              margin-top: 2px;
+              background-color: white;
+              color: #7b7b7b;
+            }
+          }
+        }
+        ul {
+          margin-top: 7px;
+        }
+      }
+      .writerBox {
+        margin-left: 60px;
+        font-size: 12px;
+        line-height: 18px;
+        .writer {
+          color: #a8a8a8;
+        }
+        .name {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
