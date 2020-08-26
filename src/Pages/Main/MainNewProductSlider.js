@@ -68,9 +68,10 @@ class MainNewProductSlider extends Component {
             </li>
           </ul>
         </div>
-        <div className="sectionBottom">
-        </div>
-        <div className={`sliderContent activeSlide${this.state.currentPicture.index}`}>
+        <div className="sectionBottom"></div>
+        <div
+          className={`sliderContent activeSlide${this.state.currentPicture.index}`}
+        >
           <div
             className="sliderWrapper"
             style={{
@@ -80,11 +81,11 @@ class MainNewProductSlider extends Component {
               }%)`,
             }}
           >
-            {newProduct.pictures.map((item) => {
+            {/* {newProduct.pictures.map((item) => {
               return (
                 <ImgBox key={item.index} src={item.src} index={item.index} />
               );
-            })}
+            })} */}
           </div>
         </div>
         <div className="sliderBtn">
@@ -106,15 +107,15 @@ class MainNewProductSlider extends Component {
   }
 }
 
-class ImgBox extends Component {
-  render() {
-    return (
-      <div class="ImgBox">
-        <img id={`slide${this.props.index}`} src={this.props.src} />
-      </div>
-    );
-  }
-}
+// class ImgBox extends Component {
+//   render() {
+//     return (
+//       <div class="ImgBox">
+//         <img id={`slide${this.props.index}`} src={this.props.src} />
+//       </div>
+//     );
+//   }
+// }
 
 const newProduct = {
   pictures: [

@@ -12,6 +12,7 @@
       z-index: 1;
       top: calc(50% - 35px);
       left: 4.75%;
+      margin-top: 10px;
     }
 
     li {
@@ -21,7 +22,7 @@
         outline: none;
         border: none;
         width: 25px;
-        height: 3px;
+        height: 6px;
         transition: all 0.25s ease-out;
         cursor: pointer;
       }
