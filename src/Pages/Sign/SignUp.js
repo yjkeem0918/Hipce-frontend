@@ -25,12 +25,10 @@ class SignUp extends Component {
   handleMobile = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    // console.log("mobile");
   };
 
   getInputValue = (label, value) => {
     const { inputValue } = this.state;
-    // console.log("pw", label);
 
     switch (label) {
       case "아이디":
@@ -89,8 +87,8 @@ class SignUp extends Component {
                 label: "아이디",
                 description: "영문 소문자와 숫자를 조합하여 4-16자",
                 validation: {
-                  true: "사용 가능한 아이디입니다.",
-                  false: "사용 불가능한 아이디 입니다.",
+                  // true: "사용 가능한 아이디입니다.",
+                  // false: "사용 불가능한 아이디 입니다.",
                   initial: "아이디를 입력해 주세요.",
                 },
                 isPassed: this.state.validation.id,
