@@ -36,6 +36,23 @@ class List extends Component {
         );
   }
 
+  getItem = (id, price) => {
+    fetch("http://3.17.134.84:8000/products?category=lip", {
+      method: "post",
+      body: JSON.stringify({
+        id: id,
+        price: price,
+        count: 1,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success) {
+          console.log(1);
+        }
+      });
+  };
+
   render() {
     const {
       state: { newColors },
@@ -54,12 +71,13 @@ class List extends Component {
               ) => (
                 <Product
                   id={id}
-                  key={index}
+                  index={index}
                   mainImgSrc={main_image}
                   subImgSrc={sub_image}
                   price={price}
                   name={name}
                   tag={tag__image}
+                  getItem={this.getItem}
                 />
               )
             )}

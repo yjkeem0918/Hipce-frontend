@@ -32,17 +32,17 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://10.58.2.217:8000/products/${this.props.match.params.id}`)
+    fetch(`http://3.17.134.84:8000/products/${this.props.match.params.id}`)
       .then((res) => res.json())
       .then((res) => this.setState({ data: res }));
   }
 
   render() {
-    console.log(this.props);
+    console.log("Hello", this.props.match.params.id);
     return (
       <div className="Detail">
         <Nav />
-        <DetailMain name={this} />
+        <DetailMain />
         <ProductDetail />
         <Reviewframe />
         <ul>

@@ -26,9 +26,6 @@ class Main extends Component {
   };
 
   render() {
-    console.log(window.scrollY);
-    console.log(this.state.scrollY);
-
     return (
       <div>
         <Nav />

@@ -11,6 +11,7 @@ class ProductFilter extends Component {
       selectedColor: [],
       filterdColor: "hidden",
       createURLcolor: "",
+      textFilter: "",
     };
   }
 
@@ -58,6 +59,26 @@ class ProductFilter extends Component {
     this.setState({ colors: newColors, filterdColor: "hidden" }, () =>
       this.props.history.push(`/list/category=lip`)
     );
+  };
+
+  textInput = (e) => {
+    this.setState({ textFilter: e.target.value });
+  };
+
+  inputTextSend = (e) => {
+    e.preventDefault();
+    fetch("http://3.17.134.84:8000/products?category=lip", {
+      method: "post",
+      body: JSON.stringify({
+        search: this.state.textFilter,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success) {
+          console.log("textSendSucces");
+        }
+      });
   };
 
   render() {
@@ -114,8 +135,8 @@ class ProductFilter extends Component {
             <div className="palleteSearchBox">
               <span>결과 내 검색</span>
               <div>
-                <input></input>
-                <button>검색</button>
+                <input onChange={(e) => this.textInput(e)}></input>
+                <button onClick={(e) => this.inputTextSend(e)}>검색</button>
               </div>
             </div>
           </section>

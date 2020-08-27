@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import "./DetailMain.scss";
 import Color from "./Color";
 
 class DetailMain extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       count: 1,
       totalPrice: 19000,
