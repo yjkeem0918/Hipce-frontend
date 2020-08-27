@@ -1,0 +1,12 @@
+@import "../../Styles/common.scss";
+@use 'Checkout';
+
+.installmentPeriod {
+  display: flex;
+  align-items: center;
+  .selectInstallment {
+    span {
+      margin-left: 5px;
+    }
+  }
+}

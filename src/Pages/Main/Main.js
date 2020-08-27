@@ -7,7 +7,6 @@ import MainEdition from "../../Pages/Main/MainEdition";
 import MainHinceAtelier from "../../Pages/Main/MainHinceAtelier";
 import Footer from "../../Components/Footer";
 
-
 class Main extends Component {
   constructor() {
     super();
@@ -16,7 +15,7 @@ class Main extends Component {
     };
   }
   componentDidMount() {
-    window.addEventListener("scroll", () => this.handleScroll());
+    window.addEventListener("scroll", this.handleScroll);
   }
 
   handleScroll = () => {
@@ -38,7 +37,7 @@ class Main extends Component {
         <MainBestSeller />
         <MainEdition />
         <MainHinceAtelier />
-        <Footer />    
+        <Footer />
       </div>
     );
   }
