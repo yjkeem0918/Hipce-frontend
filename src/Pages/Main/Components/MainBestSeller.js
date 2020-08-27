@@ -9,8 +9,8 @@ class MainBestSeller extends Component {
         <div className="sectionLabel">03</div>
         <div className="sectionTitle">
           <span></span>
-          <h1>Best Seller</h1>
-          <p>가장 많은 사랑을 받고있는 힌스의 베스트셀러</p>
+          <h1>Beauty Sale</h1>
+          <p>할인된 가격으로 힌스의 베스트 셀러를 만나보세요.</p>
         </div>
         <MainBestSellerSlider discountProduct={this.props.discountProduct}/>
       </div>
