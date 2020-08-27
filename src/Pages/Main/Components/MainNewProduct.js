@@ -12,7 +12,7 @@ class MainNewProduct extends Component {
           <h1>New Product</h1>
           <p>한스의 신상품을 가장 먼저 만나보세요.</p>
         </div>
-        <MainNewProductSlider newProduct={newProduct} />
+        <MainNewProductSlider/>
       </div>
     );
   }

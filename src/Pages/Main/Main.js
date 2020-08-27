@@ -48,12 +48,13 @@ class Main extends Component {
   };
 
   render() {
+    console.log(this.state.newProduct)
     return (
       <div>
         <Nav />
         <MainCollection />
-        <MainNewProduct newProduct={newProduct}/>
-        <MainBestSeller />
+        <MainNewProduct newProduct={this.state.newProduct}/>
+        <MainBestSeller newProduct={this.state.newProduct}/>
         <MainEdition />
         <MainHinceAtelier />
         <Footer />
