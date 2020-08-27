@@ -138,6 +138,22 @@ export default class Shoppingbag extends Component {
     );
   };
 
+  sendPickedItem = (pickItem) => {
+    console.log(pickItem);
+    fetch("URL", {
+      method: "post",
+      body: JSON.stringify({
+        pickItem: pickItem,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success) {
+          console.log("hello");
+        }
+      });
+  };
+
   render() {
     const {
       state: {
@@ -208,7 +224,9 @@ export default class Shoppingbag extends Component {
                   전체 주문하기
                 </Link>
                 <div>
-                  <Link to="/checkout">선택 상품만 주문</Link>
+                  <Link onClick={() => this.sendPickedItem(pickItem)}>
+                    선택 상품만 주문
+                  </Link>
                   <Link to="/checkout" className="naverOrder"></Link>
                 </div>
               </div>

@@ -78,7 +78,7 @@ class Nav extends Component {
               <Link to="/login" />
             </li>
             <li>
-              <Link to="/search" />
+              <Link to="" />
             </li>
             <li>
               <Link to="/shoppingbag" />

@@ -8,6 +8,7 @@ import SignUp from "../src/Pages/Sign/SignUp";
 import About from "../src/Pages/About/About";
 import Collection from "../src/Pages/Collection/Collection";
 import Search from "../src/Pages/Search/Search";
+import Shoppingbag from "../src/Pages/Shoppingbag/Shoppingbag";
 
 class Routes extends React.Component {
   render() {
@@ -21,6 +22,7 @@ class Routes extends React.Component {
           <Route exact path="/about" component={About} />
           <Route exact path="/collection" component={Collection} />
           <Route exact path="/search" component={Search} />
+          <Route exact path="/shoppingbag" component={Shoppingbag} />
         </Switch>
       </Router>
     );
