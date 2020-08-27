@@ -6,7 +6,7 @@ import MainBestSeller from "../../Pages/Main/MainBestSeller";
 import MainEdition from "../../Pages/Main/MainEdition";
 import MainHinceAtelier from "../../Pages/Main/MainHinceAtelier";
 import Footer from "../../Components/Footer";
-
+import Search from "../../Pages/Search/Search";
 
 class Main extends Component {
   constructor() {
@@ -16,7 +16,7 @@ class Main extends Component {
     };
   }
   componentDidMount() {
-    window.addEventListener("scroll", () => this.handleScroll());
+    window.addEventListener("scroll", this.handleScroll);
   }
 
   handleScroll = () => {
@@ -38,7 +38,7 @@ class Main extends Component {
         <MainBestSeller />
         <MainEdition />
         <MainHinceAtelier />
-        <Footer />    
+        <Footer />
       </div>
     );
   }

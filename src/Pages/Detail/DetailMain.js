@@ -49,6 +49,7 @@ class DetailMain extends Component {
             totalPrice: price * (count - 1)
         })
     }
+     
 
     render() {
         const{name, mainImage, price} = this.props;
@@ -110,10 +111,51 @@ class DetailMain extends Component {
                         </div>       
                     </div> 
                 </div>
+                <span className="price">19,000원</span>
+              <div className="productNumBox">
+                <span className="detailName">수량</span>
+                <div className="numWrapper">
+                  <button className="minus" onClick={this.minusOne}>
+                    -
+                  </button>
+                  <button className="plus" onClick={this.plusOne}>
+                    +
+                  </button>
+                  <input value={this.state.count} />
+                </div>
+              </div>
+              <div className="productColor ">
+                <span className="detailName">컬러</span>
+                <ul className={`colorSet active-color-${this.state.nowidx}`}>
+                  {this.state.colorList.map((obj, idx) => (
+                    <ColorList
+                      name={obj.title}
+                      bgc={obj.bgc}
+                      key={this.state.colorList.title}
+                    />
+                  ))}
+                </ul>
+              </div>
+            <div classNaem="buyingBox">
+              <div className="totalPrice">
+                <span className="priceTitle">금액</span>
+                <span className="total">
+                  {this.state.totalPrice}원 ({this.state.count}개)
+                </span>
+              </div>
+              <div className="buttonBox">
+                <span>
+                  <button className="cartBtn"></button>
+                </span>
+                <button className="buyBtn">BUY NOW</button>
+              </div>
+              <div className="anotherPay">
+                <button></button>
+              </div>
             </div>
-        );
-    }
+      </div>
+    );
+  }
 }
 
 export default DetailMain;
- 

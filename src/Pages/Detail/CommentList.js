@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import "./CommentList.scss"
+import React, { Component } from "react";
+import "./CommentList.scss";
 
 class CommentList extends Component {
-    
     render() {
         const{comment, userName, handleRemove} =this.props
         return (

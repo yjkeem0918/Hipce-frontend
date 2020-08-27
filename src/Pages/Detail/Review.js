@@ -75,6 +75,7 @@ class Review extends Component {
     handleYesButton = () => {
         const { yesClicked } = this.state;
         this.setState({ yesClicked: !yesClicked });
+         
     }
 
     handleNoButton = () => {

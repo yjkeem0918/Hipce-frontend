@@ -1,47 +1,48 @@
 import React, { Component } from "react";
 import "./ProductNav.scss";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-export default class ProductNav extends Component {
+class ProductNav extends Component {
   render() {
+    // category=${this.props.match.params.hello}
     return (
       <div className="productNav">
-        <Link to="/main">
+        <Link to="/list/category=lip">
           <img
             alt="productCategory"
             src="https://hince.co.kr/assets/images/hince-category-lip.png"
           />
           <span>Lip</span>
         </Link>
-        <Link to="/list">
+        <Link to="/list/category=eye">
           <img
             alt="productCategory"
             src="https://hince.co.kr/assets/images/hince-category-eye.png"
           />
           <span>Eye</span>
         </Link>
-        <Link to="/list">
+        <Link to="/list/category=cheek">
           <img
             alt="productCategory"
             src="https://hince.co.kr/assets/images/hince-category-cheek.png"
           />
           <span>Cheek</span>
         </Link>
-        <Link to="/list">
+        <Link to="/list/category=nail">
           <img
             alt="productCategory"
             src="https://hince.co.kr/assets/images/hince-category-nail.png"
           />
           <span>Nail</span>
         </Link>
-        <Link to="/main">
+        <Link to="/list/category=object">
           <img
             alt="productCategory"
             src="https://hince.co.kr/assets/images/hince-category-object-sm.png"
           />
           <span>Object</span>
         </Link>
-        <Link to="/list">
+        <Link to="/list/category=edition">
           <img
             alt="productCategory"
             src="https://hince.co.kr/assets/images/hince-category-edition.png"
@@ -52,3 +53,5 @@ export default class ProductNav extends Component {
     );
   }
 }
+
+export default withRouter(ProductNav);

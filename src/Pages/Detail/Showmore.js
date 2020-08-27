@@ -1,26 +1,21 @@
-import React, { Component } from 'react';
-import CommentList from './CommentList'
-import "./Comment.scss";
+import React, { Component } from "react";
+import "./Showmore.scss";
+import CommentList from "./CommentList";
 
-class Comment extends Component {
-    constructor(){
-        super();
-        this.state = {
-            user:"김영*",
-            text: "",
-            replies:[{
-                name:"",
-                comment:""
-            }]
-        };
-    }  
-    
-    handleText = (e) => {
-     this.setState({
-        text: e.target.value
-     });    
-    }
-
+class Showmore extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: "김영*",
+      text: "",
+      replies: [
+        {
+          name: "",
+          comment: "",
+        },
+      ],
+    };
+  }
   num = 0;
 
   handleText = (e) => {
@@ -46,7 +41,7 @@ class Comment extends Component {
       this.addText();
       e.target.value = "";
     }
-  }  
+  };
 
   handleRemove = (num) => {
     alert("이 댓글을 정말로 삭제하시겠습니까?");
@@ -58,12 +53,11 @@ class Comment extends Component {
       replies: nextReply,
     });
   };
-
   render() {
     const disabled = this.state.text.length > 0;
 
     return (
-      <div className="Comment">
+      <div className="Showmore">
         <div className="hiddenInput">
           <ul>
             {this.state.replies.map((el, idx) => {
@@ -94,4 +88,4 @@ class Comment extends Component {
   }
 }
 
-export default Comment;
+export default Showmore;

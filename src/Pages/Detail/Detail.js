@@ -9,7 +9,6 @@ import './Detail.scss';
  
  
 
- 
 class Detail extends Component {
  constructor() {
    super();
@@ -48,6 +47,7 @@ componentDidMount= () => {
 }
 
   render() {
+    console.log(this.props);
     return (
       <div className="Detail">
          <Nav />
