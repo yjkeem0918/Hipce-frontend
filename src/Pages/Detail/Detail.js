@@ -7,8 +7,6 @@ import Nav from "../../Components/Nav";
 import Footer from "../../Components/Footer";
 import './Detail.scss';
  
- 
-
 class Detail extends Component {
  constructor(props) {
    super(props);
@@ -17,7 +15,8 @@ class Detail extends Component {
     data:[],
     descImg : [],
     nameData: [],
-    sampleData: this.props
+    sampleData: this.props,
+    comment:[]
  } 
 }
 
@@ -44,7 +43,6 @@ componentDidMount= () => {
     })
   })
 }
-
 
   render() {
     return (

@@ -12,7 +12,6 @@ class DetailMain extends Component {
         }
     }
 
-
     componentDidMount =() => {
         console.log(this.state.colorList)
         fetch('http://localhost:3000/data/data.json')
@@ -47,29 +46,10 @@ class DetailMain extends Component {
             totalPrice: price * (count - 1)
         })
     }
-
-    getItem = (id, price) => {
-        console.log("onclicked")
-        fetch("http://3.17.134.84:8000/products?category=lip", {
-          method: "post",
-          body: JSON.stringify({
-            id: id,
-            price: price,
-            count: 1,
-          }),
-        })
-          .then((res) => res.json())
-          .then((res) => {
-            if (res.success) {
-              console.log(1);
-            }
-          });
-      };
      
 
     render() {
         const{name, mainImage, price} = this.props;
-         console.log("total", this.state.count )
         return (
             <div className="DetailMain">
                 <div className="mainContainer">
@@ -117,7 +97,7 @@ class DetailMain extends Component {
                             </div>
                             <div className="buttonBox">
                                 <span>
-                                  <button className="cartBtn" onClick={this.getItem}></button>
+                                  <button className="cartBtn"></button>
                                 </span>  
                                 <button className="buyBtn">BUY NOW</button>           
                             </div> 
