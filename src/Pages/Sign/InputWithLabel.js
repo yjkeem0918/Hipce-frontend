@@ -4,12 +4,15 @@ import "./InputWithLabel.scss";
 class InputWithLabel extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      text: "",
+    };
   }
+
   render() {
-    const { label, description, validation, isPassed } = this.props.option;
+    const { getValue, name, label, isValid, message, description } = this.props;
     return (
-      <div className="idBox">
+      <div className="InputWithLabel">
         <div className="formLabel">
           <div>
             {label}
@@ -19,17 +22,15 @@ class InputWithLabel extends Component {
         <div className="inputBox">
           <input
             type="text"
-            onChange={(e) => {
-              this.props.onChange(label, e.target.value);
-            }}
+            name={name}
+            onChange={getValue}
+            type={name.includes("password") ? "password" : ""}
           ></input>
           <div className="descriptionBox">
             <div className="description">
               {description}
-              <div className="description2">
-                {validation && isPassed === "initial" ? validation.initial : ""}
-              </div>
-              <span onChange></span>
+              <div className="description2">{!isValid && message}</div>
+              <span></span>
             </div>
           </div>
         </div>

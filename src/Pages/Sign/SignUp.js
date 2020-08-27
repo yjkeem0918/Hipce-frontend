@@ -3,66 +3,83 @@ import Nav from "../../Components/Nav";
 import InputWithLabel from "./InputWithLabel";
 import Terms from "./Terms";
 import Footer from "../../Components/Footer";
+import API from "../../config";
 import "./SignUp.scss";
 
 class SignUp extends Component {
   constructor() {
     super();
     this.state = {
-      inputValue: {
-        id: "",
-        pw: "",
-        checkpw: "",
-        name: "",
-        email: "",
-      },
-      validation: { id: "initial" },
-      mobile1: "",
-      mobile2: "",
+      account: "",
+      password: "",
+      checkpassword: "",
+      name: "",
+      email: "",
+      phone: ["010", "", ""],
+      isIdValid: false,
+      birthday: ["", "", ""],
     };
   }
-  handleMobile = (e) => {
+
+  handleMobile = (e, idx) => {
+    const { name, value } = e.target;
+    const result = this.state.phone;
+    result[idx] = value;
+    this.setState({ [name]: result });
+    console.log(name);
+  };
+
+  handleMobile2 = (e, idx) => {
+    const { name, value } = e.target;
+    const result = this.state.birthday;
+    result[idx] = value;
+    this.setState({ [name]: result });
+    console.log(name);
+  };
+
+  getInputValue = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
-  getInputValue = (label, value) => {
-    const { inputValue } = this.state;
-
-    switch (label) {
-      case "아이디":
-        this.setState({ inputValue: { ...inputValue, id: value } });
-        break;
-      case "비밀번호":
-        this.setState({ inputValue: { ...inputValue, pw: value } });
-        break;
-      case "비밀번호 확인":
-        this.setState({ inputValue: { ...inputValue, checkpw: value } });
-        break;
-      case "이름":
-        this.setState({ inputValue: { ...inputValue, name: value } });
-        break;
-      default:
-        break;
-      case "이메일":
-        this.setState({ inputValue: { ...inputValue, email: value } });
-        break;
-    }
-  };
-  validationHandler = (inputValue) => {
-    const { validation } = this.state;
-    if (inputValue.id === "") {
+  componentDidUpdate(prevProps, prevState) {
+    const { account } = this.state;
+    if (prevState.account !== this.state.account) {
       this.setState({
-        validation: { ...this.state.validation, id: "initial" },
+        isIdValid: account === "" ? false : true,
       });
     }
-    this.setState({ validation: { ...this.state.validation, id: false } });
-  };
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.inputValue.id !== this.state.inputValue.id) {
-      this.validationHandler(this.state.inputValue);
-    }
   }
+
+  handleSignUp = () => {
+    fetch(`${API}/user/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        account: this.state.account,
+        password: this.state.password,
+        name: this.state.name,
+        phone: this.state.phone.map((el) => el).join(""),
+        email: this.state.email,
+        birthday: this.state.birthday.join("-"),
+        sms_marketing_agree: false,
+        email_marketing_agree: false,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.MESSAGE === "SUCCESS") {
+          alert("회원가입이 완료되었습니다.");
+          this.props.history.push("/login");
+          window.location.reload();
+        } else {
+          alert("회원가입에 실패하였습니다.");
+        }
+      });
+  };
+
   render() {
     return (
       <div className="SignUp">
@@ -76,74 +93,70 @@ class SignUp extends Component {
               <h3 className="formTitle">회원정보</h3>
             </div>
             <InputWithLabel
-              onChange={this.getInputValue}
-              option={{
-                label: "아이디",
-                description: "영문 소문자와 숫자를 조합하여 4-16자",
-                validation: {
-                  initial: "아이디를 입력해 주세요.",
-                },
-                isPassed: this.state.validation.id,
-              }}
-            ></InputWithLabel>
+              getValue={this.getInputValue}
+              name="account"
+              label="아이디"
+              isValid={this.state.isIdValid}
+              message="아이디를 입력해주세요"
+              description="영문 소문자와 숫자를 조합하여 4-16자"
+            />
             <InputWithLabel
-              onChange={this.getInputValue}
-              option={{
-                label: "비밀번호",
-                description:
-                  "영문 대소문자, 숫자, 특수문자 중 2가지 이상을 조합하여 10-16자",
-              }}
-            ></InputWithLabel>
+              getValue={this.getInputValue}
+              name="password"
+              label="비밀번호"
+              description="영문 대소문자, 숫자, 특수문자 중 2가지 이상을 조합하여 10-16자"
+            />
             <InputWithLabel
-              onChange={this.getInputValue}
-              option={{
-                label: "비밀번호 확인",
-              }}
-            ></InputWithLabel>
+              getValue={this.getInputValue}
+              name="checkpassword"
+              label="비밀번호 확인"
+            />
             <InputWithLabel
-              onChange={this.getInputValue}
-              option={{
-                label: "이름",
-              }}
-            ></InputWithLabel>
+              getValue={this.getInputValue}
+              name="name"
+              label="이름"
+            />
             <div className="phoneNumberBox">
               <div className="phoneNumberLabel">
                 <div className="phoneLabel">휴대전화</div>
                 <span className="requiredMark">*</span>
               </div>
-              <select className="mobileNumber" size="1">
-                <option value="student" selected>
-                  010
-                </option>
-                <option value="mobile">011</option>
-                <option value="mobile">016</option>
-                <option value="mobile">017</option>
-                <option value="mobile">018</option>
-                <option value="mobile">019</option>
-              </select>
-              <div className="hypen">-</div>
-              <input
-                name="mobile1"
-                onChange={this.handleMobile}
-                value={this.state.input1}
-                className="phone2"
-                type="text"
-                maxlength="4"
-              />
-              <div className="hypen">-</div>
-              <input
-                name="mobile2"
-                onChange={this.handleMobile}
-                value={this.state.input2}
-                className="phone3"
-                type="text"
-                maxlength="4"
-              />
+              <div className="mobileBox">
+                <select className="mobileNumber" size="1">
+                  <option value="student" selected>
+                    010
+                  </option>
+                  <option value="mobile">011</option>
+                  <option value="mobile">016</option>
+                  <option value="mobile">017</option>
+                  <option value="mobile">018</option>
+                  <option value="mobile">019</option>
+                </select>
+                <div className="hypen">-</div>
+                <input
+                  name="phone"
+                  onChange={(e) => this.handleMobile(e, 1)}
+                  value={this.state.input1}
+                  className="phone2"
+                  type="text"
+                  maxlength="4"
+                />
+                <div className="hypen">-</div>
+                <input
+                  name="phone"
+                  onChange={(e) => this.handleMobile(e, 2)}
+                  value={this.state.input2}
+                  className="phone3"
+                  type="text"
+                  maxlength="4"
+                />
+              </div>
             </div>
             <InputWithLabel
-              onChange={this.getInputValue}
-              option={{ label: "이메일" }}
-            ></InputWithLabel>
+              name="email"
+              label="이메일"
+              getValue={this.getInputValue}
+            />
           </div>
           <div className="formBox">
             <div className="formTitleBox">
@@ -158,19 +171,35 @@ class SignUp extends Component {
               </div>
               <div className="birthdayInputBox">
                 <input
+                  onChange={(e) => this.handleMobile2(e, 0)}
+                  name="birthday"
                   type="text"
                   className="YYYY"
                   placeholder="YYYY"
                   maxlength="4"
                 />
-                <input className="MMDD" placeholder="MM" maxlength="2" />
-                <input className="MMDD" placeholder="DD" maxlength="2" />
+                <input
+                  onChange={(e) => this.handleMobile2(e, 1)}
+                  className="MMDD"
+                  placeholder="MM"
+                  maxlength="2"
+                  name="birthday"
+                />
+                <input
+                  onChange={(e) => this.handleMobile2(e, 2)}
+                  className="MMDD"
+                  placeholder="DD"
+                  maxlength="2"
+                  name="birthday"
+                />
               </div>
             </div>
           </div>
           <Terms />
           <div className="signUpButtonBox">
-            <button className="signUpButton">회원 가입하기</button>
+            <button onClick={this.handleSignUp} className="signUpButton">
+              회원 가입하기
+            </button>
           </div>
         </div>
         <Footer />

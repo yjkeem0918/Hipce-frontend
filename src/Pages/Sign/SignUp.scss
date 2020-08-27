@@ -46,12 +46,12 @@
         }
       }
       .phoneNumberBox {
-        width: 100%;
         padding: 7px 0;
         display: flex;
+        justify-content: flex-start;
         .phoneNumberLabel {
           display: flex;
-          width: 160px;
+          width: 154px;
           height: 46px;
           .requiredMark {
             margin-left: 5px;
@@ -68,34 +68,37 @@
             font-family: "Assistant", "Noto Sans KR", sans-serif;
           }
         }
-        .mobileNumber {
-          width: 90px;
-          height: 46px;
-          border: 1px solid #c8a7a6;
-          outline: none;
-          padding: 15px;
-          margin-right: 5px;
-        }
-        .hypen {
-          color: #a36d69;
-          font-weight: 300;
-          padding-top: 17px;
-        }
-        .phone2 {
-          width: 90px;
-          height: 46px;
-          margin: 0 5px;
-          border: 1px solid #c8a7a6;
-          outline: none;
-          padding: 12px 16px;
-        }
-        .phone3 {
-          width: 90px;
-          height: 46px;
-          margin: 0 5px;
-          border: 1px solid #c8a7a6;
-          outline: none;
-          padding: 12px 16px;
+        .mobileBox {
+          display: flex;
+          .mobileNumber {
+            width: 90px;
+            height: 46px;
+            border: 1px solid #c8a7a6;
+            outline: none;
+            padding: 15px;
+            margin-right: 5px;
+          }
+          .hypen {
+            color: #a36d69;
+            font-weight: 300;
+            padding-top: 17px;
+          }
+          .phone2 {
+            width: 90px;
+            height: 46px;
+            margin: 0 5px;
+            border: 1px solid #c8a7a6;
+            outline: none;
+            padding: 12px 16px;
+          }
+          .phone3 {
+            width: 90px;
+            height: 46px;
+            margin-left: 5px;
+            border: 1px solid #c8a7a6;
+            outline: none;
+            padding: 12px 16px;
+          }
         }
       }
 

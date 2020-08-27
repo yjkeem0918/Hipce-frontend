@@ -5,33 +5,34 @@ class Terms extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked0: false,
       checked1: false,
       checked2: false,
       checked3: false,
+      checked4: false,
+      checkedAll: false,
     };
   }
 
-  checkedClick = (idx) => {
-    this.setState({ [`checked${idx}`]: !this.state[`checked${idx}`] });
+  checkedClick = (e) => {
+    this.setState({ [e.target.className]: !this.state[e.target.className] });
   };
 
   checkedClickAll = () => {
-    if (this.state.checked0) {
+    if (!this.state.checkedAll) {
       this.setState({
-        checked0: false,
-        checked1: false,
-        checked2: false,
-        checked3: false,
-        checked4: false,
-      });
-    } else {
-      this.setState({
-        checked0: true,
         checked1: true,
         checked2: true,
         checked3: true,
         checked4: true,
+        checkedAll: true,
+      });
+    } else {
+      this.setState({
+        checked1: false,
+        checked2: false,
+        checked3: false,
+        checked4: false,
+        checkedAll: false,
       });
     }
   };
@@ -51,16 +52,12 @@ class Terms extends Component {
           <div className="termsBox">
             <h3 className="formTitle">이용약관 [필수]</h3>
             <div className="checkBox">
-              <input
-                ref="myCheckbox"
-                onClick={(event) => {
-                  this.checkedClick(1);
-                }}
-                checked={this.state.checked1}
-                type="checkbox"
-                id="checkbox1"
-              />
-              <label for="checkbox1"></label>
+              <input ref="myCheckbox" type="checkbox" id="checkbox1" />
+              <label
+                className="checked1"
+                onClick={this.checkedClick}
+                for="checkbox1"
+              ></label>
               <div className="agree">이용약관에 동의합니다.</div>
             </div>
           </div>
@@ -509,16 +506,12 @@ class Terms extends Component {
           <div className="termsBox">
             <h3 className="formTitle">개인정보 수집 및 이용 [필수]</h3>
             <div className="checkBox">
-              <input
-                ref="myCheckbox"
-                onClick={(event) => {
-                  this.checkedClick(2);
-                }}
-                checked={this.state.checked2}
-                type="checkbox"
-                id="checkbox2"
+              <input ref="myCheckbox" type="checkbox" id="checkbox2" />
+              <label
+                className="checked2"
+                onClick={this.checkedClick}
+                for="checkbox2"
               />
-              <label for="checkbox2" />
               <div className="agree">개인정보 수집 및 이용에 동의합니다.</div>
             </div>
           </div>
@@ -577,27 +570,19 @@ class Terms extends Component {
             <h3 className="formTitle">마케팅 정보 수신 [선택]</h3>
             <div className="checkBox">
               <div className="agreeBox">
-                <input
-                  ref="myCheckbox"
-                  onClick={(event) => {
-                    this.checkedClick(3);
-                  }}
-                  checked={this.state.checked3}
-                  type="checkbox"
-                  id="checkbox3"
-                />
-                <label for="checkbox3" />
+                <input ref="myCheckbox" type="checkbox" id="checkbox3" />
+                <label
+                  className="checked3"
+                  onClick={this.checkedClick}
+                  for="checkbox3"
+                ></label>
                 <div className="agree">SMS 수신에 동의합니다.</div>
-                <input
-                  ref="myCheckbox"
-                  onClick={(event) => {
-                    this.checkedClick(4);
-                  }}
-                  checked={this.state.checked4}
-                  type="checkbox"
-                  id="checkbox4"
-                />
-                <label for="checkbox4" />
+                <input ref="myCheckbox" type="checkbox" id="checkbox4" />
+                <label
+                  className="checked4"
+                  onClick={this.checkedClick}
+                  for="checkbox4"
+                ></label>
                 <div className="agree">이메일 수신에 동의합니다.</div>
               </div>
             </div>
@@ -618,14 +603,12 @@ class Terms extends Component {
           </div>
           <div className="agreeAllBox">
             <div className="agreeAll">
-              <input
+              <input className="box" type="checkbox" id="checkbox5" />
+              <label
+                className="checked5"
                 onClick={this.checkedClickAll}
-                className="box"
-                type="checkbox"
-                id="checkbox5"
-                checked={this.state.checked0}
+                for="checkbox5"
               />
-              <label for="checkbox5" />
               <div className="check">모두 동의합니다.</div>
             </div>
           </div>

@@ -1,7 +1,8 @@
-.idBox {
+.InputWithLabel {
   display: flex;
   width: 100%;
   padding: 7px 0px;
+
   .formLabel {
     width: 160px;
     height: 46px;
@@ -20,6 +21,7 @@
   .inputBox {
     display: flex;
     width: 700px;
+
     input {
       border: 1px solid #c8a7a6;
       width: 305px;
@@ -30,6 +32,7 @@
     .descriptionBox {
       display: flex;
       align-items: center;
+
       .description {
         display: flex;
         font-size: 13px;
