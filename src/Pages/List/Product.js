@@ -11,7 +11,7 @@ class Product extends Component {
       <li className="Product" id={id}>
         <section className="productImage">
           <Link
-            onClick={() => this.props.history.push(`/detail/${this.props.id}`)}
+            onClick={() => this.props.history.push(`/detail/${id}`)}
           >
             <img
               className="productMainImg"

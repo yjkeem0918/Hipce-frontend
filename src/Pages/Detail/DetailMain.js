@@ -33,8 +33,6 @@ class DetailMain extends Component {
             count: this.state.count + 1,
             totalPrice: this.props.price * (this.state.count + 1)
         });   
-        // console.log("hi",this.state.totalPrice)
-         
     }
     
     minusOne = () => {
@@ -49,11 +47,29 @@ class DetailMain extends Component {
             totalPrice: price * (count - 1)
         })
     }
+
+    getItem = (id, price) => {
+        console.log("onclicked")
+        fetch("http://3.17.134.84:8000/products?category=lip", {
+          method: "post",
+          body: JSON.stringify({
+            id: id,
+            price: price,
+            count: 1,
+          }),
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.success) {
+              console.log(1);
+            }
+          });
+      };
      
 
     render() {
         const{name, mainImage, price} = this.props;
-         
+         console.log("total", this.state.count )
         return (
             <div className="DetailMain">
                 <div className="mainContainer">
@@ -101,7 +117,7 @@ class DetailMain extends Component {
                             </div>
                             <div className="buttonBox">
                                 <span>
-                                  <button className="cartBtn"></button>
+                                  <button className="cartBtn" onClick={this.getItem}></button>
                                 </span>  
                                 <button className="buyBtn">BUY NOW</button>           
                             </div> 
