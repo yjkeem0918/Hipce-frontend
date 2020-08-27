@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import "./ProductFilter.scss";
 
 export default class ProductFilter extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       palleteDisplay: false,
       colors: [],
       selectedColor: {},
       filterdColor: "hidden",
+      createURLcolor: [],
     };
   }
 
@@ -27,14 +28,20 @@ export default class ProductFilter extends Component {
     e.preventDefault();
     let newColors = [...this.state.colors];
     newColors[index].active = !newColors[index].active;
+    let checkArr = this.state.colors.map((el) => el.active);
+    let selctingOne = newColors.filter((el) => el.active && el.name);
+    let createURL = selctingOne.map((el) => el.name);
     this.setState({ colors: newColors }, () => {
-      let checkArr = this.state.colors.map((el) => el.active);
       if (!checkArr.filter((el) => el === true).includes(true)) {
         this.setState({ filterdColor: "hidden" });
+        this.setState({
+          selectedColor: this.state.selectedColor.concat(newColors[index]),
+        });
       } else {
         this.setState({ filterdColor: "productFilteredName" });
       }
     });
+    this.setState({ selectedColor: createURL });
   };
 
   palleteClear = () => {
@@ -44,6 +51,7 @@ export default class ProductFilter extends Component {
   };
 
   render() {
+    let changedTitleName = this.props.titleName.split("=")[1];
     const {
       state: { palleteDisplay, colors, filterdColor },
       palleteButtonKeep,
@@ -52,7 +60,10 @@ export default class ProductFilter extends Component {
     return (
       <div className="productFilter">
         <div className="productFilterName">
-          <h2>Lip</h2>
+          <h2>
+            {changedTitleName &&
+              changedTitleName[0].toUpperCase() + changedTitleName.slice(1)}
+          </h2>
           <span
             onClick={() => this.setState({ palleteDisplay: !palleteDisplay })}
             boolean="false"
@@ -96,10 +107,7 @@ export default class ProductFilter extends Component {
           <div>
             <ul>
               <li>
-                <span
-                  className="filteredWordReset"
-                  onClick={(e) => palleteClear(e)}
-                >
+                <span className="filteredWordReset" onClick={palleteClear}>
                   초기화
                 </span>
               </li>

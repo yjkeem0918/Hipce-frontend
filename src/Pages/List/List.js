@@ -10,19 +10,30 @@ import "./List.scss";
 class List extends Component {
   constructor() {
     super();
-
     this.state = {
       newColors: [],
     };
   }
+
   componentDidMount() {
-    fetch("http://localhost:3000/data/productMockdata.json")
+    fetch(`http://3.17.134.84:8000/products?category=lip`)
       .then((res) => res.json())
       .then((res) =>
         this.setState({
-          newColors: res.srcsample,
+          newColors: res.products,
         })
       );
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props.match.params.hello)
+      fetch(`http://3.17.134.84:8000/products?${this.props.match.params.hello}`)
+        .then((res) => res.json())
+        .then((res) =>
+          this.setState({
+            newColors: res.products,
+          })
+        );
   }
 
   render() {
@@ -33,12 +44,16 @@ class List extends Component {
       <div className="List">
         <Nav />
         <ProductNav newColors={newColors} />
-        <ProductFilter />
+        <ProductFilter titleName={this.props.match.params.hello} />
         <div className="productListContainer">
           <ul className="productList">
             {newColors.map(
-              ({ main_image, price, name, tag__image, sub_image }, index) => (
+              (
+                { main_image, price, name, tag__image, sub_image, id },
+                index
+              ) => (
                 <Product
+                  id={id}
                   key={index}
                   mainImgSrc={main_image}
                   subImgSrc={sub_image}
@@ -56,5 +71,4 @@ class List extends Component {
     );
   }
 }
-
 export default List;

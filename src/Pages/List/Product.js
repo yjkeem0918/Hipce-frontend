@@ -1,16 +1,18 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./Product.scss";
 
-export default class Product extends Component {
+class Product extends Component {
   render() {
     const {
-      props: { mainImgSrc, subImgSrc, tag, name, price },
+      props: { mainImgSrc, subImgSrc, tag, name, price, id },
     } = this;
     return (
-      <li className="Product">
+      <li className="Product" id={id}>
         <section className="productImage">
-          <Link>
+          <Link
+            onClick={() => this.props.history.push(`/detail/${this.props.id}`)}
+          >
             <img
               className="productMainImg"
               alt="productMainImg"
@@ -25,7 +27,7 @@ export default class Product extends Component {
         </section>
         <section className="productBottom">
           <div className="productBottomValue">
-            <div>{tag === null ? "" : <img alt="stateLogo" src={tag} />}</div>
+            <div>{tag && <img alt="stateLogo" src={tag} />}</div>
             <div>
               <Link to="/detail">
                 <p>{name}</p>
@@ -44,3 +46,5 @@ export default class Product extends Component {
     );
   }
 }
+
+export default withRouter(Product);
