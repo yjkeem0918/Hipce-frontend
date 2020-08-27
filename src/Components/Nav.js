@@ -1,61 +1,61 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
-
 import "./Nav.scss";
-
-class Nav extends Component {  
+class Nav extends Component {
   constructor() {
     super();
     this.state = {
       navReduced: false,
-      navInMain: true
-    }
+      navInMain: true,
+    };
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", this.handleNav)
+    window.addEventListener("scroll", this.handleNav);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleNav)
+    window.removeEventListener("scroll", this.handleNav);
   }
 
   handleNav = () => {
-    if(this.props.history.location.pathname=="/Main"||this.props.history.location.pathname=="/main") {
+    const { pathname } = this.props.history.location;
+    const { scrollY } = window;
+    if (pathname == "/Main") {
       this.setState({
-        navInMain: true
-      })
-      if(window.scrollY<969) {
+        navInMain: true,
+      });
+      if (scrollY < 969) {
         this.setState({
-          navInMain: true
-        })
+          navInMain: true,
+        });
       }
-      if(window.scrollY>=969&&window.scrollY<2907) {
-        this.setState({
-          navInMain: false,
-          navReduced: false
-        })
-      }
-      if(window.scrollY>=3876) {
+      if (scrollY >= 969 && scrollY < 2907) {
         this.setState({
           navInMain: false,
-          navReduced: false
-        })
+          navReduced: false,
+        });
       }
-    }
-    else if(this.props.history.location.pathname!=="Main") {
+      if (scrollY >= 3876) {
+        this.setState({
+          navInMain: false,
+          navReduced: false,
+        });
+      }
+    } else if (pathname !== "Main") {
       this.setState({
         navInMain: false,
-        navReduced: window.scrollY >= 100
-      })
+        navReduced: window.scrollY >= 100,
+      });
     }
-  }
+  };
 
   render() {
-    console.log("scroll",window.scrollY)
-    const {navReduced, navInMain} = this.state;
+    const { navReduced, navInMain } = this.state;
     return (
-      <div className={navInMain? "NavBright": navReduced? "NavReduced" : "Nav"}>
+      <div
+        className={navInMain ? "NavBright" : navReduced ? "NavReduced" : "Nav"}
+      >
         <div className="siteLogo">
           <Link to="/main" />
         </div>
