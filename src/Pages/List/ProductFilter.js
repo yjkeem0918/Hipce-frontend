@@ -71,7 +71,7 @@ class ProductFilter extends Component {
       <div className="productFilter">
         <div className="productFilterName">
           <h2>
-            {/* {changedTitleName >= 5
+            {/* {changedTitleName.length >= 5
               ? changedTitleName &&
                 changedTitleName[0].toUpperCase() +
                   changedTitleName.slice(1, changedTitleName.indexOf("&"))
