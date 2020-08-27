@@ -1,4 +1,4 @@
-import React from "react";
+:import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Main from "../src/Pages/Main/Main";
 import List from "../src/Pages/List/List";
@@ -6,11 +6,8 @@ import Detail from "../src/Pages/Detail/Detail";
 import Login from "../src/Pages/Sign/Login";
 import SignUp from "../src/Pages/Sign/SignUp";
 import About from "../src/Pages/About/About";
-<<<<<<< HEAD
 import Search from "../src/Pages/Search/Search";
 
-=======
->>>>>>> master
 class Routes extends React.Component {
   render() {
     return (
@@ -21,11 +18,7 @@ class Routes extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="/about" component={About} />
-<<<<<<< HEAD
           <Route exact path="/search" component={Search} />
-=======
-          <Route exact path="/detail/:id" component={Detail} />
->>>>>>> master
         </Switch>
       </Router>
     );

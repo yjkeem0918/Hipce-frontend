@@ -1,14 +1,9 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import Search from "../Pages/Search/Search";
 
-=======
-import { withRouter, Link } from "react-router-dom";
->>>>>>> master
 import "./Nav.scss";
 class Nav extends Component {
-<<<<<<< HEAD
   state = {
     isModalActive: false,
   };
@@ -18,54 +13,6 @@ class Nav extends Component {
   };
   hideModal = () => {
     this.setState({ isModalActive: false });
-=======
-  constructor() {
-    super();
-    this.state = {
-      navReduced: false,
-      navInMain: true,
-    };
-  }
-
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleNav);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleNav);
-  }
-
-  handleNav = () => {
-    const { pathname } = this.props.history.location;
-    const { scrollY } = window;
-    if (pathname == "/Main") {
-      this.setState({
-        navInMain: true,
-      });
-      if (scrollY < 969) {
-        this.setState({
-          navInMain: true,
-        });
-      }
-      if (scrollY >= 969 && scrollY < 2907) {
-        this.setState({
-          navInMain: false,
-          navReduced: false,
-        });
-      }
-      if (scrollY >= 3876) {
-        this.setState({
-          navInMain: false,
-          navReduced: false,
-        });
-      }
-    } else if (pathname !== "Main") {
-      this.setState({
-        navInMain: false,
-        navReduced: window.scrollY >= 100,
-      });
-    }
->>>>>>> master
   };
 
   render() {

@@ -6,10 +6,7 @@ import MainBestSeller from "../../Pages/Main/MainBestSeller";
 import MainEdition from "../../Pages/Main/MainEdition";
 import MainHinceAtelier from "../../Pages/Main/MainHinceAtelier";
 import Footer from "../../Components/Footer";
-<<<<<<< HEAD
 import Search from "../../Pages/Search/Search";
-=======
->>>>>>> master
 
 class Main extends Component {
   constructor() {
