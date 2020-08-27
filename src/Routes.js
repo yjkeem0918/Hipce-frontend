@@ -6,20 +6,26 @@ import Detail from "../src/Pages/Detail/Detail";
 import Login from "../src/Pages/Sign/Login";
 import SignUp from "../src/Pages/Sign/SignUp";
 import About from "../src/Pages/About/About";
+<<<<<<< HEAD
 import Search from "../src/Pages/Search/Search";
 
+=======
+>>>>>>> master
 class Routes extends React.Component {
   render() {
     return (
       <Router>
         <Switch>
-          <Route exact path="/main" component={Main} />
-          <Route exact path="/list" component={List} />
-          <Route exact path="/detail" component={Detail} />
+          <Route exact path="/" component={Main} />
+          <Route exact path="/list/:hello" component={List} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="/about" component={About} />
+<<<<<<< HEAD
           <Route exact path="/search" component={Search} />
+=======
+          <Route exact path="/detail/:id" component={Detail} />
+>>>>>>> master
         </Switch>
       </Router>
     );

@@ -1,5 +1,4 @@
 @import "../Styles/common.scss";
-
 .Nav {
   display: flex;
   align-items: center;
@@ -40,6 +39,212 @@
           font-weight: 600;
           padding: 5px 7px;
           color: $brick;
+
+          &::after {
+            content: "";
+            width: 0;
+            height: 17px;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            background-color: rgba(217, 188, 186, 0.25);
+          }
+
+          &:hover::after {
+            width: 100%;
+            transition: 300ms;
+          }
+        }
+      }
+    }
+  }
+
+  .siteExtra {
+    ul {
+      display: flex;
+
+      li {
+        @include list;
+        background-image: url("http://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
+        background-size: 490px 70px;
+        width: 35px;
+        height: 35px;
+        margin: 8px;
+        padding: 7px 0 7px 10px;
+        cursor: pointer;
+
+        a {
+          width: 35px;
+          height: 35px;
+        }
+
+        &:nth-child(1) {
+          background-position-x: -35px;
+        }
+
+        &:nth-child(2) {
+          background-position-x: -70px;
+        }
+
+        &:nth-child(3) {
+          background-position-x: -105px;
+        }
+      }
+    }
+  }
+}
+
+.NavBright {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 120px;
+  margin: 0 auto;
+  padding: 0 4.75% 0;
+  background-color: transparent;
+
+  .siteLogo {
+    a {
+      background-image: url("http://hince.co.kr/assets/images/hince-logo-sprite.png");
+      background-size: 98px 70px;
+      background-position-y: -35px;
+      display: block;
+      width: 98px;
+      height: 35px;
+      margin-top: 0px;
+    }
+  }
+
+  .siteMenu {
+    ul {
+      display: flex;
+      position: relative;
+
+      li {
+        @include list;
+        padding: 7px 30px;
+
+        a {
+          text-decoration: none;
+          font-size: 17px;
+          font-weight: 600;
+          padding: 5px 7px;
+          color: $white;
+
+          &::after {
+            content: "";
+            width: 0;
+            height: 17px;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            background-color: rgba(217, 188, 186, 0.25);
+          }
+
+          &:hover::after {
+            width: 100%;
+            transition: 300ms;
+          }
+        }
+      }
+    }
+  }
+
+  .siteExtra {
+    ul {
+      display: flex;
+
+      li {
+        @include list;
+        background-image: url("http://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
+        background-size: 490px 70px;
+        width: 35px;
+        height: 35px;
+        margin: 8px;
+        padding: 7px 0 7px 10px;
+        cursor: pointer;
+
+        &:nth-child(1) {
+          background-position: -35px -35px;
+        }
+
+        &:nth-child(2) {
+          background-position: -70px -35px;
+        }
+
+        &:nth-child(3) {
+          background-position: -105px -35px;
+        }
+      }
+    }
+  }
+}
+
+.NavReduced {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 72px;
+  margin: 0 auto;
+  padding: 10px 4.75% 0;
+  background-color: rgba(255, 255, 255, 0.92);
+
+  .siteLogo {
+    a {
+      background-image: url("http://hince.co.kr/assets/images/hince-logo-sprite.png");
+      background-size: 77px 56px;
+      background-position-y: 0px;
+      display: block;
+      width: 77px;
+      height: 28px;
+      margin-top: 3px;
+    }
+  }
+
+  .siteMenu {
+    ul {
+      display: flex;
+      position: relative;
+
+      li {
+        @include list;
+        padding: 7px 30px;
+
+        a {
+          text-decoration: none;
+          font-size: 17px;
+          font-weight: 600;
+          padding: 5px 7px;
+          color: $brick;
+
+          &::after {
+            content: "";
+            width: 0;
+            height: 17px;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            background-color: rgba(217, 188, 186, 0.25);
+          }
+
+          &:hover::after {
+            width: 100%;
+            transition: 300ms;
+          }
         }
       }
     }
