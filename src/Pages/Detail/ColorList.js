@@ -4,11 +4,11 @@ import './ColorList.scss';
 class ColorList extends Component {
 
     render() {
+        const{id, name, bgc}= this.props
         return (
             <div className="ColorList"  >
-                <a href={this.props.address}id={this.props.id}>
-                    <li title={this.props.name} style={{backgroundColor: this.props.bgc}}>
-                    </li>
+                <a href="#" id={id}>
+                    <li title={name} style={{backgroundColor: bgc}}></li>
                 </a>
             </div>
         );

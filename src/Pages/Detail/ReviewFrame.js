@@ -5,6 +5,7 @@ class ReviewFrame extends Component {
     render() {
         return (
             <div className="ReviewFrame">
+                 <a name="review" />
                 <div className="title">
                     <h3>리뷰 보기</h3>
                 </div>

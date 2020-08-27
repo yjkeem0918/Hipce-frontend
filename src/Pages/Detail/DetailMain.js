@@ -3,12 +3,12 @@ import './DetailMain.scss';
 import ColorList from './ColorList';
 
 class DetailMain extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state ={
             count: 1,
-            totalPrice: 19000,
-            colorList :[].map(el=>({...el, active:false}))
+            totalPrice: this.props.price,
+            colorList :[]
         }
     }
     
@@ -30,46 +30,43 @@ class DetailMain extends Component {
         }
         this.setState({
             count: this.state.count + 1,
-            totalPrice: this.state.totalPrice + 19000 
+            totalPrice: this.state.totalPrice + this.props.price
         });   
          
     }
-
+    
     minusOne = () => {
-        if(this.state.count <= 1){
+        const{ count } = this.state
+        const{ price } = this.props
+        if(count <= 1){
             alert('최소 주문수량은 1개 입니다')
             return;
         }
         this.setState({
-            count: this.state.count - 1,
-            totalPrice: this.state.totalPrice - 19000 
+            count: count - 1,
+            totalPrice: this.state.totalPrice - price
         })
     }
 
-    checkMake = () => {
-        console.log("hey")
-        // this.state.colorList.map((el)=> el.active !== id.active)
-    }
-
-
     render() {
-
+        const{name, mainImage, price} = this.props;
+        console.log("totalPrice",this.state.totalPrice)
         return (
             <div className="DetailMain">
                 <div className="mainContainer">
                     <div className="detail_mainImg">
-                        <img src="https://hince.co.kr/web/product/big/20200617/8a3a8a9dae6f28ba5f9456fc6f3d9799.jpg" alt="mainImage" />
+                        <img src= {mainImage}  alt="main-image" />
                     </div>
                     <div className="productInfo">
                         <div className="productName">
-                        <span onClick ={this.checkMake}>무드인핸서 리퀴드 마뜨 얼루어먼트</span>
+                        <span>{name}</span>
                         </div>
                         <div className="productElement">
                         <div className="productPrice">
                             <div className="nameBox">
                             <span className="detailName">판매가</span>
                             </div>
-                            <span className="price">19,000원</span>
+                        <span className="price">{parseInt(price).toLocaleString()}원</span>
                         </div>
                         <div className="productNumBox">
                             <span className="detailName">수량</span>
@@ -83,7 +80,12 @@ class DetailMain extends Component {
                             <span className="detailName">컬러</span>
                             <ul className="colorSet">  
                                 {this.state.colorList.map((obj, idx) => (
-                                    <ColorList onClick={this.checkMake} active = {obj.active} name={obj.title} id={obj.id} bgc={obj.bgc} key={this.state.colorList.title}
+                                    <ColorList onClick={this.checkMake} 
+                                    active = {obj.active} 
+                                    name={obj.title} 
+                                    id={obj.id} 
+                                    bgc={obj.bgc} 
+                                    key={this.state.colorList.title}
                                      />
                                 ))}
                             </ul>
@@ -92,7 +94,7 @@ class DetailMain extends Component {
                         <div classNaem="buyingBox">
                             <div className="totalPrice">
                                 <span className="priceTitle">금액</span>
-                                <span className="total">{Number(this.state.totalPrice).toLocaleString()}원 ({this.state.count}개)</span>        
+                                <span className="total"> {this.state.totalPrice} 원 ({this.state.count}개)</span>        
                             </div>
                             <div className="buttonBox">
                                 <span>

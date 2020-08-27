@@ -11,12 +11,9 @@ body {
   display: flex;
   @include center;
   width: 1920px;
-  height: 855px;
-  background-color: #faf9f7;
+  height: 855px; 
   .detail_mainImg {
     img {
-      width: 800px;
-      height: 650px;
       margin-right: 90px;
     }
   }
