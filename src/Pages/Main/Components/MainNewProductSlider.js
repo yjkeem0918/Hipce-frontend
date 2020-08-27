@@ -26,7 +26,6 @@ class MainNewProductSlider extends Component {
   render() {
     const { newIndex } = this.state;
     const { newProduct } = this.props;
-    console.log(new Array(newProduct.length));
     return (
       <div className="MainNewProductSlider">
         <div className="sectionProduct">
