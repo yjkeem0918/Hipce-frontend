@@ -1,4 +1,4 @@
-:import React from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Main from "../src/Pages/Main/Main";
 import List from "../src/Pages/List/List";
