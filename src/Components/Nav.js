@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import "./Nav.scss";
+
 class Nav extends Component {
   constructor() {
     super();
@@ -21,21 +22,25 @@ class Nav extends Component {
   handleNav = () => {
     const { pathname } = this.props.history.location;
     const { scrollY } = window;
+
     if (pathname == "/Main") {
       this.setState({
         navInMain: true,
       });
+
       if (scrollY < 969) {
         this.setState({
           navInMain: true,
         });
       }
+
       if (scrollY >= 969 && scrollY < 2907) {
         this.setState({
           navInMain: false,
           navReduced: false,
         });
       }
+
       if (scrollY >= 3876) {
         this.setState({
           navInMain: false,
@@ -62,13 +67,13 @@ class Nav extends Component {
         <div className="siteMenu">
           <ul>
             <li>
-              <Link to="/About">About</Link>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/">Collection</Link>
+              <Link to="/collection">Collection</Link>
             </li>
             <li>
-              <Link to="/">Shop</Link>
+              <Link to="/list/lip">Shop</Link>
             </li>
             <li>
               <Link to="/">Store</Link>
@@ -84,7 +89,7 @@ class Nav extends Component {
               <Link to="/login" />
             </li>
             <li>
-              <Link to="/" />
+              <Link to="/search" />
             </li>
             <li>
               <Link to="/shoppingbag" />
