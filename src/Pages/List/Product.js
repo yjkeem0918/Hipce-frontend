@@ -35,6 +35,7 @@ class Product extends Component {
               <Link>
                 <img
                   alt="cartMark"
+                  onClick={() => this.props.history.push("/shoppingbag")}
                   src="http://hince.co.kr/assets/images/hince-cart-icon.jpg"
                 />
               </Link>

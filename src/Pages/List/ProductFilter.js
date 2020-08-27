@@ -61,7 +61,7 @@ class ProductFilter extends Component {
   };
 
   render() {
-    let changedTitleName = this.props.titleName.split("=")[1];
+    // let changedTitleName = this.props.titleName.split("=")[1];
     const {
       state: { palleteDisplay, colors, filterdColor },
       palleteButtonKeep,
@@ -71,11 +71,11 @@ class ProductFilter extends Component {
       <div className="productFilter">
         <div className="productFilterName">
           <h2>
-            {changedTitleName.length >= 5
+            {/* {changedTitleName >= 5
               ? changedTitleName &&
                 changedTitleName[0].toUpperCase() +
                   changedTitleName.slice(1, changedTitleName.indexOf("&"))
-              : changedTitleName[0].toUpperCase() + changedTitleName.slice(1)}
+              : changedTitleName[0].toUpperCase() + changedTitleName.slice(1)} */}
           </h2>
           <span
             onClick={() =>
