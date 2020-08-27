@@ -21,7 +21,6 @@ class SignUp extends Component {
       mobile2: "",
     };
   }
-
   handleMobile = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -65,7 +64,6 @@ class SignUp extends Component {
     }
   }
   render() {
-    console.log(this.state.inputValue);
     return (
       <div className="SignUp">
         <Nav />

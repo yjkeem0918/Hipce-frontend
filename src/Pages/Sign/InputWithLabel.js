@@ -7,11 +7,12 @@ class InputWithLabel extends Component {
     this.state = {};
   }
   render() {
+    const { label, description, validation, isPassed } = this.props.option;
     return (
       <div className="idBox">
         <div className="formLabel">
           <div>
-            {this.props.option.label}
+            {label}
             <span className="requiredMark">*</span>
           </div>
         </div>
@@ -19,17 +20,14 @@ class InputWithLabel extends Component {
           <input
             type="text"
             onChange={(e) => {
-              this.props.onChange(this.props.option.label, e.target.value);
+              this.props.onChange(label, e.target.value);
             }}
           ></input>
           <div className="descriptionBox">
             <div className="description">
-              {this.props.option.description}
+              {description}
               <div className="description2">
-                {this.props.option.validation &&
-                this.props.option.isPassed === "initial"
-                  ? this.props.option.validation.initial
-                  : ""}
+                {validation && isPassed === "initial" ? validation.initial : ""}
               </div>
               <span onChange></span>
             </div>
