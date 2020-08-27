@@ -8,6 +8,14 @@ class Nav extends Component {
     isModalActive: false,
   };
 
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleNav);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleNav);
+  }
+
   handleNav = () => {
     const { pathname } = this.props.history.location;
     const { scrollY } = window;
@@ -51,24 +59,34 @@ class Nav extends Component {
         className={navInMain ? "NavBright" : navReduced ? "NavReduced" : "Nav"}
       >
         <div className="siteLogo">
-          <Link to="/main" />
+          <Link to="/" />
         </div>
         <div className="siteMenu">
           <ul>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about" className="hover hover-1">
+                About
+              </Link>
             </li>
             <li>
-              <Link to="/collection">Collection</Link>
+              <Link to="/collection" className="hover hover-1">
+                Collection
+              </Link>
             </li>
             <li>
-              <Link to="/list/lip">Shop</Link>
+              <Link to="/list/lip" className="hover hover-1">
+                Shop
+              </Link>
             </li>
             <li>
-              <Link to="/">Store</Link>
+              <Link to="/" className="hover hover-1">
+                Store
+              </Link>
             </li>
             <li>
-              <Link to="/">Service</Link>
+              <Link to="/" className="hover hover-1">
+                Service
+              </Link>
             </li>
           </ul>
         </div>
