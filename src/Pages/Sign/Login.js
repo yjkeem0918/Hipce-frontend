@@ -25,9 +25,9 @@ class Login extends Component {
       alert("아이디 입력값은 필수입니다.");
     } else if (id.length >= 1 && !pw) {
       alert("패스워드 항목은 필수 입력값입니다.");
-    } else if (this.state.pw.length >= 1 && !this.state.id) {
+    } else if (pw.length >= 1 && !id) {
       alert("아이디 항목은 필수 입력값입니다.");
-    } else if (this.state.pw.length < 4 && this.state.id) {
+    } else if (pw.length < 4 && id) {
       alert("패스워드 항목이 4자(개) 이상으로 해주십시오.");
     } else {
       fetch(`${API}/user/signin`, {
