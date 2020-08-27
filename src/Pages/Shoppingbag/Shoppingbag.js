@@ -11,7 +11,7 @@ export default class Shoppingbag extends Component {
 
     this.state = {
       countNumber: {},
-      pickItem: [].map((el) => ({ ...el, active: false })),
+      pickItem: [],
       totalPrice: 0,
       shippingFee: 2500,
       checkItem: false,
@@ -19,9 +19,13 @@ export default class Shoppingbag extends Component {
     };
   }
   componentDidMount() {
-    fetch("http://localhost:3000/data/mockDataForShopping.json")
+    fetch("/data/mockDataForShopping.json")
       .then((res) => res.json())
-      .then((res) => this.setState({ pickItem: res.pickedItem }));
+      .then((res) =>
+        this.setState({
+          pickItem: res.pickedItem.map((el) => ({ ...el, active: false })),
+        })
+      );
     this.setFirstPrice();
   }
 
@@ -55,7 +59,7 @@ export default class Shoppingbag extends Component {
       el.name === item.name
         ? {
             ...el,
-            price: parseInt((el.price * (el.count - 1)) / el.count),
+            price: Math.floor((el.price * (el.count - 1)) / el.count),
             count: el.count + inDecrement,
           }
         : el
@@ -128,7 +132,7 @@ export default class Shoppingbag extends Component {
       {
         totalPrice: this.state.pickItem
           .map((el) => el.price)
-          .reduce((a, b) => a + b, 0),
+          .reduce((formerPrice, latterPrice) => formerPrice + latterPrice, 0),
       },
       () => this.calculatePrice()
     );
@@ -177,9 +181,7 @@ export default class Shoppingbag extends Component {
               <div>
                 <span>5만원 이상 결제 시 무료로 배송 받을 수 있습니다.</span>
                 <div>
-                  <span onClick={(e) => deleteCheckedItem(e)}>
-                    선택한 상품 삭제하기
-                  </span>
+                  <span onClick={deleteCheckedItem}>선택한 상품 삭제하기</span>
                   <span onClick={clearList}>장바구니 비우기</span>
                 </div>
               </div>
@@ -189,15 +191,15 @@ export default class Shoppingbag extends Component {
                 <ul>
                   <li>
                     <span>주문금액</span>
-                    <span>{totalPrice}원</span>
+                    <span>{totalPrice.toLocaleString()}원</span>
                   </li>
                   <li>
                     <span>배송비</span>
-                    <span>{shippingFee}원</span>
+                    <span>{shippingFee.toLocaleString()}원</span>
                   </li>
                   <li className="sum">
                     <span>합계</span>
-                    <span>{totalPrice + shippingFee}원</span>
+                    <span>{(totalPrice + shippingFee).toLocaleString()}원</span>
                   </li>
                 </ul>
               </div>
