@@ -26,6 +26,7 @@ class MainNewProductSlider extends Component {
   render() {
     const { newIndex } = this.state;
     const { newProduct } = this.props;
+    console.log(new Array(newProduct.length));
     return (
       <div className="MainNewProductSlider">
         <div className="sectionProduct">
@@ -33,33 +34,36 @@ class MainNewProductSlider extends Component {
         </div>
         <div className="sectionCarousel">
           <ul>
+            {/* {new Array(newProduct.length).map((item, index) => {
+              return <barBtn index={index} newIndex={newIndex} />;
+            })} */}
             <li>
               <button
-                className={newIndex === 0 ? "btnActive" : ""}
+                className={newIndex % 4 === 0 ? "btnActive" : ""}
                 onClick={() => this.handleBtn(0)}
               />
             </li>
             <li>
               <button
-                className={newIndex === 1 ? "btnActive" : ""}
+                className={newIndex % 4 === 1 ? "btnActive" : ""}
                 onClick={() => this.handleBtn(1)}
               />
             </li>
             <li>
               <button
-                className={newIndex === 2 ? "btnActive" : ""}
+                className={newIndex % 4 === 2 ? "btnActive" : ""}
                 onClick={() => this.handleBtn(2)}
               />
             </li>
             <li>
               <button
-                className={newIndex === 3 ? "btnActive" : ""}
+                className={newIndex % 4 === 3 ? "btnActive" : ""}
                 onClick={() => this.handleBtn(3)}
               />
             </li>
           </ul>
         </div>
-        <div className="sectionBottom"/>
+        <div className="sectionBottom" />
         <div className={`sliderContent activeSlide${newIndex}`}>
           <div
             className="sliderWrapper"

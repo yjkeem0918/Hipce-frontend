@@ -35,25 +35,25 @@ class MainBestSellerSlider extends Component {
           <ul>
             <li>
               <button
-                className={newIndex === 0 ? "btnActive" : ""}
+                className={newIndex%4 === 0 ? "btnActive" : ""}
                 onClick={() => this.handleBtn(0)}
               />
             </li>
             <li>
               <button
-                className={newIndex === 1 ? "btnActive" : ""}
+                className={newIndex%4 === 1 ? "btnActive" : ""}
                 onClick={() => this.handleBtn(1)}
               />
             </li>
             <li>
               <button
-                className={newIndex === 2 ? "btnActive" : ""}
+                className={newIndex%4 === 2 ? "btnActive" : ""}
                 onClick={() => this.handleBtn(2)}
               />
             </li>
             <li>
               <button
-                className={newIndex === 3 ? "btnActive" : ""}
+                className={newIndex%4 === 3 ? "btnActive" : ""}
                 onClick={() => this.handleBtn(3)}
               />
             </li>

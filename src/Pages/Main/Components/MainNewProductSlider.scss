@@ -60,7 +60,7 @@
   }
 
   $index: 0;
-  @for $index from 0 through 3 {
+  @for $index from 0 through 12 {
     .activeSlide#{$index} #slide#{$index} {
       opacity: 1;
     }
