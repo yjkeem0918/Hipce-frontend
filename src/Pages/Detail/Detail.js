@@ -6,7 +6,7 @@ import Reviewframe from './ReviewFrame'
 import Nav from "../../Components/Nav";
 import Footer from "../../Components/Footer";
 import './Detail.scss';
-import Product from '../List/Product';
+ 
  
 
  
@@ -24,7 +24,7 @@ data:[],
 }
 
 componentDidMount= () => {
-  fetch('http://3.17.134.84:8000/products/1616')
+  fetch('http://3.17.134.84:8000/products/1599')
   .then((res) => res.json())
   .then(res =>{
     console.log(res)
@@ -42,7 +42,7 @@ componentDidMount= () => {
       });
       this.setState({
         descImg: newList,
-      }, ()=> {console.log(this.state.descImg)})
+      } )
     })
   })
 }
@@ -51,9 +51,9 @@ componentDidMount= () => {
     return (
       <div className="Detail">
          <Nav />
-         <DetailMain name={this.state.data.map(el=>el.name)} 
-         price={this.state.data.map(el=>el.price)}
-         mainImage ={this.state.data.map(el=>el.main_image)}
+         <DetailMain name={this.state.data.map(el=>el.name)[0]} 
+         price={this.state.data.map(el=>el.price)[0]}
+         mainImage ={this.state.data.map(el=>el.main_image)[0]}
           />
          <ProductDetail descriptionImage={this.state.descImg}/>
          <Reviewframe />

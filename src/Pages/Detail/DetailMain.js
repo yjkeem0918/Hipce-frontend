@@ -7,18 +7,19 @@ class DetailMain extends Component {
         super(props);
         this.state ={
             count: 1,
-            totalPrice: this.props.price,
+            totalPrice: null,
             colorList :[]
         }
     }
-    
+
+
     componentDidMount =() => {
         console.log(this.state.colorList)
         fetch('http://localhost:3000/data/data.json')
         .then(res => res.json())
         .then(res => {
             this.setState({
-                colorList: res.colorList
+                colorList: res.colorList,
             })
         })
     }
@@ -30,8 +31,9 @@ class DetailMain extends Component {
         }
         this.setState({
             count: this.state.count + 1,
-            totalPrice: this.state.totalPrice + this.props.price
+            totalPrice: this.props.price * (this.state.count + 1)
         });   
+        // console.log("hi",this.state.totalPrice)
          
     }
     
@@ -44,13 +46,13 @@ class DetailMain extends Component {
         }
         this.setState({
             count: count - 1,
-            totalPrice: this.state.totalPrice - price
+            totalPrice: price * (count - 1)
         })
     }
 
     render() {
         const{name, mainImage, price} = this.props;
-        console.log("totalPrice",this.state.totalPrice)
+         
         return (
             <div className="DetailMain">
                 <div className="mainContainer">
@@ -71,8 +73,8 @@ class DetailMain extends Component {
                         <div className="productNumBox">
                             <span className="detailName">수량</span>
                             <div className="numWrapper">
-                                <button className="minus" onClick={this.minusOne}>-</button>
-                                <button className="plus" onClick={this.plusOne}>+</button>
+                                <button className="minus" onClick={()=>this.minusOne()}>-</button>
+                                <button className="plus" onClick={()=>this.plusOne()}>+</button>
                                 <input value={this.state.count} />
                             </div>            
                         </div>
@@ -94,7 +96,7 @@ class DetailMain extends Component {
                         <div classNaem="buyingBox">
                             <div className="totalPrice">
                                 <span className="priceTitle">금액</span>
-                                <span className="total"> {this.state.totalPrice} 원 ({this.state.count}개)</span>        
+                                <span className="total">{this.state.totalPrice ? this.state.totalPrice.toLocaleString() : parseInt(price).toLocaleString()}원 ({this.state.count}개)</span>        
                             </div>
                             <div className="buttonBox">
                                 <span>
