@@ -1,53 +1,18 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Search from "../Pages/Search/Search";
+
 import "./Nav.scss";
 class Nav extends Component {
-  constructor() {
-    super();
-    this.state = {
-      navReduced: false,
-      navInMain: true,
-    };
-  }
+  state = {
+    isModalActive: false,
+  };
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleNav);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleNav);
-  }
-
-  handleNav = () => {
-    const { pathname } = this.props.history.location;
-    const { scrollY } = window;
-    if (pathname == "/Main") {
-      this.setState({
-        navInMain: true,
-      });
-      if (scrollY < 969) {
-        this.setState({
-          navInMain: true,
-        });
-      }
-      if (scrollY >= 969 && scrollY < 2907) {
-        this.setState({
-          navInMain: false,
-          navReduced: false,
-        });
-      }
-      if (scrollY >= 3876) {
-        this.setState({
-          navInMain: false,
-          navReduced: false,
-        });
-      }
-    } else if (pathname !== "Main") {
-      this.setState({
-        navInMain: false,
-        navReduced: window.scrollY >= 100,
-      });
-    }
+  showModal = () => {
+    this.setState({ isModalActive: true });
+  };
+  hideModal = () => {
+    this.setState({ isModalActive: false });
   };
 
   render() {
@@ -84,7 +49,15 @@ class Nav extends Component {
               <Link to="/login" />
             </li>
             <li>
-              <Link to="/" />
+              <Link
+                alt="search "
+                onClick={() => this.setState({ isModalActive: true })}
+              />
+              {this.state.isModalActive && (
+                <Search
+                  onClose={() => this.setState({ isModalActive: false })}
+                />
+              )}
             </li>
             <li>
               <Link to="/shoppingbag" />
