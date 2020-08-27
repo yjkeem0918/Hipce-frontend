@@ -1,106 +1,91 @@
 import React, { Component } from "react";
 import ImgBox from "./ImgBox";
-import newProduct from "./MainNewProductSliderData";
 import "./MainNewProductSlider.scss";
 
 class MainNewProductSlider extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      pictures: newProduct.pictures,
-      currentPicture: newProduct.pictures[0],
-      activeTab: 0,
+      newIndex: 0,
     };
   }
 
-  handlePrev = (id) => {
-    const { pictures, currentPicture, activeTab } = this.state;
-    const newIndex = currentPicture.index - 1;
+  handleSlider = (id) => {
+    const { newIndex } = this.state;
     this.setState({
-      currentPicture: pictures[newIndex],
-      activeTab: activeTab + id,
-    });
-  };
-
-  handleNext = (id) => {
-    const { pictures, currentPicture, activeTab } = this.state;
-    const newIndex = currentPicture.index + 1;
-    this.setState({
-      currentPicture: pictures[newIndex],
-      activeTab: activeTab + id,
+      newIndex: newIndex + id,
     });
   };
 
   handleBtn = (id) => {
-    const { pictures } = this.state;
     this.setState({
-      currentPicture: pictures[id],
-      activeTab: id,
+      newIndex: id,
     });
   };
 
   render() {
-    const { pictures, currentPicture, activeTab } = this.state;
+    console.log(this.props.newProduct)
+    console.log(this.props.newProduct[0]);
+    const { newIndex } = this.state;
+    const { newProduct } = this.props;
     return (
-      <div className="MainBestSellerSlider">
+      <div className="MainNewProductSlider">
         <div className="sectionProduct">
-          <a href="/">{newProduct.pictures[activeTab].name}</a>
+          <a href="/">{newProduct[newIndex]?.name}</a>
         </div>
         <div className="sectionCarousel">
           <ul>
             <li>
               <button
-                className={activeTab === 0 ? "btnActive" : ""}
+                className={newIndex === 0 ? "btnActive" : ""}
                 onClick={() => this.handleBtn(0)}
               />
             </li>
             <li>
               <button
-                className={activeTab === 1 ? "btnActive" : ""}
+                className={newIndex === 1 ? "btnActive" : ""}
                 onClick={() => this.handleBtn(1)}
               />
             </li>
             <li>
               <button
-                className={activeTab === 2 ? "btnActive" : ""}
+                className={newIndex === 2 ? "btnActive" : ""}
                 onClick={() => this.handleBtn(2)}
               />
             </li>
             <li>
               <button
-                className={activeTab === 3 ? "btnActive" : ""}
+                className={newIndex === 3 ? "btnActive" : ""}
                 onClick={() => this.handleBtn(3)}
               />
             </li>
           </ul>
         </div>
         <div className="sectionBottom"></div>
-        <div className={`sliderContent activeSlide${currentPicture.index}`}>
+        <div className={`sliderContent activeSlide${newIndex}`}>
           <div
             className="sliderWrapper"
             style={{
               transform: `translateX(-${
-                currentPicture.index * (100 / pictures.length)
+                newIndex * (100 / newProduct.length)
               }%)`,
             }}
           >
-            {newProduct.pictures.map((item) => {
-              return (
-                <ImgBox key={item.index} src={item.src} index={item.index} />
-              );
+            {newProduct.map((item, index) => {
+              return <ImgBox src={item.main_image} index={index} />;
             })}
           </div>
         </div>
         <div className="sliderBtn">
           <button
             className="prevBtn"
-            onClick={() => this.handlePrev(-1)}
-            disabled={currentPicture.index === 0}
+            onClick={() => this.handleSlider(-1)}
+            disabled={newIndex === 0}
           ></button>
           <button
             className="nextBtn"
-            onClick={() => this.handleNext(+1)}
-            disabled={currentPicture.index === newProduct.pictures.length - 1}
+            onClick={() => this.handleSlider(+1)}
+            disabled={newIndex === newProduct.length - 1}
           ></button>
         </div>
       </div>

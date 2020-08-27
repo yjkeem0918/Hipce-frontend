@@ -4,7 +4,7 @@ import "./ImgBox.scss";
 class ImgBox extends Component {
   render() {
     return (
-      <div class="ImgBox">
+      <div className="ImgBox">
         <img id={`slide${this.props.index}`} src={this.props.src} />
       </div>
     );

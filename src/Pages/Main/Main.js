@@ -20,7 +20,7 @@ class Main extends Component {
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
-    fetch("http://10.58.2.217:8000/products?tag=new")
+    fetch("http://3.17.134.84:8000/products?tag=new")
       .then(res => res.json())
       .then(res => this.setState({
         newProduct: res.products

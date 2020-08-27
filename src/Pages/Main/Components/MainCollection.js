@@ -7,7 +7,7 @@ class MainCollection extends Component {
   render() {
     return (
       <div className="MainCollection">
-        <video loop="true" autoPlay="true" muted="true">
+        <video loop={true} autoPlay={true} muted={true}>
           <source
             src="https://player.vimeo.com/external/429883157.hd.mp4?s=c779c9da91553f45d5861ca719815a38986db533&profile_id=175"
             type="video/mp4"

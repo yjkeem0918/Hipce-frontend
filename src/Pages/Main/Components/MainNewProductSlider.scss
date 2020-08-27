@@ -42,12 +42,30 @@
     right: 0;
     bottom: 17.5%;
     left: 33.3%;
+    overflow: hidden;
 
     .sliderWrapper {
       left: 13%;
       position: absolute;
       display: flex;
       transition: transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+      .ImgBox {
+        // background-color: #faf9f7;
+        img {
+          // display: block;
+          // margin: 0 auto;
+          opacity: 0;
+          transition: opacity 0.35s ease-out;
+        }
+      }
+    }
+  }
+
+  $index: 0;
+  @for $index from 0 through 3 {
+    .activeSlide#{$index} #slide#{$index} {
+      opacity: 1;
     }
   }
 
