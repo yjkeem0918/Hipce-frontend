@@ -6,7 +6,18 @@ import "../../Styles/common.scss";
 import "../../Styles/reset.scss";
 
 export default class About extends Component {
+  state = {
+    alpha: [],
+  };
+
+  componentDidMount() {
+    fetch(`http://10.58.2.217:8000/products/${this.props.id}`)
+      .then((res) => res.json())
+      .then((res) => this.setState({ alpha: res }));
+  }
+
   render() {
+    console.log(this.state.alpha);
     return (
       <div className="About">
         <Nav />
