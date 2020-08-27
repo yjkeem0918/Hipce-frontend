@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
+
 import "./Nav.scss";
 
 class Nav extends Component {  
@@ -7,6 +8,7 @@ class Nav extends Component {
     super();
     this.state = {
       navReduced: false,
+      navInMain: true
     }
   }
 
@@ -19,15 +21,45 @@ class Nav extends Component {
   }
 
   handleNavReduced = () => {
-    this.setState({
-      navReduced: window.scrollY >= 100
-    })
+    if(this.props.history.location.pathname!=="Main") {
+      this.setState({
+        navInMain: false,
+        navReduced: window.scrollY >= 100
+      })
+    }
+  }
+
+  isInsideMain = () => {
+    if(this.props.history.location.pathname=="/Main") {
+      this.setState({
+        navInMain: true
+      })
+      if(window.scrollY<969) {
+        this.setState({
+          navInMain: true
+        })
+      }
+      if(window.scrollY>=969&&window.scrollY<2907) {
+        this.setState({
+          navReduced: false
+        })
+      }
+      if(window.scrollY>=4845) {
+        this.setState({
+          navReduced: false
+        })
+      }
+    }
+    console.log("jijojojojojojoj")
   }
 
   render() {
-    const {navReduced} = this.state;
+    console.log(this.props.history.location.pathname=="/Main")
+    console.log(window.scrollY)
+    console.log(this.state.navInMain)
+    const {navReduced, navInMain} = this.state;
     return (
-      <div className={navReduced? "NavReduced" : "Nav"}>
+      <div className={navInMain? "NavBright": navReduced? "NavReduced" : "Nav"}>
         <div className="siteLogo">
           <Link to="/main" />
         </div>
@@ -68,4 +100,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);
