@@ -5,6 +5,7 @@ import Card from "./Components/Card";
 import Transfer from "./Components/Transfer";
 import Account from "./Components/Account";
 import Virtual from "./Components/Virtual";
+import OrderSummary from "./Components/OrderSummary";
 import Footer from "../../Components/Footer";
 import "./Checkout.scss";
 
@@ -12,7 +13,7 @@ const paymentMethod = {
   0: <Card />,
   1: <Transfer />,
   3: <Account />,
-  4: <Virtual />
+  4: <Virtual />,
 };
 
 class Checkout extends Component {
@@ -86,15 +87,17 @@ class Checkout extends Component {
                     <option value="018">018</option>
                     <option value="019">019</option>
                   </select>
-                  -<input type="text"></input>-<input type="text"></input>
+                  &nbsp;-&nbsp;<input type="text"></input>&nbsp;-&nbsp;
+                  <input type="text"></input>
                 </div>
                 <div className="email">
                   <label>
                     이메일 <span>*</span>
                   </label>
                   <input type="text"></input>
-                  <span> @ </span>
+                  <span>&nbsp;@&nbsp;</span>
                   <input type="text"></input>
+                  &nbsp;
                   <select>
                     <option value="이메일 선택">-이메일 선택-</option>
                     <option value="naver.com">naver.com</option>
@@ -129,7 +132,7 @@ class Checkout extends Component {
                 <div className="balanceCheck">
                   <label>예치금 사용</label>
                   <input type="text"></input>
-                  <span>원 / 0원 사용가능</span>
+                  <span>&nbsp;원 / 0원 사용가능</span>
                 </div>
                 <div className="totalDiscount">
                   <label>총 적립금 사용금액</label>
@@ -203,18 +206,7 @@ class Checkout extends Component {
             </div>
             <div className="orderSummary">
               <h3>주문요약 및 결제</h3>
-              <div className="productList">
-                <img src="http://hince.co.kr/web/product/tiny/20200617/98d7c1e39705585e592fe835eae8442e.jpg" />
-                <div className="productInfo">
-                  <div className="name">
-                    <p>무드인핸서 리퀴드 마뜨 오픈 도어x</p>
-                    <span>2</span>
-                  </div>
-                  <div className="price">
-                    <span>38,000</span>원
-                  </div>
-                </div>
-              </div>
+              <OrderSummary />
               <div className="orderPayment">
                 <ul>
                   <li>
