@@ -56,7 +56,7 @@ class SignUp extends Component {
                 label: "아이디",
                 description: " 영문 소문자와 숫자를 조합하여 4-16자",
               }}
-            ></InputWithLabel>
+            />
             <InputWithLabel
               onChange={this.getInputValue}
               option={{
