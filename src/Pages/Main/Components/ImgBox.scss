@@ -1,0 +1,17 @@
+@import "../../../Styles/common.scss";
+
+.ImgBox {
+  img {
+    display: block;
+    margin: 0 auto;
+    opacity: 0;
+    transition: opacity 0.35s ease-out;
+  }
+}
+
+$index: 0;
+@for $index from 0 through 3 {
+  .activeSlide#{$index} #slide#{$index} {
+    opacity: 1;
+  }
+}

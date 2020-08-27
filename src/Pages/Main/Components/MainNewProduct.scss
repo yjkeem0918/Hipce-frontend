@@ -1,13 +1,10 @@
-@import "../../Styles/common.scss";
+@import "../../../Styles/common.scss";
 
-.MainEdition {
+.MainNewProduct {
   position: relative;
   padding: none;
-
-  img {
-    width: 100vw;
-    height: 100vh;
-  }
+  width: 100%;
+  min-height: 100vh;
 
   .sectionLabel {
     position: absolute;
@@ -20,6 +17,7 @@
     font-weight: 700;
     padding-top: 25px;
     line-height: 1.428571429;
+    z-index: 1;
   }
 
   .sectionTitle {
@@ -27,7 +25,7 @@
     top: 21.5%;
     width: 100%;
     padding: 0 4.75%;
-    color: $white;
+    color: $brick;
 
     span {
       display: block;
@@ -36,7 +34,7 @@
       width: 32px;
       height: 32px;
       background-position-x: 0px;
-      background-position-y: -32px;
+      background-position-y: 0px;
     }
 
     h1 {
@@ -57,23 +55,25 @@
     }
   }
 
+  .sectionProduct {
+    position: absolute;
+    top: 50%;
+    left: 4.75%;
+    font-size: 20px;
+    font-weight: 500;
+
+    a {
+      text-decoration: none;
+      color: $brick;
+      margin-top: 10px;
+    }
+  }
+
   .sectionBottom {
     position: absolute;
     bottom: 0;
-    border-top: 2px solid rgba(255, 255, 255, 0.25);
     width: 100%;
     height: 32.5%;
-
-    a {
-      position: absolute;
-      bottom: 20%;
-      right: 4.75%;
-      background-image: url("//hince.co.kr/assets/images/hince-icon-sprite-185484.png");
-      background-size: 448px 64px;
-      width: 35px;
-      height: 35px;
-      background-position-x: -128px;
-      background-position-y: -32px;
-    }
+    background-color: $brick;
   }
 }
