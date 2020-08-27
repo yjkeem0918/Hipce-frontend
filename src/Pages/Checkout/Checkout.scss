@@ -210,7 +210,7 @@
         .methodDetail {
           display: flex;
           align-items: center;
-          width: 150px;
+          width: 130px;
 
           span {
             margin-right: 5px;
@@ -267,6 +267,23 @@
         text-align: center;
         margin-top: 30px;
         background-color: $white;
+        cursor: pointer;
+
+        &:hover {
+          animation: onHover 0.25s ease-out;
+          animation-fill-mode: both;
+        }
+      }
+
+      @keyframes onHover {
+        from {
+          background-color: rgb(255, 255, 255);
+          color: rgb(163, 109, 106);
+        }
+        to {
+          background-color: rgb(163, 109, 106);
+          color: rgb(255, 255, 255);
+        }
       }
     }
   }
