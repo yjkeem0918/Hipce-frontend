@@ -23,7 +23,7 @@ class Nav extends Component {
     const { pathname } = this.props.history.location;
     const { scrollY } = window;
 
-    if (pathname == "/Main") {
+    if (pathname == "/" || pathname == "/main") {
       this.setState({
         navInMain: true,
       });
@@ -47,7 +47,7 @@ class Nav extends Component {
           navReduced: false,
         });
       }
-    } else if (pathname !== "Main") {
+    } else if (pathname !== "/" || pathname !== "/main") {
       this.setState({
         navInMain: false,
         navReduced: window.scrollY >= 100,
