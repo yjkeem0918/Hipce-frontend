@@ -52,18 +52,20 @@ class SignUp extends Component {
   };
   validationHandler = (inputValue) => {
     const { validation } = this.state;
-    if (inputValue.id.length > 2) {
-      this.setState({ validation: { ...this.state.validation, id: true } });
-    } else if (inputValue.id === "") {
+    if (inputValue.id === "") {
       this.setState({
         validation: { ...this.state.validation, id: "initial" },
       });
-    } else if (inputValue.id.length < 3) {
-      this.setState({ validation: { ...this.state.validation, id: false } });
     }
+    this.setState({ validation: { ...this.state.validation, id: false } });
+    if (inputValue.pw === "") {
+      this.setState({
+        validation: { ...this.state.validation, id: "initial" },
+      });
+    }
+    this.setState({ validation: { ...this.state.validation, id: false } });
   };
   componentDidUpdate(prevProps, prevState) {
-    console.log("prevState", prevState);
     if (prevState.inputValue.id !== this.state.inputValue.id) {
       this.validationHandler(this.state.inputValue);
     }
@@ -87,8 +89,6 @@ class SignUp extends Component {
                 label: "아이디",
                 description: "영문 소문자와 숫자를 조합하여 4-16자",
                 validation: {
-                  // true: "사용 가능한 아이디입니다.",
-                  // false: "사용 불가능한 아이디 입니다.",
                   initial: "아이디를 입력해 주세요.",
                 },
                 isPassed: this.state.validation.id,
@@ -100,22 +100,16 @@ class SignUp extends Component {
                 label: "비밀번호",
                 description:
                   "영문 대소문자, 숫자, 특수문자 중 2가지 이상을 조합하여 10-16자",
-                validation: {
-                  true: "사용 가능한 아이디입니다.",
-                  false: "사용 불가능한 아이디 입니다.",
-                },
-                isPassed: true,
               }}
             ></InputWithLabel>
             <InputWithLabel
               onChange={this.getInputValue}
               option={{
                 label: "비밀번호 확인",
-                isPassed: false,
                 validation: {
-                  true: "사용 가능한 아이디입니다.",
-                  false: "사용 불가능한 아이디 입니다.",
+                  initial: "비밀번호가 일치하지 않습니다.",
                 },
+                isPassed: this.state.validation.pw,
               }}
             ></InputWithLabel>
             <InputWithLabel
