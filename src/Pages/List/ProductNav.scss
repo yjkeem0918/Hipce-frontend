@@ -1,24 +1,23 @@
-@import '../../Styles/common.scss';
+@import "../../Styles/common.scss";
 
+.productNav {
+  @include center;
+  margin: 120px 0 20px 0px;
+  height: 140px;
+  font-size: 14px;
+  font-family: $pt;
+  background-color: #a36d6a;
 
-.productNav{
+  a {
     @include center;
-    margin: 120px 0 20px 0px;
-    height: 140px;
-    font-size: 14px;
-    font-family: $pt;
-    background-color: #a36d6a;
-    
-    a{
-        @include center;
-        flex-direction: column;
-        margin: 0 30px;
-        text-decoration: none;
-        color: white;
-    }
-    img{
-        width: 70px;
-        height: 70px;
-        margin-bottom: 10px;
-    }
+    flex-direction: column;
+    margin: 0 30px;
+    text-decoration: none;
+    color: white;
+  }
+  img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+  }
 }

@@ -1,35 +1,50 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./Product.scss";
 
-export default class Product extends Component {
+class Product extends Component {
   render() {
+    const {
+      props: { mainImgSrc, subImgSrc, tag, name, price, id },
+    } = this;
     return (
-      <li className="Product">
+      <li className="Product" id={id}>
         <section className="productImage">
-          <img alt="productImg" src={this.props.imgsrc} />
+          <Link
+            onClick={() => this.props.history.push(`/detail/${this.props.id}`)}
+          >
+            <img
+              className="productMainImg"
+              alt="productMainImg"
+              src={mainImgSrc}
+            />
+            <img
+              className="productSubImg"
+              alt="productSubImg"
+              src={subImgSrc}
+            />
+          </Link>
         </section>
         <section className="productBottom">
           <div className="productBottomValue">
-            <div>
-              <img
-                alt="cartbutton"
-                src="http://hince.co.kr/web/upload/custom_1.png"
-              />
-            </div>
+            <div>{tag && <img alt="stateLogo" src={tag} />}</div>
             <div>
               <Link to="/detail">
-                <p>무드인핸서 리퀴드 마뜨 얼루어먼트</p>
+                <p>{name}</p>
               </Link>
-              <img
-                alt="cartMark"
-                src="http://hince.co.kr/assets/images/hince-cart-icon.jpg"
-              />
+              <Link>
+                <img
+                  alt="cartMark"
+                  src="http://hince.co.kr/assets/images/hince-cart-icon.jpg"
+                />
+              </Link>
             </div>
           </div>
-          <span>19,000원</span>
+          <span>{Number(price).toLocaleString()}원</span>
         </section>
       </li>
     );
   }
 }
+
+export default withRouter(Product);

@@ -1,11 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./Nav.scss";
+import Search from "../Pages/Search/Search";
 
+import "./Nav.scss";
 class Nav extends Component {
+  state = {
+    isModalActive: false,
+  };
+
+  showModal = () => {
+    this.setState({ isModalActive: true });
+  };
+  hideModal = () => {
+    this.setState({ isModalActive: false });
+  };
+
   render() {
+    const { navReduced, navInMain } = this.state;
     return (
-      <div className="Nav">
+      <div
+        className={navInMain ? "NavBright" : navReduced ? "NavReduced" : "Nav"}
+      >
         <div className="siteLogo">
           <Link to="/main" />
         </div>
@@ -34,7 +49,15 @@ class Nav extends Component {
               <Link to="/login" />
             </li>
             <li>
-              <Link to="/" />
+              <Link
+                alt="search "
+                onClick={() => this.setState({ isModalActive: true })}
+              />
+              {this.state.isModalActive && (
+                <Search
+                  onClose={() => this.setState({ isModalActive: false })}
+                />
+              )}
             </li>
             <li>
               <Link to="/shoppingbag" />
@@ -46,4 +69,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);
