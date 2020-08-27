@@ -29,10 +29,6 @@ class InputWithLabel extends Component {
                 {this.props.option.validation &&
                 this.props.option.isPassed === "initial"
                   ? this.props.option.validation.initial
-                  : this.props.option.isPassed === "pass"
-                  ? this.props.option.validation.true
-                  : this.props.option.isPassed === "denied"
-                  ? this.props.option.validation.false
                   : ""}
               </div>
               <span onChange></span>

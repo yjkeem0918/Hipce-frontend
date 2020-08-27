@@ -16,7 +16,7 @@ class SignUp extends Component {
         name: "",
         email: "",
       },
-      validation: { id: "initial", pw: "initial" },
+      validation: { id: "initial" },
       mobile1: "",
       mobile2: "",
     };
@@ -53,12 +53,6 @@ class SignUp extends Component {
   validationHandler = (inputValue) => {
     const { validation } = this.state;
     if (inputValue.id === "") {
-      this.setState({
-        validation: { ...this.state.validation, id: "initial" },
-      });
-    }
-    this.setState({ validation: { ...this.state.validation, id: false } });
-    if (inputValue.pw === "") {
       this.setState({
         validation: { ...this.state.validation, id: "initial" },
       });
@@ -106,10 +100,6 @@ class SignUp extends Component {
               onChange={this.getInputValue}
               option={{
                 label: "비밀번호 확인",
-                validation: {
-                  initial: "비밀번호가 일치하지 않습니다.",
-                },
-                isPassed: this.state.validation.pw,
               }}
             ></InputWithLabel>
             <InputWithLabel
