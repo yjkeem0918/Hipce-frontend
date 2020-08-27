@@ -26,7 +26,6 @@ class SignUp extends Component {
     const result = this.state.phone;
     result[idx] = value;
     this.setState({ [name]: result });
-    console.log(name);
   };
 
   handleMobile2 = (e, idx) => {
@@ -34,7 +33,6 @@ class SignUp extends Component {
     const result = this.state.birthday;
     result[idx] = value;
     this.setState({ [name]: result });
-    console.log(name);
   };
 
   getInputValue = (e) => {
