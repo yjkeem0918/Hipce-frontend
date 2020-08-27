@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Nav from "../../Components/Nav";
-import Card from "./Card";
-import Transfer from "./Transfer";
-import Account from "./Account";
-import Virtual from "./Virtual";
+import Card from "./Components/Card";
+import Transfer from "./Components/Transfer";
+import Account from "./Components/Account";
+import Virtual from "./Components/Virtual";
 import Footer from "../../Components/Footer";
 import "./Checkout.scss";
 
