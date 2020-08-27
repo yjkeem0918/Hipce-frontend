@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import "./ProductFilter.scss";
-
-export default class ProductFilter extends Component {
-  constructor() {
-    super();
+import { Link, withRouter } from "react-router-dom";
+class ProductFilter extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
       palleteDisplay: false,
       colors: [],
-      selectedColor: {},
+      selectedColor: [].map((el) => {
+        return;
+      }),
       filterdColor: "hidden",
-      createURLcolor: [],
+      createURLcolor: "",
     };
   }
 
@@ -42,12 +44,24 @@ export default class ProductFilter extends Component {
       }
     });
     this.setState({ selectedColor: createURL });
+    console.log(this.state.selectedColor.map((el) => `color=${el}`).join("&"));
+    // this.props.history.push(
+    //   `/list/${this.state.selectedColor.map((el) => `color=${el}`).join("&")}`
+    // );
+    // /list/acegorty = lip & color = red & color = orange;
   };
+  // createURL = () => {
+  //   const urlStr = this.state.selectedColor
+  //     .map((el) => `color=${el}`)
+  //     .join("&");
 
+  //   // console.log(urlStr);
+  // };
   palleteClear = () => {
     let newColors = [...this.state.colors];
     for (let color of newColors) color.active = false;
     this.setState({ colors: newColors, filterdColor: "hidden" });
+    this.props.his;
   };
 
   render() {
@@ -75,20 +89,26 @@ export default class ProductFilter extends Component {
             <div>
               <ul>
                 {colors.map(({ color, name, active }, index) => (
-                  <li
-                    className={
-                      active ? "colorListToggle" : "colorListToggleWhite"
-                    }
-                    name={name}
-                    key={name}
-                    onClick={(e) => palleteButtonKeep(e, index)}
+                  <Link
+                    to={`/list/category=lip&${this.state.selectedColor
+                      .map((el) => `color=${el}`)
+                      .join("&")}`}
                   >
-                    <button
+                    <li
+                      className={
+                        active ? "colorListToggle" : "colorListToggleWhite"
+                      }
                       name={name}
-                      index={index}
-                      style={{ backgroundColor: color }}
-                    />
-                  </li>
+                      key={name}
+                      onClick={(e) => palleteButtonKeep(e, index)}
+                    >
+                      <button
+                        name={name}
+                        index={index}
+                        style={{ backgroundColor: color }}
+                      />
+                    </li>
+                  </Link>
                 ))}
               </ul>
             </div>
@@ -128,3 +148,4 @@ export default class ProductFilter extends Component {
     );
   }
 }
+export default withRouter(ProductFilter);

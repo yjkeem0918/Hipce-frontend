@@ -57,7 +57,7 @@ class Nav extends Component {
         className={navInMain ? "NavBright" : navReduced ? "NavReduced" : "Nav"}
       >
         <div className="siteLogo">
-          <Link to="/main" />
+          <Link to="/" />
         </div>
         <div className="siteMenu">
           <ul>
@@ -65,16 +65,16 @@ class Nav extends Component {
               <Link to="/About">About</Link>
             </li>
             <li>
-              <Link to="/">Collection</Link>
+              <Link to="/collection">Collection</Link>
             </li>
             <li>
-              <Link to="/">Shop</Link>
+              <Link to="/list/lip">Shop</Link>
             </li>
             <li>
-              <Link to="/">Store</Link>
+              <Link to="/store">Store</Link>
             </li>
             <li>
-              <Link to="/">Service</Link>
+              <Link to="/service">Service</Link>
             </li>
           </ul>
         </div>
