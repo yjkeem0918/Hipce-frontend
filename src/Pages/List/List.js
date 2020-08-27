@@ -8,17 +8,61 @@ import Footer from "../../Components/Footer";
 import "./List.scss";
 
 class List extends Component {
+  constructor() {
+    super();
+    this.state = {
+      newColors: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch(`http://3.17.134.84:8000/products?category=lip`)
+      .then((res) => res.json())
+      .then((res) =>
+        this.setState({
+          newColors: res.products,
+        })
+      );
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props.match.params.hello)
+      fetch(`http://3.17.134.84:8000/products?${this.props.match.params.hello}`)
+        .then((res) => res.json())
+        .then((res) =>
+          this.setState({
+            newColors: res.products,
+          })
+        );
+  }
+
   render() {
+    const {
+      state: { newColors },
+    } = this;
     return (
       <div className="List">
         <Nav />
-        <ProductNav />
-        <ProductFilter />
+        <ProductNav newColors={newColors} />
+        <ProductFilter titleName={this.props.match.params.hello} />
         <div className="productListContainer">
           <ul className="productList">
-            {SRC_SAMPLE.map(({ imgsrc }, index) => (
-              <Product key={index} imgsrc={imgsrc} />
-            ))}
+            {newColors.map(
+              (
+                { main_image, price, name, tag__image, sub_image, id },
+                index
+              ) => (
+                <Product
+                  id={id}
+                  key={index}
+                  mainImgSrc={main_image}
+                  subImgSrc={sub_image}
+                  price={price}
+                  name={name}
+                  tag={tag__image}
+                />
+              )
+            )}
           </ul>
         </div>
         <ProductListBottom />
@@ -27,104 +71,4 @@ class List extends Component {
     );
   }
 }
-//sample data
-const SRC_SAMPLE = [
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200617/84f098e93221212f8261345ede808e27.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-  {
-    imgsrc:
-      "https://hince.co.kr/web/product/tiny/20200304/4d5df929fb5b2ca498fcd0159a87c237.jpg",
-  },
-];
-
 export default List;

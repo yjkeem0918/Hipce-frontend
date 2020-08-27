@@ -1,23 +1,12 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Search from "../Pages/Search/Search";
 import "./Nav.scss";
 
 class Nav extends Component {
-  constructor() {
-    super();
-    this.state = {
-      navReduced: false,
-      navInMain: true,
-    };
-  }
-
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleNav);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleNav);
-  }
+  state = {
+    isModalActive: false,
+  };
 
   handleNav = () => {
     const { pathname } = this.props.history.location;

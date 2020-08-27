@@ -6,45 +6,42 @@ export default class ProductFilter extends Component {
     super();
 
     this.state = {
-      palleteDisplay: "hidden",
-      colors: [...colorRange].map((color) => ({ ...color, active: false })),
+      palleteDisplay: false,
+      colors: [],
+      selectedColor: {},
       filterdColor: "hidden",
-      colors3: [...colorRange].forEach((el) => ({ ...el, active: false })),
+      createURLcolor: [],
     };
-
-    // this.state = {
-    //     palleteDisplay: fals,
-    //     colors: [...colorRange].forEach(el => el.active = false),
-    //     filterdColor: false,
-    // }
-    // Results.map(obj=> ({ ...obj, Active: 'false' }))
   }
 
-  palleteDisplayChange = () => {
-    // this.setState({});
-    this.state.palleteDisplay === "hidden"
-      ? this.setState({ palleteDisplay: "productFilterPallete" })
-      : this.setState({ palleteDisplay: "hidden" });
-  };
+  componentDidMount() {
+    fetch("http://localhost:3000/data/productMockdata.json")
+      .then((res) => res.json())
+      .then((res) =>
+        this.setState({
+          colors: res.colorrange.map((color) => ({ ...color, active: false })),
+        })
+      );
+  }
 
   palleteButtonKeep = (e, index) => {
     e.preventDefault();
-    let checkArr = this.state.colors.map((el) => el.active);
     let newColors = [...this.state.colors];
     newColors[index].active = !newColors[index].active;
-    this.setState({ colors: newColors });
-
-    if (this.state.filterdColor === "hidden") {
-      this.setState({ filterdColor: "productFilteredName" });
-    }
-    for (let i = 0; i < checkArr.length; i++) {
-      if ((checkArr[i] = true)) {
-        return;
-      } else if ((checkArr[i] = false)) {
-        console.log(checkArr[i]);
+    let checkArr = this.state.colors.map((el) => el.active);
+    let selctingOne = newColors.filter((el) => el.active && el.name);
+    let createURL = selctingOne.map((el) => el.name);
+    this.setState({ colors: newColors }, () => {
+      if (!checkArr.filter((el) => el === true).includes(true)) {
         this.setState({ filterdColor: "hidden" });
+        this.setState({
+          selectedColor: this.state.selectedColor.concat(newColors[index]),
+        });
+      } else {
+        this.setState({ filterdColor: "productFilteredName" });
       }
-    }
+    });
+    this.setState({ selectedColor: createURL });
   };
 
   palleteClear = () => {
@@ -54,28 +51,37 @@ export default class ProductFilter extends Component {
   };
 
   render() {
+    let changedTitleName = this.props.titleName.split("=")[1];
+    const {
+      state: { palleteDisplay, colors, filterdColor },
+      palleteButtonKeep,
+      palleteClear,
+    } = this;
     return (
       <div className="productFilter">
         <div className="productFilterName">
-          <h2>Lip</h2>
+          <h2>
+            {changedTitleName &&
+              changedTitleName[0].toUpperCase() + changedTitleName.slice(1)}
+          </h2>
           <span
-            onClick={(e) => this.palleteDisplayChange(e)}
+            onClick={() => this.setState({ palleteDisplay: !palleteDisplay })}
             boolean="false"
           ></span>
         </div>
-        <form className={this.state.palleteDisplay}>
+        <form className={palleteDisplay ? "productFilterPallete" : "hidden"}>
           <section className="palleteColorWrapper">
             <span>컬러</span>
             <div>
               <ul>
-                {this.state.colors.map(({ color, name, active }, index) => (
+                {colors.map(({ color, name, active }, index) => (
                   <li
-                    // className={
-                    //   active ? "colorListToggle" : "colorListToggleWhite"
-                    // }
+                    className={
+                      active ? "colorListToggle" : "colorListToggleWhite"
+                    }
                     name={name}
                     key={name}
-                    onClick={(e) => this.palleteButtonKeep(e, index)}
+                    onClick={(e) => palleteButtonKeep(e, index)}
                   >
                     <button
                       name={name}
@@ -97,22 +103,19 @@ export default class ProductFilter extends Component {
             </div>
           </section>
         </form>
-        <section className={this.state.filterdColor}>
+        <section className={filterdColor}>
           <div>
             <ul>
               <li>
-                <span
-                  className="filteredWordReset"
-                  onClick={(e) => this.palleteClear(e)}
-                >
+                <span className="filteredWordReset" onClick={palleteClear}>
                   초기화
                 </span>
               </li>
-              {this.state.colors.map(({ active, name }, index) => (
+              {colors.map(({ active, name }, index) => (
                 <li>
                   <span
                     className={active ? "filterWord" : "hidden"}
-                    onClick={(e) => this.palleteButtonKeep(e, index)}
+                    onClick={(e) => palleteButtonKeep(e, index)}
                   >
                     컬러 : {name}
                   </span>
@@ -125,15 +128,3 @@ export default class ProductFilter extends Component {
     );
   }
 }
-//sample data
-const colorRange = [
-  { color: "#b12a23", name: "Red" },
-  { color: "#dc6b2f", name: "Oragne" },
-  { color: "#d6ae9a", name: "Beige" },
-  { color: "#dd7d88", name: "Pink" },
-  { color: "#835248", name: "Brown" },
-  { color: "#ef5a41", name: "Coral" },
-  { color: "#b0718d", name: "Purple" },
-  { color: "#b70316", name: "Rose" },
-  { color: "#915f6d", name: "Mauve" },
-];
