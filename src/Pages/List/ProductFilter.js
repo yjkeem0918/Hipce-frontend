@@ -8,9 +8,7 @@ class ProductFilter extends Component {
     this.state = {
       palleteDisplay: false,
       colors: [],
-      selectedColor: [].map((el) => {
-        return;
-      }),
+      selectedColor: [],
       filterdColor: "hidden",
       createURLcolor: "",
     };
@@ -43,25 +41,23 @@ class ProductFilter extends Component {
         this.setState({ filterdColor: "productFilteredName" });
       }
     });
-    this.setState({ selectedColor: createURL });
-    console.log(this.state.selectedColor.map((el) => `color=${el}`).join("&"));
-    // this.props.history.push(
-    //   `/list/${this.state.selectedColor.map((el) => `color=${el}`).join("&")}`
-    // );
-    // /list/acegorty = lip & color = red & color = orange;
+    this.setState({ selectedColor: createURL }, () => this.moveOnto());
   };
-  // createURL = () => {
-  //   const urlStr = this.state.selectedColor
-  //     .map((el) => `color=${el}`)
-  //     .join("&");
 
-  //   // console.log(urlStr);
-  // };
+  moveOnto = () => {
+    this.props.history.push(
+      `/list/category=lip&${this.state.selectedColor
+        .map((el) => `color=${el}`)
+        .join("&")}`
+    );
+  };
+
   palleteClear = () => {
     let newColors = [...this.state.colors];
     for (let color of newColors) color.active = false;
-    this.setState({ colors: newColors, filterdColor: "hidden" });
-    this.props.his;
+    this.setState({ colors: newColors, filterdColor: "hidden" }, () =>
+      this.props.history.push(`/list/category=lip`)
+    );
   };
 
   render() {
@@ -75,11 +71,18 @@ class ProductFilter extends Component {
       <div className="productFilter">
         <div className="productFilterName">
           <h2>
-            {changedTitleName &&
-              changedTitleName[0].toUpperCase() + changedTitleName.slice(1)}
+            {changedTitleName.length >= 5
+              ? changedTitleName &&
+                changedTitleName[0].toUpperCase() +
+                  changedTitleName.slice(1, changedTitleName.indexOf("&"))
+              : changedTitleName[0].toUpperCase() + changedTitleName.slice(1)}
           </h2>
           <span
-            onClick={() => this.setState({ palleteDisplay: !palleteDisplay })}
+            onClick={() =>
+              this.setState({ palleteDisplay: !palleteDisplay }, () =>
+                this.palleteClear()
+              )
+            }
             boolean="false"
           ></span>
         </div>
@@ -89,26 +92,20 @@ class ProductFilter extends Component {
             <div>
               <ul>
                 {colors.map(({ color, name, active }, index) => (
-                  <Link
-                    to={`/list/category=lip&${this.state.selectedColor
-                      .map((el) => `color=${el}`)
-                      .join("&")}`}
+                  <li
+                    className={
+                      active ? "colorListToggle" : "colorListToggleWhite"
+                    }
+                    name={name}
+                    key={name}
+                    onClick={(e) => palleteButtonKeep(e, index)}
                   >
-                    <li
-                      className={
-                        active ? "colorListToggle" : "colorListToggleWhite"
-                      }
+                    <button
                       name={name}
-                      key={name}
-                      onClick={(e) => palleteButtonKeep(e, index)}
-                    >
-                      <button
-                        name={name}
-                        index={index}
-                        style={{ backgroundColor: color }}
-                      />
-                    </li>
-                  </Link>
+                      index={index}
+                      style={{ backgroundColor: color }}
+                    />
+                  </li>
                 ))}
               </ul>
             </div>
