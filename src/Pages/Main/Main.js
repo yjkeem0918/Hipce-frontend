@@ -6,6 +6,7 @@ import MainBestSeller from "./Components/MainBestSeller";
 import MainEdition from "./Components/MainEdition";
 import MainHinceAtelier from "./Components/MainHinceAtelier";
 import Footer from "../../Components/Footer";
+import Search from "../../Pages/Search/Search";
 
 class Main extends Component {
   constructor() {
