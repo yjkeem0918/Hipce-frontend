@@ -13,24 +13,15 @@ class Nav extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", this.handleNavReduced)
+    window.addEventListener("scroll", this.handleNav)
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleNavReduced)
+    window.removeEventListener("scroll", this.handleNav)
   }
 
-  handleNavReduced = () => {
-    if(this.props.history.location.pathname!=="Main") {
-      this.setState({
-        navInMain: false,
-        navReduced: window.scrollY >= 100
-      })
-    }
-  }
-
-  isInsideMain = () => {
-    if(this.props.history.location.pathname=="/Main") {
+  handleNav = () => {
+    if(this.props.history.location.pathname=="/Main"||this.props.history.location.pathname=="/main") {
       this.setState({
         navInMain: true
       })
@@ -41,22 +32,27 @@ class Nav extends Component {
       }
       if(window.scrollY>=969&&window.scrollY<2907) {
         this.setState({
+          navInMain: false,
           navReduced: false
         })
       }
-      if(window.scrollY>=4845) {
+      if(window.scrollY>=3876) {
         this.setState({
+          navInMain: false,
           navReduced: false
         })
       }
     }
-    console.log("jijojojojojojoj")
+    else if(this.props.history.location.pathname!=="Main") {
+      this.setState({
+        navInMain: false,
+        navReduced: window.scrollY >= 100
+      })
+    }
   }
 
   render() {
-    console.log(this.props.history.location.pathname=="/Main")
-    console.log(window.scrollY)
-    console.log(this.state.navInMain)
+    console.log("scroll",window.scrollY)
     const {navReduced, navInMain} = this.state;
     return (
       <div className={navInMain? "NavBright": navReduced? "NavReduced" : "Nav"}>
