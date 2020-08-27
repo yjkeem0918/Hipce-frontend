@@ -7,7 +7,6 @@ class InputWithLabel extends Component {
     this.state = {};
   }
   render() {
-    console.log("validation", this.props.option);
     return (
       <div className="idBox">
         <div className="formLabel">
@@ -26,7 +25,7 @@ class InputWithLabel extends Component {
           <div className="descriptionBox">
             <div className="description">
               {this.props.option.description}
-              <div className="description">
+              <div className="description2">
                 {this.props.option.validation &&
                 this.props.option.isPassed === "initial"
                   ? this.props.option.validation.initial

@@ -105,7 +105,6 @@ class SignUp extends Component {
                 validation: {
                   true: "사용 가능한 아이디입니다.",
                   false: "사용 불가능한 아이디 입니다.",
-                  initial: "아이디를 입력하세요.",
                 },
                 isPassed: true,
               }}
@@ -118,7 +117,6 @@ class SignUp extends Component {
                 validation: {
                   true: "사용 가능한 아이디입니다.",
                   false: "사용 불가능한 아이디 입니다.",
-                  initial: "아이디를 입력하세요.",
                 },
               }}
             ></InputWithLabel>

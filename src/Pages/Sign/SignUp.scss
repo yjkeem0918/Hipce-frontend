@@ -173,16 +173,15 @@
       }
     }
   }
-}
+  @keyframes onHover {
+    from {
+      background-color: rgb(255, 255, 255);
+      color: rgb(163, 109, 106);
+    }
 
-@keyframes onHover {
-  from {
-    background-color: rgb(255, 255, 255);
-    color: rgb(163, 109, 106);
-  }
-
-  to {
-    background-color: rgb(163, 109, 106);
-    color: rgb(255, 255, 255);
+    to {
+      background-color: rgb(163, 109, 106);
+      color: rgb(255, 255, 255);
+    }
   }
 }

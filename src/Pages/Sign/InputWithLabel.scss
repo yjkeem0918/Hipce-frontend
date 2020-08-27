@@ -8,7 +8,7 @@
     color: #a36d6a;
     font-weight: 700;
     line-height: 46px;
-    
+
     .requiredMark {
       margin-left: 5px;
       color: #a36d6a;
@@ -31,6 +31,7 @@
       display: flex;
       align-items: center;
       .description {
+        display: flex;
         font-size: 13px;
         color: #999;
         margin-left: 15px;
