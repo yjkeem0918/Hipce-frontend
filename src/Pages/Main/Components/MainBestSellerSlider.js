@@ -70,7 +70,7 @@ class MainBestSellerSlider extends Component {
             }}
           >
             {discountProduct.map((item, index) => {
-              return <ImgBox src={item.main_image} index={index} />;
+              return <ImgBox src={item.main_image} index={index} id={item.id} />;
             })}
           </div>
         </div>
