@@ -11,7 +11,10 @@ export default class Shoppingbag extends Component {
 
     this.state = {
       countNumber: {},
-      pickItem: [],
+      pickItem: [].map((el) => ({
+        ...el,
+        active: false,
+      })),
       totalPrice: 0,
       shippingFee: 2500,
       checkItem: false,
@@ -19,6 +22,9 @@ export default class Shoppingbag extends Component {
     };
   }
   componentDidMount() {
+    // this.setState({
+    //   pickItem: Object.values(sessionStorage),
+    // });
     fetch("/data/mockDataForShopping.json")
       .then((res) => res.json())
       .then((res) =>
@@ -139,6 +145,10 @@ export default class Shoppingbag extends Component {
   };
 
   render() {
+    console.log("sessionStorage!", this.state.pickedItem);
+
+    console.log("STATE", this.state.pickItem[3]);
+
     const {
       state: {
         emptyDisplay,

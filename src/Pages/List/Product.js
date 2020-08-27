@@ -33,7 +33,9 @@ class Product extends Component {
               <Link>
                 <img
                   alt="cartMark"
-                  onClick={() => this.props.getItem(id, price)}
+                  onClick={() =>
+                    this.props.getItem(id, price, name, mainImgSrc)
+                  }
                   src="http://hince.co.kr/assets/images/hince-cart-icon.jpg"
                 />
               </Link>

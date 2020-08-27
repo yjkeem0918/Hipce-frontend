@@ -36,21 +36,30 @@ class List extends Component {
         );
   }
 
-  getItem = (id, price) => {
-    fetch("http://3.17.134.84:8000/products?category=lip", {
-      method: "post",
-      body: JSON.stringify({
-        id: id,
-        price: price,
-        count: 1,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.success) {
-          console.log(1);
-        }
-      });
+  getItem = (id, price, name, mainImgSrc) => {
+    let getData = {
+      id: id,
+      price: price,
+      name: name,
+      mainImgSrc: mainImgSrc,
+    };
+    sessionStorage.setItem(`${id}`, JSON.stringify(getData));
+
+    this.props.history.push("/shoppingbag");
+    // fetch("http://3.17.134.84:8000/products?category=lip", {
+    //   method: "post",
+    //   body: JSON.stringify({
+    //     id: id,
+    //     price: price,
+    //     count: 1,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     if (res.success) {
+    //       console.log(1);
+    //     }
+    //   });
   };
 
   render() {
