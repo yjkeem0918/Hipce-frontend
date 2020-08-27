@@ -1,48 +1,42 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
+import Search from "../Pages/Search/Search";
 import "./Nav.scss";
+
 class Nav extends Component {
-  constructor() {
-    super();
-    this.state = {
-      navReduced: false,
-      navInMain: true,
-    };
-  }
-
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleNav);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleNav);
-  }
+  state = {
+    isModalActive: false,
+  };
 
   handleNav = () => {
     const { pathname } = this.props.history.location;
     const { scrollY } = window;
-    if (pathname == "/Main") {
+
+    if (pathname == "/" || pathname == "/main") {
       this.setState({
         navInMain: true,
       });
+
       if (scrollY < 969) {
         this.setState({
           navInMain: true,
         });
       }
+
       if (scrollY >= 969 && scrollY < 2907) {
         this.setState({
           navInMain: false,
           navReduced: false,
         });
       }
+
       if (scrollY >= 3876) {
         this.setState({
           navInMain: false,
           navReduced: false,
         });
       }
-    } else if (pathname !== "Main") {
+    } else if (pathname !== "/" || pathname !== "/main") {
       this.setState({
         navInMain: false,
         navReduced: window.scrollY >= 100,
@@ -62,7 +56,7 @@ class Nav extends Component {
         <div className="siteMenu">
           <ul>
             <li>
-              <Link to="/About">About</Link>
+              <Link to="/about">About</Link>
             </li>
             <li>
               <Link to="/collection">Collection</Link>
@@ -84,7 +78,7 @@ class Nav extends Component {
               <Link to="/login" />
             </li>
             <li>
-              <Link to="/" />
+              <Link to="/search" />
             </li>
             <li>
               <Link to="/shoppingbag" />
