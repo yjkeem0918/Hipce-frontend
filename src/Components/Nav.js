@@ -1,24 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import ModalPortal from "../Pages/Search/ModalPortal";
 import Search from "../Pages/Search/Search";
 
 import "./Nav.scss";
 
 class Nav extends Component {
   state = {
-    show: false,
+    isModalActive: false,
   };
 
   showModal = () => {
-    console.log(this.state.show);
-
-    this.setState({ show: true });
+    this.setState({ isModalActive: true });
   };
   hideModal = () => {
-    console.log(this.state.show);
-
-    this.setState({ show: false });
+    this.setState({ isModalActive: false });
   };
 
   render() {
@@ -52,11 +47,14 @@ class Nav extends Component {
               <Link to="/login" />
             </li>
             <li>
-              <Link alt="search " onClick={this.showModal} />
-              {this.state.show && (
-                <ModalPortal>
-                  <Search onClose={this.hideModal} />
-                </ModalPortal>
+              <Link
+                alt="search "
+                onClick={() => this.setState({ isModalActive: true })}
+              />
+              {this.state.isModalActive && (
+                <Search
+                  onClose={() => this.setState({ isModalActive: false })}
+                />
               )}
             </li>
             <li>
