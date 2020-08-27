@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ImgBox from "./ImgBox";
-import newProduct from "./MainNewProductSliderData";
 import "./MainBestSellerSlider.scss";
 
 class MainBestSellerSlider extends Component {
@@ -26,10 +25,11 @@ class MainBestSellerSlider extends Component {
 
   render() {
     const { newIndex } = this.state;
+    const { discountProduct} = this.props;
     return (
       <div className="MainBestSellerSlider">
         <div className="sectionProduct">
-          <a href="/">{newProduct[newIndex].name}</a>
+          <a href="/">{discountProduct[newIndex]?.name}</a>
         </div>
         <div className="sectionCarousel">
           <ul>
@@ -59,17 +59,17 @@ class MainBestSellerSlider extends Component {
             </li>
           </ul>
         </div>
-        <div className="sectionBottom"></div>
+        <div className="sectionBottom" />
         <div className={`sliderContent activeSlide${newIndex}`}>
           <div
             className="sliderWrapper"
             style={{
               transform: `translateX(-${
-                newIndex * (100 / newProduct.length)
+                newIndex * (100 / discountProduct.length)
               }%)`,
             }}
           >
-            {newProduct.map((item,index) => {
+            {discountProduct.map((item, index) => {
               return <ImgBox src={item.main_image} index={index} />;
             })}
           </div>
@@ -79,12 +79,12 @@ class MainBestSellerSlider extends Component {
             className="prevBtn"
             onClick={() => this.handleSlider(-1)}
             disabled={newIndex === 0}
-          ></button>
+          />
           <button
             className="nextBtn"
             onClick={() => this.handleSlider(+1)}
-            disabled={newIndex === newProduct.length - 1}
-          ></button>
+            disabled={newIndex === discountProduct.length - 1}
+          />
         </div>
       </div>
     );

@@ -3,7 +3,6 @@ import {Link} from "react-router-dom"
 import "./MainCollection.scss";
 
 class MainCollection extends Component {
-
   render() {
     return (
       <div className="MainCollection">

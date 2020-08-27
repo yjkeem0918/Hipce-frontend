@@ -14,47 +14,56 @@ class Main extends Component {
       currentPosY: 0,
       scroll: false,
       navBright: false,
-      newProduct: []
+      newProduct: [],
+      discountProduct: []
     };
   }
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
-    fetch("http://3.17.134.84:8000/products?tag=new")
-      .then(res => res.json())
-      .then(res => this.setState({
-        newProduct: res.products
-      }));
+    Promise.all([fetch("http://3.17.134.84:8000/products?tag=new"), fetch("http://3.17.134.84:8000/products?tag=discount")])
+    .then(([res1, res2]) => {
+      return Promise.all([res1.json(), res2.json()]);
+    })
+    .then(([res1, res2]) => {
+      this.setState({
+        newProduct: res1.products,
+        discountProduct: res2.products
+      })
+
+    })
   }
 
   handleScroll = () => {
     const { scroll, currentPosY } = this.state;
     const {scrollY} = window;
+
     if (this.prev > scrollY && scrollY < currentPosY) {
       this.setState(
         { scroll: true, currentPosY: this.state.currentPosY - 969 },
         () =>
           window.scrollTo({ top: this.state.currentPosY, behavior: "smooth" })
       );
+
     } else if (this.prev < scrollY && scrollY > currentPosY) {
       this.setState(
         { scroll: true, currentPosY: this.state.currentPosY + 969 },
         () =>
           window.scrollTo({ top: this.state.currentPosY, behavior: "smooth" })
       );
+
     } else if (scroll && scrollY < currentPosY) return;
     this.setState({ scroll: false });
     this.prev = window.scrollY;
   };
 
   render() {
-    console.log(this.state.newProduct)
     return (
       <div>
         <Nav />
         <MainCollection />
         <MainNewProduct newProduct={this.state.newProduct}/>
-        <MainBestSeller newProduct={this.state.newProduct}/>
+        <MainBestSeller discountProduct={this.state.discountProduct}/>
         <MainEdition />
         <MainHinceAtelier />
         <Footer />

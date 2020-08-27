@@ -24,8 +24,6 @@ class MainNewProductSlider extends Component {
   };
 
   render() {
-    console.log(this.props.newProduct)
-    console.log(this.props.newProduct[0]);
     const { newIndex } = this.state;
     const { newProduct } = this.props;
     return (
@@ -61,7 +59,7 @@ class MainNewProductSlider extends Component {
             </li>
           </ul>
         </div>
-        <div className="sectionBottom"></div>
+        <div className="sectionBottom"/>
         <div className={`sliderContent activeSlide${newIndex}`}>
           <div
             className="sliderWrapper"
@@ -81,12 +79,12 @@ class MainNewProductSlider extends Component {
             className="prevBtn"
             onClick={() => this.handleSlider(-1)}
             disabled={newIndex === 0}
-          ></button>
+          />
           <button
             className="nextBtn"
             onClick={() => this.handleSlider(+1)}
             disabled={newIndex === newProduct.length - 1}
-          ></button>
+          />
         </div>
       </div>
     );
