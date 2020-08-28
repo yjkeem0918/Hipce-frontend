@@ -50,7 +50,7 @@ class SignUp extends Component {
   }
 
   handleSignUp = () => {
-    fetch(`${API}/user/signup`, {
+    fetch(`${API}/users/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -13,7 +13,6 @@ class DetailMain extends Component {
   }
 
   componentDidMount = () => {
-    console.log(this.state.colorList);
     fetch("http://localhost:3000/data/data.json")
       .then((res) => res.json())
       .then((res) => {

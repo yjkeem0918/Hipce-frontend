@@ -61,7 +61,7 @@ class Detail extends Component {
           mainImage={this.state.data.map((el) => el.main_image)[0]}
         />
         <ProductDetail descriptionImage={this.state.descImg} />
-        <Reviewframe />
+        {/* <Reviewframe /> */}
         <ul>
           {this.state.reviews.map((review) => {
             return (

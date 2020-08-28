@@ -31,8 +31,8 @@ class Checkout extends Component {
   };
 
   onGoingPayment = () => {
-    alert('결제가 진행중입니다 :)')
-  }
+    alert("결제가 진행중입니다 :)");
+  };
 
   render() {
     return (
@@ -231,10 +231,10 @@ class Checkout extends Component {
                   </li>
                   <li className="total">
                     <span>결제예정</span>
-                    <span>38,000원</span>
+                    <span>57,000원</span>
                   </li>
                 </ul>
-                <button onClick={()=>this.onGoingPayment()}>결제하기</button>
+                <button onClick={() => this.onGoingPayment()}>결제하기</button>
               </div>
             </div>
           </div>

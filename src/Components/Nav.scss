@@ -97,7 +97,7 @@
     ul {
       display: flex;
 
-      li {
+      a {
         @include list;
         background-image: url("http://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
         background-size: 490px 70px;
@@ -107,7 +107,7 @@
         padding: 7px 0 7px 10px;
         cursor: pointer;
 
-        a {
+        li {
           width: 35px;
           height: 35px;
         }
@@ -189,7 +189,7 @@
     ul {
       display: flex;
 
-      li {
+      a {
         @include list;
         background-image: url("http://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
         background-size: 490px 70px;
@@ -198,6 +198,11 @@
         margin: 8px;
         padding: 7px 0 7px 10px;
         cursor: pointer;
+
+        li {
+          width: 35px;
+          height: 35px;
+        }
 
         &:nth-child(1) {
           background-position: -35px -35px;
@@ -285,7 +290,7 @@
     ul {
       display: flex;
 
-      li {
+      a {
         @include list;
         background-image: url("http://hince.co.kr/assets/images/hince-icon-sprite-185484.png");
         background-size: 490px 70px;
@@ -295,7 +300,7 @@
         padding: 7px 0 7px 10px;
         cursor: pointer;
 
-        a {
+        li {
           width: 35px;
           height: 35px;
         }
