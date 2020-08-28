@@ -23,6 +23,8 @@ class MainNewProductSlider extends Component {
     });
   };
 
+
+
   render() {
     const { newIndex } = this.state;
     const { newProduct } = this.props;
@@ -33,9 +35,6 @@ class MainNewProductSlider extends Component {
         </div>
         <div className="sectionCarousel">
           <ul>
-            {/* {new Array(newProduct.length).map((item, index) => {
-              return <barBtn index={index} newIndex={newIndex} />;
-            })} */}
             <li>
               <button
                 className={newIndex % 4 === 0 ? "btnActive" : ""}
@@ -73,7 +72,7 @@ class MainNewProductSlider extends Component {
             }}
           >
             {newProduct.map((item, index) => {
-              return <ImgBox src={item.main_image} index={index} />;
+              return <ImgBox src={item.main_image} index={index} id={item.id}/>;
             })}
           </div>
         </div>
