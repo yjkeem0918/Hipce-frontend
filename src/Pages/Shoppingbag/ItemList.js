@@ -38,7 +38,7 @@ export default class ItemList extends Component {
                     +
                   </span>
                 </form>
-                <div className="eachPrice">{item.price.toLocaleString()}원</div>
+                <div className="eachPrice">{item.price}원</div>
                 <button onClick={() => deleteList(item)}>X</button>
               </div>
             </td>

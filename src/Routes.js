@@ -6,9 +6,10 @@ import Detail from "../src/Pages/Detail/Detail";
 import Login from "../src/Pages/Sign/Login";
 import SignUp from "../src/Pages/Sign/SignUp";
 import About from "../src/Pages/About/About";
+import Shoppingbag from "../src/Pages/Shoppingbag/Shoppingbag";
+import Checkout from "../src/Pages/Checkout/Checkout";
 import Collection from "../src/Pages/Collection/Collection";
 import Search from "../src/Pages/Search/Search";
-import Checkout from "./Pages/Checkout/Checkout";
 
 class Routes extends React.Component {
   render() {
@@ -21,6 +22,9 @@ class Routes extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="/about" component={About} />
+          <Route exact path="/list/:hello/:id" component={Detail} />
+          <Route exact path="/shoppingbag" component={Shoppingbag} />
+          <Route exact path="/checkout" component={Checkout} />
           <Route exact path="/collection" component={Collection} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/checkout" component={Checkout} />
