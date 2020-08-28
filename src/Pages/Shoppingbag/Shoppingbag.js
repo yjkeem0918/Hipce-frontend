@@ -11,10 +11,7 @@ export default class Shoppingbag extends Component {
 
     this.state = {
       countNumber: {},
-      pickItem: [].map((el) => ({
-        ...el,
-        active: false,
-      })),
+      pickItem: [],
       totalPrice: 0,
       shippingFee: 2500,
       checkItem: false,
@@ -25,11 +22,13 @@ export default class Shoppingbag extends Component {
     fetch("/data/mockDataForShopping.json")
       .then((res) => res.json())
       .then((res) =>
-        this.setState({
-          pickItem: res.pickedItem.map((el) => ({ ...el, active: false })),
-        })
+        this.setState(
+          {
+            pickItem: res.pickedItem.map((el) => ({ ...el, active: false })),
+          },
+          () => this.setFirstPrice()
+        )
       );
-    this.setFirstPrice();
   }
 
   countPlus = (item, inDecrement, e) => {
@@ -211,7 +210,7 @@ export default class Shoppingbag extends Component {
                   전체 주문하기
                 </Link>
                 <div>
-                  <Link to="/checkout">선택 상품만 주문</Link>
+                  <Link to="/login">선택 상품만 주문</Link>
                   <Link to="/checkout" className="naverOrder"></Link>
                 </div>
               </div>

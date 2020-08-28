@@ -4,7 +4,6 @@ import "./MainNewProduct.scss";
 
 class MainNewProduct extends Component {
   render() {
-    console.log(this.props.newProduct);
     return (
       <div className="MainNewProduct">
         <div className="sectionLabel">02</div>
@@ -13,7 +12,7 @@ class MainNewProduct extends Component {
           <h1>New Product</h1>
           <p>한스의 신상품을 가장 먼저 만나보세요.</p>
         </div>
-        <MainNewProductSlider newProduct={this.props.newProduct}/>
+        <MainNewProductSlider newProduct={this.props.newProduct} />
       </div>
     );
   }
