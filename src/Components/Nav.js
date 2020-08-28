@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Search from "../Pages/Search/Search";
 import "./Nav.scss";
 
