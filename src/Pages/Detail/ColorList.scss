@@ -9,6 +9,12 @@
       animation: onHoverAtag 0.25s ease-out;
       animation-fill-mode: both;
     }
+    .checker{
+      width: 32px;
+    }
+    .hidden{
+      display: none;
+    }
   }
 }
 

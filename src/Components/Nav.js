@@ -1,18 +1,55 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import Search from "../Pages/Search/Search";
-
 import "./Nav.scss";
+
 class Nav extends Component {
   state = {
     isModalActive: false,
   };
 
-  showModal = () => {
-    this.setState({ isModalActive: true });
-  };
-  hideModal = () => {
-    this.setState({ isModalActive: false });
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleNav);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleNav);
+  }
+
+  handleNav = () => {
+    const { pathname } = this.props.history.location;
+    const { scrollY } = window;
+
+    if (pathname == "/" || pathname == "/main") {
+      this.setState({
+        navInMain: true,
+      });
+
+      if (scrollY < 969) {
+        this.setState({
+          navInMain: true,
+        });
+      }
+
+      if (scrollY >= 969 && scrollY < 2907) {
+        this.setState({
+          navInMain: false,
+          navReduced: false,
+        });
+      }
+
+      if (scrollY >= 3876) {
+        this.setState({
+          navInMain: false,
+          navReduced: false,
+        });
+      }
+    } else if (pathname !== "/" || pathname !== "/main") {
+      this.setState({
+        navInMain: false,
+        navReduced: window.scrollY >= 100,
+      });
+    }
   };
 
   render() {
@@ -22,24 +59,34 @@ class Nav extends Component {
         className={navInMain ? "NavBright" : navReduced ? "NavReduced" : "Nav"}
       >
         <div className="siteLogo">
-          <Link to="/main" />
+          <Link to="/" />
         </div>
         <div className="siteMenu">
           <ul>
             <li>
-              <Link to="/About">About</Link>
+              <Link to="/about" className="hover hover-1">
+                About
+              </Link>
             </li>
             <li>
-              <Link to="/">Collection</Link>
+              <Link to="/collection" className="hover hover-1">
+                Collection
+              </Link>
             </li>
             <li>
-              <Link to="/">Shop</Link>
+              <Link to="/list/lip" className="hover hover-1">
+                Shop
+              </Link>
             </li>
             <li>
-              <Link to="/">Store</Link>
+              <Link to="/" className="hover hover-1">
+                Store
+              </Link>
             </li>
             <li>
-              <Link to="/">Service</Link>
+              <Link to="/" className="hover hover-1">
+                Service
+              </Link>
             </li>
           </ul>
         </div>
@@ -49,15 +96,7 @@ class Nav extends Component {
               <Link to="/login" />
             </li>
             <li>
-              <Link
-                alt="search "
-                onClick={() => this.setState({ isModalActive: true })}
-              />
-              {this.state.isModalActive && (
-                <Search
-                  onClose={() => this.setState({ isModalActive: false })}
-                />
-              )}
+              <Link to="/search" />
             </li>
             <li>
               <Link to="/shoppingbag" />

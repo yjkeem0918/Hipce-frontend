@@ -91,7 +91,10 @@ class Footer extends Component {
                 (Seogyo-dong, Namoo Building) 3F, 41, Yanghwa-ro 7an-gil,
                 Mapo-gu, Seoul, Republic of Korea
               </li>
-              <li>Business Registration No: 632-88-00936 E-commerce Permit Registration No: 2019-SeoulMapo-1141</li>
+              <li>
+                Business Registration No: 632-88-00936 E-commerce Permit
+                Registration No: 2019-SeoulMapo-1141
+              </li>
             </ul>
             <ul>
               <li>Contact 1644-7161</li>
