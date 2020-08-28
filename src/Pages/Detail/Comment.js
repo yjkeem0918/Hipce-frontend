@@ -1,21 +1,25 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import CommentList from './CommentList'
 import "./Comment.scss";
-import CommentList from "./CommentList";
 
 class Comment extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user: "김영*",
-      text: "",
-      replies: [
-        {
-          name: "",
-          comment: "",
-        },
-      ],
-    };
-  }
+    constructor(){
+        super();
+        this.state = {
+            user:"김영*",
+            text: "",
+            replies:[{
+                name:"",
+                comment:""
+            }]
+        };
+    }  
+    
+    handleText = (e) => {
+     this.setState({
+        text: e.target.value
+     });    
+    }
 
   num = 0;
 
@@ -42,7 +46,7 @@ class Comment extends Component {
       this.addText();
       e.target.value = "";
     }
-  };
+  }  
 
   handleRemove = (num) => {
     alert("이 댓글을 정말로 삭제하시겠습니까?");
