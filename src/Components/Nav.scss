@@ -63,7 +63,7 @@
 
         .hover {
           color: $brick;
-          @extend %hover;
+          @extend %hoverShared;
 
           &:before,
           &:after {
