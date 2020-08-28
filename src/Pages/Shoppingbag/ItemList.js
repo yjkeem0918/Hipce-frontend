@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 export default class ItemList extends Component {
   render() {
-    console.log(this.props.pickedItem);
-
     const {
       props: { pickedItem, checkItem, deleteList, countPlus, countMinus },
     } = this;

@@ -6,6 +6,7 @@ import Product from "./Product";
 import ProductListBottom from "../List/ProductListBottom";
 import Footer from "../../Components/Footer";
 import "./List.scss";
+import API from "../../config";
 
 class List extends Component {
   constructor() {
@@ -16,7 +17,7 @@ class List extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://3.17.134.84:8000/products?category=lip`)
+    fetch(`${API}/products?category=lip`)
       .then((res) => res.json())
       .then((res) =>
         this.setState({
@@ -46,20 +47,6 @@ class List extends Component {
     sessionStorage.setItem(`${id}`, JSON.stringify(getData));
 
     this.props.history.push("/shoppingbag");
-    // fetch("http://3.17.134.84:8000/products?category=lip", {
-    //   method: "post",
-    //   body: JSON.stringify({
-    //     id: id,
-    //     price: price,
-    //     count: 1,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     if (res.success) {
-    //       console.log(1);
-    //     }
-    //   });
   };
 
   render() {

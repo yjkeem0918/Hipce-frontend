@@ -1,7 +1,8 @@
-.idBox {
+.InputWithLabel {
   display: flex;
   width: 100%;
   padding: 7px 0px;
+
   .formLabel {
     width: 160px;
     height: 46px;
@@ -20,6 +21,7 @@
   .inputBox {
     display: flex;
     width: 700px;
+
     input {
       border: 1px solid #c8a7a6;
       width: 305px;
@@ -30,9 +32,17 @@
     .descriptionBox {
       display: flex;
       align-items: center;
+
       .description {
+        display: flex;
         font-size: 13px;
         color: #999;
+        margin-left: 15px;
+        font-family: "Assistant", "Noto Sans KR", sans-serif;
+      }
+      .description2 {
+        font-size: 13px;
+        color: #a36d6a;
         margin-left: 15px;
         font-family: "Assistant", "Noto Sans KR", sans-serif;
       }

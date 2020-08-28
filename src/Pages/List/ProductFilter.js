@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./ProductFilter.scss";
 import { Link, withRouter } from "react-router-dom";
 class ProductFilter extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       palleteDisplay: false,
@@ -82,7 +82,6 @@ class ProductFilter extends Component {
   };
 
   render() {
-    // let changedTitleName = this.props.titleName.split("=")[1];
     const {
       state: { palleteDisplay, colors, filterdColor },
       palleteButtonKeep,
@@ -91,13 +90,7 @@ class ProductFilter extends Component {
     return (
       <div className="productFilter">
         <div className="productFilterName">
-          <h2>
-            {/* {changedTitleName.length >= 5
-              ? changedTitleName &&
-                changedTitleName[0].toUpperCase() +
-                  changedTitleName.slice(1, changedTitleName.indexOf("&"))
-              : changedTitleName[0].toUpperCase() + changedTitleName.slice(1)} */}
-          </h2>
+          <h2></h2>
           <span
             onClick={() =>
               this.setState({ palleteDisplay: !palleteDisplay }, () =>
@@ -135,8 +128,8 @@ class ProductFilter extends Component {
             <div className="palleteSearchBox">
               <span>결과 내 검색</span>
               <div>
-                <input onChange={(e) => this.textInput(e)}></input>
-                <button onClick={(e) => this.inputTextSend(e)}>검색</button>
+                <input onChange={this.textInput}></input>
+                <button onClick={this.inputTextSend}>검색</button>
               </div>
             </div>
           </section>
