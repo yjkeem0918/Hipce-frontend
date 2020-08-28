@@ -139,19 +139,20 @@ export default class Shoppingbag extends Component {
   };
 
   sendPickedItem = (pickItem) => {
-    console.log(pickItem);
-    fetch("URL", {
-      method: "post",
-      body: JSON.stringify({
-        pickItem: pickItem,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.success) {
-          console.log("hello");
-        }
-      });
+    console.log(pickItem.map((el) => el.id));
+
+    // fetch("URL", {
+    //   method: "post",
+    //   body: JSON.stringify({
+    //     pickItem: pickItem.id,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     if (res.success) {
+    //       console.log(pickItem.id);
+    //     }
+    //   });
   };
 
   render() {
