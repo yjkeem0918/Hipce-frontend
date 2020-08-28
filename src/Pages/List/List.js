@@ -6,6 +6,7 @@ import Product from "./Product";
 import ProductListBottom from "../List/ProductListBottom";
 import Footer from "../../Components/Footer";
 import "./List.scss";
+import API from "../../config";
 
 class List extends Component {
   constructor() {
@@ -16,7 +17,7 @@ class List extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://3.17.134.84:8000/products?category=lip`)
+    fetch(`${API}/products?category=lip`)
       .then((res) => res.json())
       .then((res) =>
         this.setState({
@@ -26,7 +27,7 @@ class List extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props.match.params.hello)
+    if (prevProps.match.params.hello !== this.props.match.params.hello)
       fetch(`http://3.17.134.84:8000/products?${this.props.match.params.hello}`)
         .then((res) => res.json())
         .then((res) =>
@@ -35,6 +36,18 @@ class List extends Component {
           })
         );
   }
+
+  getItem = (id, price, name, mainImgSrc) => {
+    let getData = {
+      id: id,
+      price: price,
+      name: name,
+      mainImgSrc: mainImgSrc,
+    };
+    sessionStorage.setItem(`${id}`, JSON.stringify(getData));
+
+    this.props.history.push("/shoppingbag");
+  };
 
   render() {
     const {
@@ -54,12 +67,13 @@ class List extends Component {
               ) => (
                 <Product
                   id={id}
-                  key={index}
+                  index={index}
                   mainImgSrc={main_image}
                   subImgSrc={sub_image}
                   price={price}
                   name={name}
                   tag={tag__image}
+                  getItem={this.getItem}
                 />
               )
             )}

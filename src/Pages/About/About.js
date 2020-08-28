@@ -17,7 +17,6 @@ export default class About extends Component {
   }
 
   render() {
-    console.log(this.state.alpha);
     return (
       <div className="About">
         <Nav />

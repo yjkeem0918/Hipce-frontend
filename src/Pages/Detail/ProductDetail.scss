@@ -1,49 +1,55 @@
 @import "../../Styles/common.scss";
 
-a {
-  text-decoration: none;
-}
-
 .ProductDetail {
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
   nav {
-      padding-top: 60px;
-      max-width: 1300px;
-      height: 154px;
-      text-align: center;
-      font-size: 17px;
-      font-weight: 700;
-      .detailInfo{
-        width: 77px;
-        height: 34px;
-        padding: 60px 30px;
-        color: #a36d6a;
+    padding-top: 60px;
+    max-width: 1300px;
+    height: 154px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 700;
+    a {
+      text-decoration: none;
+    }
+    .detailInfo {
+      width: 77px;
+      height: 34px;
+      padding: 60px 30px;
+      color: #a36d6a;
+    }
+    .gotoReview {
+      padding: 60px 30px;
+      color: #ccb2b1;
+      &:hover {
+        animation: onHoverColor 0.25s ease-out;
+        animation-fill-mode: both;
       }
-      .gotoReview{
-        padding: 60px 30px;
-        color: #ccb2b1;
-        &:hover {
-            animation: onHoverColor 0.25s ease-out;
-            animation-fill-mode: both;
-        }
-      }
+    }
   }
-  .detailContainer{
-    display: block;
+  .detailContainer {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     margin: 0 auto;
     max-width: 900px;
-    height: auto;
+    height: 100%; 
+    p{
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
- @keyframes onHoverColor {
-     from {
-         color: #ccb2b1;
-     }
-     to {
-        color: #a36d6a;
-     }
- }
+
+@keyframes onHoverColor {
+  from {
+    color: #ccb2b1;
+  }
+  to {
+    color: #a36d6a;
+  }
+}

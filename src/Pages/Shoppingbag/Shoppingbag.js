@@ -11,7 +11,10 @@ export default class Shoppingbag extends Component {
 
     this.state = {
       countNumber: {},
-      pickItem: [],
+      pickItem: [].map((el) => ({
+        ...el,
+        active: false,
+      })),
       totalPrice: 0,
       shippingFee: 2500,
       checkItem: false,

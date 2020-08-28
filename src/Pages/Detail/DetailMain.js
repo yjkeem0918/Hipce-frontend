@@ -1,27 +1,27 @@
 import React, { Component } from "react";
 import "./DetailMain.scss";
-import Color from "./Color";
+import ColorList from "./ColorList";
 
 class DetailMain extends Component {
   constructor() {
     super();
     this.state = {
       count: 1,
-      totalPrice: 19000,
-      colorList: [
-        { title: "얼루어먼트", bgc: "#C48490" },
-        { title: "오운 스킨", bgc: "#E8927C" },
-        { title: "포인트 오브 뷰", bgc: "#E03C31" },
-        { title: "언체인드", bgc: "#EBA0A5" },
-        { title: "해치 아웃", bgc: "#E3785E" },
-        { title: "파워하우스", bgc: "#DF4661" },
-        { title: "스탠스", bgc: "#BE3A34" },
-        { title: "뉴 퍼스펙티브", bgc: "#C74d66" },
-        { title: "오픈 도어", bgc: "#D05A57" },
-        { title: "풀 크레딧", bgc: "#BA0C2F" },
-      ],
+      totalPrice: null,
+      colorList: [],
     };
   }
+
+  componentDidMount = () => {
+    console.log(this.state.colorList);
+    fetch("http://localhost:3000/data/data.json")
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({
+          colorList: res.colorList,
+        });
+      });
+  };
 
   plusOne = () => {
     if (this.state.count >= 5) {
@@ -30,46 +30,51 @@ class DetailMain extends Component {
     }
     this.setState({
       count: this.state.count + 1,
-      totalPrice: this.state.totalPrice + 19000,
+      totalPrice: this.props.price * (this.state.count + 1),
     });
   };
 
   minusOne = () => {
-    if (this.state.count <= 1) {
+    const { count } = this.state;
+    const { price } = this.props;
+    if (count <= 1) {
       alert("최소 주문수량은 1개 입니다");
       return;
     }
     this.setState({
-      count: this.state.count - 1,
-      totalPrice: this.state.totalPrice - 19000,
+      count: count - 1,
+      totalPrice: price * (count - 1),
     });
   };
 
   render() {
+    const { name, mainImage, price } = this.props;
     return (
       <div className="DetailMain">
         <div className="mainContainer">
           <div className="detail_mainImg">
-            <img src="Images/detail-main.jpg" alt="main Image" />
+            <img src={mainImage} alt="main-image" />
           </div>
           <div className="productInfo">
             <div className="productName">
-              <span>무드인핸서 리퀴드 마뜨 얼루어먼트</span>
+              <span>{name}</span>
             </div>
             <div className="productElement">
               <div className="productPrice">
                 <div className="nameBox">
                   <span className="detailName">판매가</span>
                 </div>
-                <span className="price">19,000원</span>
+                <span className="price">
+                  {parseInt(price).toLocaleString()}원
+                </span>
               </div>
               <div className="productNumBox">
                 <span className="detailName">수량</span>
                 <div className="numWrapper">
-                  <button className="minus" onClick={this.minusOne}>
+                  <button className="minus" onClick={() => this.minusOne()}>
                     -
                   </button>
-                  <button className="plus" onClick={this.plusOne}>
+                  <button className="plus" onClick={() => this.plusOne()}>
                     +
                   </button>
                   <input value={this.state.count} />
@@ -77,10 +82,13 @@ class DetailMain extends Component {
               </div>
               <div className="productColor ">
                 <span className="detailName">컬러</span>
-                <ul className={`colorSet active-color-${this.state.nowidx}`}>
+                <ul className="colorSet">
                   {this.state.colorList.map((obj, idx) => (
-                    <Color
+                    <ColorList
+                      onClick={this.checkMake}
+                      active={obj.active}
                       name={obj.title}
+                      id={obj.id}
                       bgc={obj.bgc}
                       key={this.state.colorList.title}
                     />
@@ -92,7 +100,10 @@ class DetailMain extends Component {
               <div className="totalPrice">
                 <span className="priceTitle">금액</span>
                 <span className="total">
-                  {this.state.totalPrice}원 ({this.state.count}개)
+                  {this.state.totalPrice
+                    ? this.state.totalPrice.toLocaleString()
+                    : parseInt(price).toLocaleString()}
+                  원 ({this.state.count}개)
                 </span>
               </div>
               <div className="buttonBox">
