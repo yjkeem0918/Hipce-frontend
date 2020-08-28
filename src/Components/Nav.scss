@@ -1,5 +1,29 @@
 @import "../Styles/common.scss";
-.Nav {
+%hoverShared {
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  transition: all 0.1s ease-in-out;
+  margin: 0 auto;
+  padding: 0;
+}
+
+%hoverBeforeAfter {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  width: 0px;
+  height: 17px;
+  margin: 5px 0 0;
+  transition: all 0.1s ease-in-out;
+  transition-duration: 300ms;
+  opacity: 0;
+  background-color: rgba(217, 188, 186, 0.25);
+}
+
+%navContainerShared {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,6 +34,10 @@
   height: 120px;
   margin: 0 auto;
   padding: 0 4.75% 0;
+}
+
+.Nav {
+  @extend %navContainerShared;
   background-color: transparent;
 
   .siteLogo {
@@ -33,28 +61,32 @@
         @include list;
         padding: 7px 30px;
 
-        a {
-          text-decoration: none;
-          font-size: 17px;
-          font-weight: 600;
-          padding: 5px 7px;
+        .hover {
           color: $brick;
+          @extend %hover;
 
-          &::after {
-            content: "";
-            width: 0;
-            height: 17px;
-            display: block;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            z-index: -1;
-            background-color: rgba(217, 188, 186, 0.25);
+          &:before,
+          &:after {
+            @extend %hoverBeforeAfter;
           }
 
-          &:hover::after {
-            width: 100%;
-            transition: 300ms;
+          &.hover-1 {
+            &:before,
+            &:after {
+              left: -6px;
+            }
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+
+          .hover {
+            &:before,
+            &:after {
+              width: 130%;
+              opacity: 1;
+            }
           }
         }
       }
@@ -97,16 +129,7 @@
 }
 
 .NavBright {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  width: 100%;
-  height: 120px;
-  margin: 0 auto;
-  padding: 0 4.75% 0;
+  @extend %navContainerShared;
   background-color: transparent;
 
   .siteLogo {
@@ -130,28 +153,32 @@
         @include list;
         padding: 7px 30px;
 
-        a {
-          text-decoration: none;
-          font-size: 17px;
-          font-weight: 600;
-          padding: 5px 7px;
+        .hover {
           color: $white;
+          @extend %hoverShared;
 
-          &::after {
-            content: "";
-            width: 0;
-            height: 17px;
-            display: block;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            z-index: -1;
-            background-color: rgba(217, 188, 186, 0.25);
+          &:before,
+          &:after {
+            @extend %hoverBeforeAfter;
           }
 
-          &:hover::after {
-            width: 100%;
-            transition: 300ms;
+          &.hover-1 {
+            &:before,
+            &:after {
+              left: -6px;
+            }
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+
+          .hover {
+            &:before,
+            &:after {
+              width: 130%;
+              opacity: 1;
+            }
           }
         }
       }
@@ -222,28 +249,32 @@
         @include list;
         padding: 7px 30px;
 
-        a {
-          text-decoration: none;
-          font-size: 17px;
-          font-weight: 600;
-          padding: 5px 7px;
+        .hover {
           color: $brick;
+          @extend %hoverShared;
 
-          &::after {
-            content: "";
-            width: 0;
-            height: 17px;
-            display: block;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            z-index: -1;
-            background-color: rgba(217, 188, 186, 0.25);
+          &:before,
+          &:after {
+            @extend %hoverBeforeAfter;
           }
 
-          &:hover::after {
-            width: 100%;
-            transition: 300ms;
+          &.hover-1 {
+            &:before,
+            &:after {
+              left: -6px;
+            }
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+
+          .hover {
+            &:before,
+            &:after {
+              width: 130%;
+              opacity: 1;
+            }
           }
         }
       }
