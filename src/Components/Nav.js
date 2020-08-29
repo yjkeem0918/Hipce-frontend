@@ -6,13 +6,22 @@ import "./Nav.scss";
 class Nav extends Component {
   state = {
     isModalActive: false,
+    navInMain: true,
   };
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleNav);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleNav);
+  }
 
   handleNav = () => {
     const { pathname } = this.props.history.location;
     const { scrollY } = window;
 
-    if (pathname == "/" || pathname == "/main") {
+    if (pathname === "/" || pathname === "/main") {
       this.setState({
         navInMain: true,
       });
@@ -44,6 +53,12 @@ class Nav extends Component {
     }
   };
 
+  showModal = (e) => {
+    this.setState({ isModalActive: true });
+  };
+  hideModal = () => {
+    this.setState({ isModalActive: false });
+  };
   render() {
     const { navReduced, navInMain } = this.state;
     return (
@@ -51,39 +66,50 @@ class Nav extends Component {
         className={navInMain ? "NavBright" : navReduced ? "NavReduced" : "Nav"}
       >
         <div className="siteLogo">
-          <Link to="/main" />
+          <Link to="/" />
         </div>
         <div className="siteMenu">
           <ul>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about" className="hover hover-1">
+                About
+              </Link>
             </li>
             <li>
-              <Link to="/collection">Collection</Link>
+              <Link to="/collection" className="hover hover-1">
+                Collection
+              </Link>
             </li>
             <li>
-              <Link to="/list/lip">Shop</Link>
+              <Link to="/list/category=lip" className="hover hover-1">
+                Shop
+              </Link>
             </li>
             <li>
-              <Link to="/">Store</Link>
+              <Link to="/" className="hover hover-1">
+                Store
+              </Link>
             </li>
             <li>
-              <Link to="/">Service</Link>
+              <Link to="/" className="hover hover-1">
+                Service
+              </Link>
             </li>
           </ul>
         </div>
         <div className="siteExtra">
           <ul>
-            <li>
-              <Link to="/login" />
-            </li>
-            <li>
-              <Link to="" />
-            </li>
-            <li>
-              <Link to="/shoppingbag" />
-            </li>
+            <Link to="/login">
+              <li></li>
+            </Link>
+            <Link>
+              <li onClick={this.showModal}> </li>
+            </Link>
+            <Link to="/shoppingbag">
+              <li className="shoppingbag"></li>
+            </Link>
           </ul>
+          {this.state.isModalActive && <Search onClose={this.hideModal} />}
         </div>
       </div>
     );

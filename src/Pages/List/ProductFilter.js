@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import "./ProductFilter.scss";
-
-export default class ProductFilter extends Component {
+import { Link, withRouter } from "react-router-dom";
+class ProductFilter extends Component {
   constructor() {
     super();
 
     this.state = {
       palleteDisplay: false,
       colors: [],
-      selectedColor: {},
+      selectedColor: [],
       filterdColor: "hidden",
-      createURLcolor: [],
+      createURLcolor: "",
+      textFilter: "",
     };
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/data/productMockdata.json")
+    fetch("/data/productMockdata.json")
       .then((res) => res.json())
       .then((res) =>
         this.setState({
@@ -41,17 +42,45 @@ export default class ProductFilter extends Component {
         this.setState({ filterdColor: "productFilteredName" });
       }
     });
-    this.setState({ selectedColor: createURL });
+    this.setState({ selectedColor: createURL }, () => this.moveOnto());
+  };
+
+  moveOnto = () => {
+    this.props.history.push(
+      `/list/category=lip&${this.state.selectedColor
+        .map((el) => `color=${el}`)
+        .join("&")}`
+    );
   };
 
   palleteClear = () => {
     let newColors = [...this.state.colors];
     for (let color of newColors) color.active = false;
-    this.setState({ colors: newColors, filterdColor: "hidden" });
+    this.setState({ colors: newColors, filterdColor: "hidden" }, () =>
+      this.props.history.push(`/list/category=lip`)
+    );
+  };
+
+  textInput = (e) => {
+    this.setState({ textFilter: e.target.value });
+  };
+
+  inputTextSend = (e) => {
+    e.preventDefault();
+    fetch("http://3.17.134.84:8000/products?category=lip", {
+      method: "post",
+      body: JSON.stringify({
+        search: this.state.textFilter,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success) {
+        }
+      });
   };
 
   render() {
-    let changedTitleName = this.props.titleName.split("=")[1];
     const {
       state: { palleteDisplay, colors, filterdColor },
       palleteButtonKeep,
@@ -60,12 +89,13 @@ export default class ProductFilter extends Component {
     return (
       <div className="productFilter">
         <div className="productFilterName">
-          <h2>
-            {changedTitleName &&
-              changedTitleName[0].toUpperCase() + changedTitleName.slice(1)}
-          </h2>
+          <h2></h2>
           <span
-            onClick={() => this.setState({ palleteDisplay: !palleteDisplay })}
+            onClick={() =>
+              this.setState({ palleteDisplay: !palleteDisplay }, () =>
+                this.palleteClear()
+              )
+            }
             boolean="false"
           ></span>
         </div>
@@ -97,8 +127,8 @@ export default class ProductFilter extends Component {
             <div className="palleteSearchBox">
               <span>결과 내 검색</span>
               <div>
-                <input></input>
-                <button>검색</button>
+                <input onChange={this.textInput}></input>
+                <button onClick={this.inputTextSend}>검색</button>
               </div>
             </div>
           </section>
@@ -128,3 +158,4 @@ export default class ProductFilter extends Component {
     );
   }
 }
+export default withRouter(ProductFilter);

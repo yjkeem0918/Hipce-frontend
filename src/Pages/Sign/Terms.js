@@ -1,7 +1,50 @@
 import React, { Component } from "react";
 import "./Terms.scss";
 
-class terms extends Component {
+class Terms extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked1: false,
+      checked2: false,
+      checked3: false,
+      checked4: false,
+      checkedAll: false,
+    };
+  }
+
+  checkedClick = (e) => {
+    this.setState({ [e.target.className]: !this.state[e.target.className] });
+  };
+
+  checkedClickAll = () => {
+    if (!this.state.checkedAll) {
+      this.setState({
+        checked1: true,
+        checked2: true,
+        checked3: true,
+        checked4: true,
+        checkedAll: true,
+      });
+    } else {
+      this.setState({
+        checked1: false,
+        checked2: false,
+        checked3: false,
+        checked4: false,
+        checkedAll: false,
+      });
+    }
+  };
+
+  componentDidUpdate() {
+    const { myCheckbox } = this.refs;
+    if (this.props.selectedAllBox) {
+      this.checkedClick();
+      this.props.handleSelectBox(myCheckbox.name, myCheckbox.checked);
+    }
+  }
+
   render() {
     return (
       <div className="Terms">
@@ -9,8 +52,12 @@ class terms extends Component {
           <div className="termsBox">
             <h3 className="formTitle">이용약관 [필수]</h3>
             <div className="checkBox">
-              <input type="checkbox" id="checkbox1" />
-              <label for="checkbox1"></label>
+              <input ref="myCheckbox" type="checkbox" id="checkbox1" />
+              <label
+                className="checked1"
+                onClick={this.checkedClick}
+                for="checkbox1"
+              ></label>
               <div className="agree">이용약관에 동의합니다.</div>
             </div>
           </div>
@@ -459,8 +506,12 @@ class terms extends Component {
           <div className="termsBox">
             <h3 className="formTitle">개인정보 수집 및 이용 [필수]</h3>
             <div className="checkBox">
-              <input className="box" type="checkbox" id="checkbox2" />
-              <label for="checkbox2" />
+              <input ref="myCheckbox" type="checkbox" id="checkbox2" />
+              <label
+                className="checked2"
+                onClick={this.checkedClick}
+                for="checkbox2"
+              />
               <div className="agree">개인정보 수집 및 이용에 동의합니다.</div>
             </div>
           </div>
@@ -519,11 +570,19 @@ class terms extends Component {
             <h3 className="formTitle">마케팅 정보 수신 [선택]</h3>
             <div className="checkBox">
               <div className="agreeBox">
-                <input className="box" type="checkbox" id="checkbox3" />
-                <label for="checkbox3" />
+                <input ref="myCheckbox" type="checkbox" id="checkbox3" />
+                <label
+                  className="checked3"
+                  onClick={this.checkedClick}
+                  for="checkbox3"
+                ></label>
                 <div className="agree">SMS 수신에 동의합니다.</div>
-                <input className="box" type="checkbox" id="checkbox4" />
-                <label for="checkbox4" />
+                <input ref="myCheckbox" type="checkbox" id="checkbox4" />
+                <label
+                  className="checked4"
+                  onClick={this.checkedClick}
+                  for="checkbox4"
+                ></label>
                 <div className="agree">이메일 수신에 동의합니다.</div>
               </div>
             </div>
@@ -545,7 +604,11 @@ class terms extends Component {
           <div className="agreeAllBox">
             <div className="agreeAll">
               <input className="box" type="checkbox" id="checkbox5" />
-              <label for="checkbox5" />
+              <label
+                className="checked5"
+                onClick={this.checkedClickAll}
+                for="checkbox5"
+              />
               <div className="check">모두 동의합니다.</div>
             </div>
           </div>
@@ -555,4 +618,4 @@ class terms extends Component {
   }
 }
 
-export default terms;
+export default Terms;

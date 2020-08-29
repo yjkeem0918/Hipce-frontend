@@ -11,7 +11,7 @@ export default class Shoppingbag extends Component {
 
     this.state = {
       countNumber: {},
-      pickItem: [],
+      pickItem: [].map((el) => ({ ...el, count: 1 })),
       totalPrice: 0,
       shippingFee: 2500,
       checkItem: false,
@@ -19,14 +19,12 @@ export default class Shoppingbag extends Component {
     };
   }
   componentDidMount() {
-    fetch("/data/mockDataForShopping.json")
-      .then((res) => res.json())
-      .then((res) =>
-        this.setState({
-          pickItem: res.pickedItem.map((el) => ({ ...el, active: false })),
-        })
-      );
-    this.setFirstPrice();
+    const ItemFromSession = Object.values(sessionStorage).map((el) =>
+      JSON.parse(Object(el))
+    );
+    this.setState({
+      pickItem: ItemFromSession.map((el) => ({ ...el, count: 1 })),
+    });
   }
 
   countPlus = (item, inDecrement, e) => {
@@ -111,6 +109,7 @@ export default class Shoppingbag extends Component {
       },
       () => this.calculatePrice()
     );
+    sessionStorage.removeItem(item.id);
   };
 
   clearList = () => {
@@ -139,20 +138,17 @@ export default class Shoppingbag extends Component {
   };
 
   sendPickedItem = (pickItem) => {
-    console.log(pickItem.map((el) => el.id));
-
-    // fetch("URL", {
-    //   method: "post",
-    //   body: JSON.stringify({
-    //     pickItem: pickItem.id,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     if (res.success) {
-    //       console.log(pickItem.id);
-    //     }
-    //   });
+    fetch("URL", {
+      method: "post",
+      body: JSON.stringify({
+        pickItem: pickItem.id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success) {
+        }
+      });
   };
 
   render() {
@@ -208,7 +204,7 @@ export default class Shoppingbag extends Component {
                 <ul>
                   <li>
                     <span>주문금액</span>
-                    <span>{totalPrice.toLocaleString()}원</span>
+                    <span>{Math.floor(totalPrice).toLocaleString()}원</span>
                   </li>
                   <li>
                     <span>배송비</span>
@@ -216,7 +212,9 @@ export default class Shoppingbag extends Component {
                   </li>
                   <li className="sum">
                     <span>합계</span>
-                    <span>{(totalPrice + shippingFee).toLocaleString()}원</span>
+                    <span>
+                      {Math.floor(totalPrice + shippingFee).toLocaleString()}원
+                    </span>
                   </li>
                 </ul>
               </div>

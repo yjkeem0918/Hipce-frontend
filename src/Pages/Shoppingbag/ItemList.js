@@ -17,7 +17,7 @@ export default class ItemList extends Component {
                   onClick={() => checkItem(item)}
                 />
                 <label htmlFor={`checkbox${index}`}></label>
-                <img alt="productImage" src={item.img} />
+                <img alt="productImage" src={item.mainImgSrc} />
                 <span className="productName">{item.name}</span>
               </div>
               <div className="pickItemCount">
@@ -38,7 +38,9 @@ export default class ItemList extends Component {
                     +
                   </span>
                 </form>
-                <div className="eachPrice">{item.price.toLocaleString()}원</div>
+                <div className="eachPrice">
+                  {Math.floor(item.price).toLocaleString()}원
+                </div>
                 <button onClick={() => deleteList(item)}>X</button>
               </div>
             </td>
