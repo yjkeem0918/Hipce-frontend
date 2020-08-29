@@ -28,7 +28,7 @@ class List extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.hello !== this.props.match.params.hello)
-      fetch(`http://3.17.134.84:8000/products?${this.props.match.params.hello}`)
+      fetch(`/products?${this.props.match.params.hello}`)
         .then((res) => res.json())
         .then((res) =>
           this.setState({

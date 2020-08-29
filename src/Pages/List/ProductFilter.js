@@ -16,7 +16,7 @@ class ProductFilter extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/data/productMockdata.json")
+    fetch("/data/productMockdata.json")
       .then((res) => res.json())
       .then((res) =>
         this.setState({
