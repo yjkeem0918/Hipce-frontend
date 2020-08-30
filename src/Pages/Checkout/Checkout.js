@@ -38,13 +38,6 @@ class Checkout extends Component {
       });
   }
 
-  calculateSum = () => {
-    const priceList = this.state.orderItem
-      .map((el) => Number(el.price) * Number(el.quantity))
-      .reduce((a, b) => a + b, 0);
-    this.setState({ sumPrice: priceList});
-  };
-
   handleRadio = (id) => {
     this.setState({
       activeTab: id,
