@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import API from "../../../src/config";
 import Nav from "../../Components/Nav";
 import Card from "./Components/Card";
 import Transfer from "./Components/Transfer";
@@ -22,27 +23,32 @@ class Checkout extends Component {
     this.state = {
       activeTab: 0,
       orderItem: [],
+      totalPrice: [],
       sumPrice: 0,
     };
   }
 
   componentDidMount() {
-    fetch("http://3.17.134.84:8000/orders")
+    fetch(`${API}/orders`)
       .then((res) => {
         return res.json();
       })
       .then((res) => {
         return this.setState({
           orderItem: res.shoppingbag,
+          totalPrice: res.total_price
         },()=>this.calculateSum());
       });
   }
 
   calculateSum = () => {
-    const priceList = this.state.orderItem
-      .map((el) => Number(el.price) * Number(el.quantity))
-      .reduce((a, b) => a + b, 0);
-    this.setState({ sumPrice: priceList});
+    // const priceList = this.state.orderItem
+    //   .map((el) => Number(el.price) * Number(el.quantity))
+    //   .reduce((a, b) => a + b, 0);
+    // this.setState({ sumPrice: priceList});
+    this.setState({
+      totalPrice: this.state.totalPrice
+    })
   };
   
   handleRadio = (id) => {
@@ -236,11 +242,11 @@ class Checkout extends Component {
                 <ul>
                   <li>
                     <span>상품금액</span>
-                    <span>{this.state.sumPrice}</span>
+                    <span>{this.state.totalPrice}</span>
                   </li>
                   <li>
                     <span>배송비</span>
-                    <span>{this.state.sumPrice >= 50000 ? 0 : 2500}</span>
+                    <span>{this.state.totalPrice >= 50000 ? 0 : 2500}</span>
                   </li>
                   <li>
                     <span>지역별 배송비</span>
@@ -253,9 +259,9 @@ class Checkout extends Component {
                   <li className="total">
                     <span>결제예정</span>
                     <span>
-                      {this.state.sumPrice >= 50000
-                        ? this.state.sumPrice
-                        : this.state.sumPrice + 2500}
+                      {this.state.totalPrice >= 50000
+                        ? this.state.totalPrice
+                        : this.state.totalPrice + 2500}
                     </span>
                   </li>
                 </ul>
