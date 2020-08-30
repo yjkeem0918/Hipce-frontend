@@ -1,22 +1,22 @@
 import React, { Component } from "react";
-import "./OrderSummary.scss"
+import "./OrderSummary.scss";
 
 class OrderSummary extends Component {
   render() {
-    return (
+    return this.props.orderItem.map((el) => (
       <div className="OrderSummary">
-        <img src="http://hince.co.kr/web/product/tiny/20200617/98d7c1e39705585e592fe835eae8442e.jpg" />
+        <img src={el.mainImgSrc} />
         <div className="productInfo">
           <div className="name">
-            <p>무드인핸서 리퀴드 마뜨 오픈 도어x</p>
-            <span>2</span>
+            <p>{el.name}</p>
+            <span>{el.count}</span>
           </div>
           <div className="price">
-            <span>38,000</span>원
+            <span>{Number(el.price).toLocaleString()}</span>원
           </div>
         </div>
       </div>
-    );
+    ));
   }
 }
 
