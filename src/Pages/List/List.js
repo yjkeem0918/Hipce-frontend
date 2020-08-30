@@ -38,15 +38,44 @@ class List extends Component {
   }
 
   getItem = (id, price, name, mainImgSrc) => {
-    let getData = {
-      id: id,
-      price: price,
-      name: name,
-      mainImgSrc: mainImgSrc,
-    };
-    sessionStorage.setItem(`${id}`, JSON.stringify(getData));
+    // let getData = {
+    //   id: id,
+    //   price: price,
+    //   name: name,
+    //   mainImgSrc: mainImgSrc,
+    // };
+    // sessionStorage.setItem(`${id}`, JSON.stringify(getData));
 
-    this.props.history.push("/shoppingbag");
+    // this.props.history.push("/shoppingbag");
+    // fetch(`${API}/orders`, {
+    //   method: "POST",
+    //   // headers: {
+    //   //   Authorization: localStorage.getItem("ACCESS_TOKEN"),
+    //   // },
+    //   body: JSON.stringify({
+    //     // ACCESS_TOKEN: localStorage.getItem("ACCESS_TOKEN"),
+    //     product_id: id,
+    //   }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((response) => {
+    //     console.log(id);
+    //     console.log("Fine", response);
+    //     this.props.history.push("/shoppingbag");
+    //   });
+    fetch(`${API}/orders`, {
+      method: "post",
+      body: JSON.stringify({
+        product_id: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.message) {
+          alert("저장 완료");
+          this.props.history.push("/shoppingbag");
+        }
+      });
   };
 
   render() {

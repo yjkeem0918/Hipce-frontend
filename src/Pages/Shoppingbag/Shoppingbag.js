@@ -4,6 +4,7 @@ import Nav from "../../Components/Nav";
 import ItemList from "./ItemList";
 import Footer from "../../Components/Footer";
 import "./Shoppingbag.scss";
+import { API } from "../../../src/config";
 
 export default class Shoppingbag extends Component {
   constructor(props) {
@@ -19,12 +20,13 @@ export default class Shoppingbag extends Component {
     };
   }
   componentDidMount() {
-    const ItemFromSession = Object.values(sessionStorage).map((el) =>
-      JSON.parse(Object(el))
-    );
-    this.setState({
-      pickItem: ItemFromSession.map((el) => ({ ...el, count: 1 })),
-    });
+    // const ItemFromSession = Object.values(sessionStorage).map((el) =>
+    //   JSON.parse(Object(el))
+    // );
+    // this.setState({
+    //   pickItem: ItemFromSession.map((el) => ({ ...el, count: 1 })),
+    // });
+    // http://3.17.134.84:8000/shopping
   }
 
   countPlus = (item, inDecrement, e) => {
