@@ -39,12 +39,13 @@ class Nav extends Component {
         });
       }
 
-      if (scrollY >= 3876) {
+      if (scrollY >= 4419) {
         this.setState({
           navInMain: false,
           navReduced: false,
         });
       }
+      
     } else if (pathname !== "/" || pathname !== "/main") {
       this.setState({
         navInMain: false,
@@ -59,7 +60,9 @@ class Nav extends Component {
   hideModal = () => {
     this.setState({ isModalActive: false });
   };
+
   render() {
+    console.log(window.scrollY)
     const { navReduced, navInMain } = this.state;
     return (
       <div
