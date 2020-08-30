@@ -6,6 +6,7 @@ import Product from "./Product";
 import ProductListBottom from "../List/ProductListBottom";
 import Footer from "../../Components/Footer";
 import "./List.scss";
+import API from "../../config";
 
 class List extends Component {
   constructor() {
@@ -16,7 +17,7 @@ class List extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://3.17.134.84:8000/products?category=lip`)
+    fetch(`${API}/products?category=lip`)
       .then((res) => res.json())
       .then((res) =>
         this.setState({
@@ -26,8 +27,8 @@ class List extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props.match.params.hello)
-      fetch(`http://3.17.134.84:8000/products?${this.props.match.params.hello}`)
+    if (prevProps.match.params.hello !== this.props.match.params.hello)
+      fetch(`/products?${this.props.match.params.hello}`)
         .then((res) => res.json())
         .then((res) =>
           this.setState({
@@ -35,6 +36,47 @@ class List extends Component {
           })
         );
   }
+
+  getItem = (id, price, name, mainImgSrc) => {
+    // let getData = {
+    //   id: id,
+    //   price: price,
+    //   name: name,
+    //   mainImgSrc: mainImgSrc,
+    // };
+    // sessionStorage.setItem(`${id}`, JSON.stringify(getData));
+
+    // this.props.history.push("/shoppingbag");
+    // fetch(`${API}/orders`, {
+    //   method: "POST",
+    //   // headers: {
+    //   //   Authorization: localStorage.getItem("ACCESS_TOKEN"),
+    //   // },
+    //   body: JSON.stringify({
+    //     // ACCESS_TOKEN: localStorage.getItem("ACCESS_TOKEN"),
+    //     product_id: id,
+    //   }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((response) => {
+    //     console.log(id);
+    //     console.log("Fine", response);
+    //     this.props.history.push("/shoppingbag");
+    //   });
+    fetch(`${API}/orders`, {
+      method: "post",
+      body: JSON.stringify({
+        product_id: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.message) {
+          alert("저장 완료");
+          this.props.history.push("/shoppingbag");
+        }
+      });
+  };
 
   render() {
     const {
@@ -54,12 +96,13 @@ class List extends Component {
               ) => (
                 <Product
                   id={id}
-                  key={index}
+                  index={index}
                   mainImgSrc={main_image}
                   subImgSrc={sub_image}
                   price={price}
                   name={name}
                   tag={tag__image}
+                  getItem={this.getItem}
                 />
               )
             )}

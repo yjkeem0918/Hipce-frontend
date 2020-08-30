@@ -23,8 +23,6 @@ class MainNewProductSlider extends Component {
     });
   };
 
-
-
   render() {
     const { newIndex } = this.state;
     const { newProduct } = this.props;
@@ -72,7 +70,9 @@ class MainNewProductSlider extends Component {
             }}
           >
             {newProduct.map((item, index) => {
-              return <ImgBox src={item.main_image} index={index} id={item.id}/>;
+              return (
+                <ImgBox src={item.main_image} index={index} id={item.id} />
+              );
             })}
           </div>
         </div>

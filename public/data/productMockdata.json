@@ -59,7 +59,7 @@
   ],
   "colorrange": [
     { "color": "#b12a23", "name": "Red", "id": 1 },
-    { "color": "#dc6b2f", "name": "Oragne", "id": 2 },
+    { "color": "#dc6b2f", "name": "Orange", "id": 2 },
     { "color": "#d6ae9a", "name": "Beige", "id": 3 },
     { "color": "#dd7d88", "name": "Pink", "id": 4 },
     { "color": "#835248", "name": "Brown", "id": 5 },

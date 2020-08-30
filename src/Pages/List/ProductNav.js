@@ -4,7 +4,6 @@ import { Link, withRouter } from "react-router-dom";
 
 class ProductNav extends Component {
   render() {
-    // category=${this.props.match.params.hello}
     return (
       <div className="productNav">
         <Link to="/list/category=lip">

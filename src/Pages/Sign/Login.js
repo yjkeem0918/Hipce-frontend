@@ -30,7 +30,7 @@ class Login extends Component {
     } else if (pw.length < 4 && id) {
       alert("패스워드 항목이 4자(개) 이상으로 해주십시오.");
     } else {
-      fetch(`${API}/user/signin`, {
+      fetch(`${API}/users/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

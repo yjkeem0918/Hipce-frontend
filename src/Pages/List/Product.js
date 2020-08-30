@@ -5,14 +5,12 @@ import "./Product.scss";
 class Product extends Component {
   render() {
     const {
-      props: { mainImgSrc, subImgSrc, tag, name, price, id },
+      props: { mainImgSrc, subImgSrc, tag, name, price, id, index },
     } = this;
     return (
       <li className="Product" id={id}>
         <section className="productImage">
-          <Link
-            onClick={() => this.props.history.push(`/detail/${id}`)}
-          >
+          <Link onClick={() => this.props.history.push(`/detail/${id}`)}>
             <img
               className="productMainImg"
               alt="productMainImg"
@@ -35,6 +33,9 @@ class Product extends Component {
               <Link>
                 <img
                   alt="cartMark"
+                  onClick={() =>
+                    this.props.getItem(id, price, name, mainImgSrc)
+                  }
                   src="http://hince.co.kr/assets/images/hince-cart-icon.jpg"
                 />
               </Link>

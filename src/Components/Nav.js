@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Search from "../Pages/Search/Search";
 import "./Nav.scss";
 
 class Nav extends Component {
   state = {
     isModalActive: false,
+    navInMain: true,
   };
 
   componentDidMount() {
@@ -20,7 +21,7 @@ class Nav extends Component {
     const { pathname } = this.props.history.location;
     const { scrollY } = window;
 
-    if (pathname == "/" || pathname == "/main") {
+    if (pathname === "/" || pathname === "/main") {
       this.setState({
         navInMain: true,
       });
@@ -38,12 +39,13 @@ class Nav extends Component {
         });
       }
 
-      if (scrollY >= 3876) {
+      if (scrollY >= 4419) {
         this.setState({
           navInMain: false,
           navReduced: false,
         });
       }
+      
     } else if (pathname !== "/" || pathname !== "/main") {
       this.setState({
         navInMain: false,
@@ -52,7 +54,15 @@ class Nav extends Component {
     }
   };
 
+  showModal = (e) => {
+    this.setState({ isModalActive: true });
+  };
+  hideModal = () => {
+    this.setState({ isModalActive: false });
+  };
+
   render() {
+    console.log(window.scrollY)
     const { navReduced, navInMain } = this.state;
     return (
       <div
@@ -74,7 +84,7 @@ class Nav extends Component {
               </Link>
             </li>
             <li>
-              <Link to="/list/lip" className="hover hover-1">
+              <Link to="/list/category=lip" className="hover hover-1">
                 Shop
               </Link>
             </li>
@@ -92,16 +102,17 @@ class Nav extends Component {
         </div>
         <div className="siteExtra">
           <ul>
-            <li>
-              <Link to="/login" />
-            </li>
-            <li>
-              <Link to="/search" />
-            </li>
-            <li>
-              <Link to="/shoppingbag" />
-            </li>
+            <Link to="/login">
+              <li></li>
+            </Link>
+            <Link>
+              <li onClick={this.showModal}> </li>
+            </Link>
+            <Link to="/shoppingbag">
+              <li className="shoppingbag"></li>
+            </Link>
           </ul>
+          {this.state.isModalActive && <Search onClose={this.hideModal} />}
         </div>
       </div>
     );

@@ -21,8 +21,29 @@ class Checkout extends Component {
     super();
     this.state = {
       activeTab: 0,
+      orderItem: [],
+      sumPrice: 0,
     };
   }
+
+  componentDidMount() {
+    fetch("http://3.17.134.84:8000/orders")
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        return this.setState({
+          orderItem: res.shoppingbag,
+        },()=>this.calculateSum());
+      });
+  }
+
+  calculateSum = () => {
+    const priceList = this.state.orderItem
+      .map((el) => Number(el.price) * Number(el.quantity))
+      .reduce((a, b) => a + b, 0);
+    this.setState({ sumPrice: priceList});
+  };
 
   handleRadio = (id) => {
     this.setState({
@@ -31,8 +52,8 @@ class Checkout extends Component {
   };
 
   onGoingPayment = () => {
-    alert('결제가 진행중입니다 :)')
-  }
+    alert("결제가 진행중입니다 :)");
+  };
 
   render() {
     return (
@@ -210,16 +231,16 @@ class Checkout extends Component {
             </div>
             <div className="orderSummary">
               <h3>주문요약 및 결제</h3>
-              <OrderSummary />
+              <OrderSummary orderItem={this.state.orderItem} />
               <div className="orderPayment">
                 <ul>
                   <li>
                     <span>상품금액</span>
-                    <span>57,000원</span>
+                    <span>{this.state.sumPrice}</span>
                   </li>
                   <li>
                     <span>배송비</span>
-                    <span>0원</span>
+                    <span>{this.state.sumPrice >= 50000 ? 0 : 2500}</span>
                   </li>
                   <li>
                     <span>지역별 배송비</span>
@@ -231,10 +252,14 @@ class Checkout extends Component {
                   </li>
                   <li className="total">
                     <span>결제예정</span>
-                    <span>38,000원</span>
+                    <span>
+                      {this.state.sumPrice >= 50000
+                        ? this.state.sumPrice
+                        : this.state.sumPrice + 2500}
+                    </span>
                   </li>
                 </ul>
-                <button onClick={()=>this.onGoingPayment()}>결제하기</button>
+                <button onClick={() => this.onGoingPayment()}>결제하기</button>
               </div>
             </div>
           </div>
