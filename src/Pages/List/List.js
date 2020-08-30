@@ -37,7 +37,7 @@ class List extends Component {
         );
   }
 
-  getItem = (id, price, name, mainImgSrc) => {
+  getItem = (id) => {
     // let getData = {
     //   id: id,
     //   price: price,
@@ -47,24 +47,11 @@ class List extends Component {
     // sessionStorage.setItem(`${id}`, JSON.stringify(getData));
 
     // this.props.history.push("/shoppingbag");
-    // fetch(`${API}/orders`, {
-    //   method: "POST",
-    //   // headers: {
-    //   //   Authorization: localStorage.getItem("ACCESS_TOKEN"),
-    //   // },
-    //   body: JSON.stringify({
-    //     // ACCESS_TOKEN: localStorage.getItem("ACCESS_TOKEN"),
-    //     product_id: id,
-    //   }),
-    // })
-    //   .then((response) => response.json())
-    //   .then((response) => {
-    //     console.log(id);
-    //     console.log("Fine", response);
-    //     this.props.history.push("/shoppingbag");
-    //   });
     fetch(`${API}/orders`, {
-      method: "post",
+      method: "POST",
+      // headers: {
+      //   Authorization: localStorage.getItem("ACCESS_TOKEN"),
+      // },
       body: JSON.stringify({
         product_id: id,
       }),
@@ -72,6 +59,7 @@ class List extends Component {
       .then((res) => res.json())
       .then((res) => {
         if (res.message) {
+          console.log(res.message);
           alert("저장 완료");
           this.props.history.push("/shoppingbag");
         }

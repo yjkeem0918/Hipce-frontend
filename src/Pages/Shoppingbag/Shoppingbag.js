@@ -4,7 +4,7 @@ import Nav from "../../Components/Nav";
 import ItemList from "./ItemList";
 import Footer from "../../Components/Footer";
 import "./Shoppingbag.scss";
-import { API } from "../../../src/config";
+import API from "../../config";
 
 export default class Shoppingbag extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class Shoppingbag extends Component {
 
     this.state = {
       countNumber: {},
-      pickItem: [].map((el) => ({ ...el, count: 1 })),
+      pickItem: [],
       totalPrice: 0,
       shippingFee: 2500,
       checkItem: false,
@@ -20,62 +20,72 @@ export default class Shoppingbag extends Component {
     };
   }
   componentDidMount() {
-    // const ItemFromSession = Object.values(sessionStorage).map((el) =>
-    //   JSON.parse(Object(el))
-    // );
-    // this.setState({
-    //   pickItem: ItemFromSession.map((el) => ({ ...el, count: 1 })),
-    // });
-    // http://3.17.134.84:8000/shopping
+    fetch(`${API}/orders`)
+      .then((res) => res.json())
+      .then((res) =>
+        this.setState({
+          pickItem: res.shoppingbag,
+          totalPrice: res.total_price,
+        })
+      );
+  }
+
+  componentDidUpdate(prevPros, prevState) {
+    console.log("update?"); //조은님 이부분 무한렌더 되니까 조심해서 다뤄주세용
+    // 무한렌더를 막아주세요!!
+    if (prevPros.pickItem !== this.state.prevPros)
+      fetch(`${API}/orders`)
+        .then((res) => res.json())
+        .then((res) =>
+          this.setState({
+            pickItem: res.shoppingbag,
+            totalPrice: res.total_price,
+          })
+        );
   }
 
   countPlus = (item, inDecrement, e) => {
-    const plusValue = this.state.pickItem.map((el) =>
-      el.name === item.name
-        ? {
-            ...el,
-            price: (el.price * (el.count + 1)) / el.count,
-            count: el.count + inDecrement,
-          }
-        : el
-    );
-
-    if (inDecrement === +1) {
-      if (item.count === 5) {
-        alert("최대주문수량 5개");
-        return;
-      }
-      this.setState(
-        {
-          pickItem: plusValue,
-        },
-        () => this.calculatePrice()
-      );
+    if (item.quantity >= 5) {
+      alert("더이상 못함");
+      return;
     }
+
+    console.log(item.id);
+    fetch(`${API}/orders`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        product_id: item.id,
+        is_increased: true,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.message) {
+          console.log(res.message);
+          alert("증가 완료");
+        }
+      });
   };
 
   countMinus = (item, inDecrement) => {
-    const minusValue = this.state.pickItem.map((el) =>
-      el.name === item.name
-        ? {
-            ...el,
-            price: Math.floor((el.price * (el.count - 1)) / el.count),
-            count: el.count + inDecrement,
-          }
-        : el
-    );
-
-    if (inDecrement === -1) {
-      if (item.count === 1) {
-        return;
-      }
-      this.setState(
-        {
-          pickItem: minusValue,
-        },
-        () => this.calculatePrice()
-      );
+    if (item.quantity <= 0) {
+      alert("더이상 못함");
+      return;
     }
+    fetch(`${API}/orders`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        product_id: item.id,
+        is_increased: false,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.message) {
+          console.log(res.message);
+          alert("증가 완료");
+        }
+      });
   };
 
   checkItem = (item) => {
@@ -87,59 +97,43 @@ export default class Shoppingbag extends Component {
     });
   };
 
-  calculatePrice = () => {
-    const sumPrice = this.state.pickItem
-      .map((el) => el.price)
-      .reduce((a, b) => a + b, 0);
-    this.setState(
-      {
-        totalPrice: sumPrice,
-      },
-      () => this.shippingfeeDelete()
-    );
-  };
-
   shippingfeeDelete = () => {
     const { totalPrice } = this.state;
     this.setState({ shippingFee: totalPrice >= 50000 ? 0 : 2500 });
   };
 
   deleteList = (item) => {
-    this.setState(
-      {
-        pickItem: this.state.pickItem.filter((el) => el.name !== item.name),
-      },
-      () => this.calculatePrice()
-    );
-    sessionStorage.removeItem(item.id);
+    this.setState({
+      pickItem: this.state.pickItem.filter((el) => el.name !== item.name),
+    });
   };
 
   clearList = () => {
     this.setState({ pickItem: [] }, () => this.calculatePrice());
   };
 
-  deleteCheckedItem = (e) => {
-    this.setState(
-      {
-        pickItem: this.state.pickItem.filter((el) => el.active === false),
-        emptyDisplay: this.state.pickItem.length === 0 ? true : false,
-      },
-      () => this.calculatePrice()
-    );
-  };
+  deleteCheckedItem = (item) => {
+    let checkedItems = this.state.pickItem.filter((el) => el.active);
+    let checkedItemsId = checkedItems.map((el) => el.id);
 
-  setFirstPrice = () => {
-    this.setState(
-      {
-        totalPrice: this.state.pickItem
-          .map((el) => el.price)
-          .reduce((formerPrice, latterPrice) => formerPrice + latterPrice, 0),
-      },
-      () => this.calculatePrice()
-    );
+    fetch(`${API}/orders`, {
+      method: "delete",
+      body: JSON.stringify({
+        product_id: checkedItemsId,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.message) {
+          console.log(res.message);
+          alert("증가 완료");
+        }
+      });
   };
 
   sendPickedItem = (pickItem) => {
+    let checkedItems = this.state.pickItem.filter((el) => el.active);
+    let checkedItemsId = checkedItems.map((el) => el.id);
     fetch("URL", {
       method: "post",
       body: JSON.stringify({
@@ -151,9 +145,18 @@ export default class Shoppingbag extends Component {
         if (res.success) {
         }
       });
+
+    this.props.history.push(
+      `/orders?${checkedItemsId.map((el) => `product_id=${el}`).join("&")}`
+    );
   };
 
   render() {
+    console.log(
+      "Filtered",
+      this.state.pickItem.filter((el) => el.active)
+    );
+    console.log("thisisPickITem", this.state.pickItem);
     const {
       state: {
         emptyDisplay,

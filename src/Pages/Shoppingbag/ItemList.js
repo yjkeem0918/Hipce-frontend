@@ -9,7 +9,7 @@ export default class ItemList extends Component {
       <div className="ItemList" onChange={this.clearList}>
         {pickedItem.map((item, index) => {
           return (
-            <td className="pickItem" key={index}>
+            <td id={item.id} className="pickItem" key={index}>
               <div className="pickItemPicture">
                 <input
                   id={`checkbox${index}`}
@@ -17,7 +17,7 @@ export default class ItemList extends Component {
                   onClick={() => checkItem(item)}
                 />
                 <label htmlFor={`checkbox${index}`}></label>
-                <img alt="productImage" src={item.mainImgSrc} />
+                <img alt="productImage" src={item.image} />
                 <span className="productName">{item.name}</span>
               </div>
               <div className="pickItemCount">
@@ -29,7 +29,7 @@ export default class ItemList extends Component {
                   >
                     -
                   </span>
-                  <span>{item.count}</span>
+                  <span>{item.quantity}</span>
                   <span
                     className="countButton"
                     name="plusButton"
