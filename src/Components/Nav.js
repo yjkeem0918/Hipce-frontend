@@ -62,7 +62,6 @@ class Nav extends Component {
   };
 
   render() {
-    console.log(window.scrollY)
     const { navReduced, navInMain } = this.state;
     return (
       <div

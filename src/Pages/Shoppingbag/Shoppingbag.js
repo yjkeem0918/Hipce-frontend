@@ -30,10 +30,10 @@ export default class Shoppingbag extends Component {
       );
   }
 
-  componentDidUpdate(prevPros, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     console.log("update?"); //조은님 이부분 무한렌더 되니까 조심해서 다뤄주세용
     // 무한렌더를 막아주세요!!
-    if (prevPros.pickItem !== this.state.prevPros)
+    if (prevProps.pickItem !== this.state.prevProps)
       fetch(`${API}/orders`)
         .then((res) => res.json())
         .then((res) =>
@@ -224,14 +224,14 @@ export default class Shoppingbag extends Component {
                 </ul>
               </div>
               <div className="orderButton">
-                <Link className="totalOrderButton" to="/checkout">
+                <Link className="totalOrderButton" to="/orders">
                   전체 주문하기
                 </Link>
                 <div>
                   <Link onClick={() => this.sendPickedItem(pickItem)}>
                     선택 상품만 주문
                   </Link>
-                  <Link to="/checkout" className="naverOrder"></Link>
+                  <Link to="/orders" className="naverOrder"></Link>
                 </div>
               </div>
             </div>

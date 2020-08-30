@@ -8,6 +8,7 @@ import Account from "./Components/Account";
 import Virtual from "./Components/Virtual";
 import OrderSummary from "./Components/OrderSummary";
 import Footer from "../../Components/Footer";
+import queryString from "query-string";
 import "./Checkout.scss";
 
 const paymentMethod = {
@@ -29,28 +30,32 @@ class Checkout extends Component {
   }
 
   componentDidMount() {
-    fetch(`${API}/orders`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        return this.setState({
-          orderItem: res.shoppingbag,
-          totalPrice: res.total_price
-        },()=>this.calculateSum());
-      });
+    const {
+      location: { search },
+    } = this.props;
+    const values = queryString.parse(search);
+    if (!values.product_id) {
+      fetch(`${API}/orders`)
+        .then((res) => res.json())
+        .then((res) =>
+          this.setState({
+            orderItem: res.shoppingbag,
+            totalPrice: res.total_price,
+          })
+        );
+    } else {
+      fetch(`${API}/orders`)
+        .then((res) => res.json())
+        .then((res) =>
+          this.setState({
+            orderItem: res.shoppingbag,
+            totalPrice: res.total_price,
+          })
+        );
+    }
+    console.log(values.product_id);
   }
 
-  calculateSum = () => {
-    // const priceList = this.state.orderItem
-    //   .map((el) => Number(el.price) * Number(el.quantity))
-    //   .reduce((a, b) => a + b, 0);
-    // this.setState({ sumPrice: priceList});
-    this.setState({
-      totalPrice: this.state.totalPrice
-    })
-  };
-  
   handleRadio = (id) => {
     this.setState({
       activeTab: id,
@@ -62,6 +67,7 @@ class Checkout extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <>
         <Nav />
