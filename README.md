@@ -50,7 +50,7 @@ https://www.youtube.com/watch?v=6vp3yAKCLMg
 ## 주의사항
 * 코드의 가독성을 높인다 (Ex. 함수와 함수 사이는 한 줄 띄우기)
 * 클래스명은 카멜케이스로 통일한다. (Ex. className: helloWorld)
-* 함수명은 동사로 한다.
+* 함수명은 동사로 하고 함수 기능에 대한 내용이 드러날 수 있게 한다. (Ex. ~~functionThree~~ getIdValue) 
 * 푸시할 때 컨벤션 지킨다. (Ex. 불필요한 주석 및 console.log 등 삭제)
 
 ## Git reference[git flow]
