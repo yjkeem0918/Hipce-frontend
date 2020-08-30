@@ -11,7 +11,7 @@ class OrderSummary extends Component {
             <p>{el.name}</p>X<span>{el.quantity}</span>
           </div>
           <div className="price">
-            <span>{Number(el.price) * Number(el.quantity)}</span>원
+            <span>{el.price}</span>원
           </div>
         </div>
       </div>
