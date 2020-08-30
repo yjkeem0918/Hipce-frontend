@@ -27,15 +27,15 @@ class Checkout extends Component {
   }
 
   componentDidMount() {
-    const ItemFromSession = Object.values(sessionStorage).map((el) =>
-      JSON.parse(Object(el))
-    );
-    this.setState(
-      {
-        orderItem: ItemFromSession.map((el) => ({ ...el, count: 1 })),
-      },
-      () => this.calculateSum()
-    );
+    fetch("http://3.17.134.84:8000/orders")
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        return this.setState({
+          orderItem: res.shoppingbag,
+        },()=>this.calculateSum());
+      });
   }
 
   handleRadio = (id) => {
@@ -49,7 +49,6 @@ class Checkout extends Component {
   };
 
   render() {
-    console.log(this.state.orderItem.map((el) => Number(el.price)));
     return (
       <>
         <Nav />
@@ -230,7 +229,7 @@ class Checkout extends Component {
                 <ul>
                   <li>
                     <span>상품금액</span>
-                    <span>{this.state.sumPrice.toLocaleString()}</span>
+                    <span>{this.state.sumPrice}</span>
                   </li>
                   <li>
                     <span>배송비</span>
